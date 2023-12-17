@@ -23,15 +23,35 @@ func _ready():
 	$Line2D.position = Vector2(0, 0)
 	for x in width:
 		$Line2D.add_point(Vector2(x, height))
-	$ColorRect.size = Vector2(width+padding*2, height+padding*2)
-	$ColorRect.position = Vector2(-padding, -padding)
+	$WaveBG.size = Vector2(width, height)
+	$WaveBG/WaveBG2.size = Vector2(width+padding*2, height+padding*2)
+	$WaveBG.position = Vector2(0, 0)
+	$WaveBG/WaveBG2.position = Vector2(-padding, -padding)
 	$AnimationProgress.points[0] = Vector2(0, -padding)
 	$AnimationProgress.points[1] = Vector2(0, height+padding)
 	$AnimationProgress.position  = Vector2(0, 0)
 
 func _process(delta):
+	if animating:
+		prev_percentage = percentage
+		percentage+=delta*animation_speed
+		for i in range(int(prev_percentage*width), int(percentage*width)):
+			if i>= width:
+				animating = false
+				$AnimationProgress.hide()
+				break
+			
+			$Line2D.points[i].y = desired_curve[i]
+			$AnimationProgress.position.x = i
+			
+
+		
 	if Input.is_action_pressed("LMB"):
 		var mouse_pos = get_local_mouse_position()
+		if mouse_pos.y < 0-padding or mouse_pos.y > height+padding:
+			last_mouse_pos = null
+			return
+		
 		mouse_pos.y = clamp(mouse_pos.y, 0, height)
 		
 		if mouse_pos.x >= 0 and mouse_pos.x < width:
@@ -59,17 +79,7 @@ func _process(delta):
 	else:
 		last_mouse_pos = null
 	
-	if animating:
-		prev_percentage = percentage
-		percentage+=delta*animation_speed
-		for i in range(int(prev_percentage*width), int(percentage*width)):
-			if i>= width:
-				animating = false
-				$AnimationProgress.hide()
-				break
-			
-			$Line2D.points[i].y = desired_curve[i]
-			$AnimationProgress.position.x = i
+
 
 func sound_wave(pulse_hz=440.0):
 	$AudioStreamPlayer.play()
@@ -106,23 +116,11 @@ func _1D_convolution(kernel=[1, 7, 30, 74, 99, 74, 30, 7, 1]):
 
 
 
-
-
-func _on_a_pressed():
-	sound_wave(440.0)
-
-func _on_b_pressed():
-	sound_wave(493.8833)
-
-func _on_c_pressed():
-#	sound_wave(523.2511)
-	desired_curve = _1D_convolution()
-	start_animation()
-
 func preset_saw():
 	desired_curve = []
 	for i in width:
 		desired_curve.append(height*(float(i)/width))
+	desired_curve[0] = height	
 	start_animation()
 
 func preset_sqr():
@@ -168,5 +166,14 @@ func _print_midi_info(midi_event: InputEventMIDI):
 
 
 
-func _on_saw_pressed():
+func _on_sin_button_pressed():
 	preset_sin()
+
+func _on_saw_button_pressed():
+	preset_saw()
+
+func _on_sqr_button_pressed():
+	preset_sqr()
+
+func _on_tri_button_pressed():
+	preset_tri()

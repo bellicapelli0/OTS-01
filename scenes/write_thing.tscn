@@ -1,11 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://cq0eo3pk8nqoc"]
+[gd_scene load_steps=11 format=3 uid="uid://cq0eo3pk8nqoc"]
 
 [ext_resource type="Script" path="res://scripts/WriteThing.gd" id="1_uf1ao"]
+[ext_resource type="Texture2D" uid="uid://c3shnbmthgqq2" path="res://textures/sin.png" id="2_tvkac"]
+[ext_resource type="Texture2D" uid="uid://dw08y32fu7n7j" path="res://textures/sin-pressed.png" id="3_uf50g"]
+[ext_resource type="Texture2D" uid="uid://h6wj5vvcf7r6" path="res://textures/saw.png" id="4_5tawg"]
+[ext_resource type="Texture2D" uid="uid://bwjju4rsmoqgg" path="res://textures/saw-pressed.png" id="5_43u28"]
+[ext_resource type="Texture2D" uid="uid://bmkhejw6gj2fm" path="res://textures/sqr.png" id="6_glyjw"]
+[ext_resource type="Texture2D" uid="uid://ey0oox64snwv" path="res://textures/sqr-pressed.png" id="7_luik6"]
+[ext_resource type="Texture2D" uid="uid://cbt5an1xjeqyd" path="res://textures/tri.png" id="8_uswvd"]
+[ext_resource type="Texture2D" uid="uid://2udao23o64n4" path="res://textures/tri-pressed.png" id="9_b0twm"]
 
 [sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_j11ek"]
 mix_rate = 32000.0
 
 [node name="WriteThing" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_uf1ao")
 
 [node name="Line2D" type="Line2D" parent="."]
@@ -24,43 +33,68 @@ default_color = Color(1, 0.258824, 0.258824, 0.54902)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(246, 140)
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="WaveBG" type="ColorRect" parent="."]
 show_behind_parent = true
+offset_right = 300.0
+offset_bottom = 100.0
+
+[node name="WaveBG2" type="ColorRect" parent="WaveBG"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -14.0
+offset_top = -11.0
+offset_right = 42.0
+offset_bottom = 45.0
+color = Color(0.831373, 0.901961, 0.8, 1)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamGenerator_j11ek")
 volume_db = -10.0
 max_polyphony = 5
 
-[node name="A" type="Button" parent="."]
-offset_left = -36.0
-offset_top = -1.0
-offset_right = -18.0
-offset_bottom = 30.0
-text = "a"
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 80.0
+offset_top = 163.0
+offset_right = 293.0
+offset_bottom = 306.0
 
-[node name="B" type="Button" parent="."]
-offset_left = -38.0
-offset_top = 37.0
-offset_right = -20.0
-offset_bottom = 68.0
-text = "b"
+[node name="SinButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+keep_pressed_outside = true
+texture_normal = ExtResource("2_tvkac")
+texture_pressed = ExtResource("3_uf50g")
+stretch_mode = 5
 
-[node name="C" type="Button" parent="."]
-offset_left = -43.0
-offset_top = 79.0
-offset_right = -26.0
-offset_bottom = 110.0
-text = "c"
+[node name="SawButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("4_5tawg")
+texture_pressed = ExtResource("5_43u28")
 
-[node name="saw" type="Button" parent="."]
-offset_left = -57.0
-offset_top = 132.0
-offset_right = -18.0
-offset_bottom = 163.0
-text = "saw"
+[node name="SqrButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+keep_pressed_outside = true
+texture_normal = ExtResource("6_glyjw")
+texture_pressed = ExtResource("7_luik6")
+stretch_mode = 5
 
-[connection signal="pressed" from="A" to="." method="_on_a_pressed"]
-[connection signal="pressed" from="B" to="." method="_on_b_pressed"]
-[connection signal="pressed" from="C" to="." method="_on_c_pressed"]
-[connection signal="pressed" from="saw" to="." method="_on_saw_pressed"]
+[node name="TriButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+keep_pressed_outside = true
+texture_normal = ExtResource("8_uswvd")
+texture_pressed = ExtResource("9_b0twm")
+stretch_mode = 5
+
+[node name="HSlider" type="HSlider" parent="."]
+offset_left = 368.0
+offset_top = 109.0
+offset_right = 554.0
+offset_bottom = 125.0
+min_value = 3.0
+max_value = 13.0
+value = 3.0
+
+[connection signal="pressed" from="VBoxContainer/SinButton" to="." method="_on_sin_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/SawButton" to="." method="_on_saw_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/SqrButton" to="." method="_on_sqr_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/TriButton" to="." method="_on_tri_button_pressed"]
