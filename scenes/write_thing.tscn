@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://cq0eo3pk8nqoc"]
+[gd_scene load_steps=102 format=3 uid="uid://cq0eo3pk8nqoc"]
 
-[ext_resource type="Script" path="res://scripts/WriteThing.gd" id="1_uf1ao"]
+[ext_resource type="Theme" uid="uid://bxnauddw6v7c3" path="res://assets/theme.tres" id="1_i6qhu"]
+[ext_resource type="Script" path="res://scripts/Synth.gd" id="1_uf1ao"]
 [ext_resource type="Texture2D" uid="uid://c3shnbmthgqq2" path="res://textures/sin.png" id="2_tvkac"]
 [ext_resource type="Texture2D" uid="uid://dw08y32fu7n7j" path="res://textures/sin-pressed.png" id="3_uf50g"]
 [ext_resource type="Texture2D" uid="uid://h6wj5vvcf7r6" path="res://textures/saw.png" id="4_5tawg"]
@@ -9,92 +10,645 @@
 [ext_resource type="Texture2D" uid="uid://ey0oox64snwv" path="res://textures/sqr-pressed.png" id="7_luik6"]
 [ext_resource type="Texture2D" uid="uid://cbt5an1xjeqyd" path="res://textures/tri.png" id="8_uswvd"]
 [ext_resource type="Texture2D" uid="uid://2udao23o64n4" path="res://textures/tri-pressed.png" id="9_b0twm"]
+[ext_resource type="Texture2D" uid="uid://c47byt6b2vcbt" path="res://textures/smooth.png" id="11_0xq04"]
+[ext_resource type="Texture2D" uid="uid://bj2fmsstk7kuh" path="res://textures/smooth-pressed.png" id="12_al5v2"]
+[ext_resource type="Script" path="res://scripts/Piano.gd" id="13_b6qyf"]
+[ext_resource type="Texture2D" uid="uid://dajolyy6jwhy0" path="res://textures/PianoKeys/white_keys1.png" id="14_b6fpe"]
+[ext_resource type="Texture2D" uid="uid://dxq06lx18bk21" path="res://textures/pianoframe.png" id="14_r6q4y"]
+[ext_resource type="Texture2D" uid="uid://eww5lokq82mf" path="res://textures/PianoKeys/white_keys2.png" id="15_1ht65"]
+[ext_resource type="Texture2D" uid="uid://cc8p3oaveif2g" path="res://textures/PianoKeys/black_keys2.png" id="15_bhcj0"]
+[ext_resource type="Texture2D" uid="uid://c6hrotfa1jtb" path="res://textures/PianoKeys/black_keys1.png" id="16_4a78q"]
+[ext_resource type="Texture2D" uid="uid://ctmv0nbc3do4h" path="res://textures/octave-indicator.png" id="19_fdrc6"]
+[ext_resource type="Script" path="res://scripts/Octave.gd" id="19_ie677"]
+[ext_resource type="Texture2D" uid="uid://b1f16vxc188b6" path="res://textures/Minus.png" id="20_daaw3"]
+[ext_resource type="Texture2D" uid="uid://bfe4xunx4o8xg" path="res://textures/minus-pressed.png" id="21_afu18"]
+[ext_resource type="Texture2D" uid="uid://d1dwjxfn1vqvi" path="res://textures/plus.png" id="22_g1f8q"]
+[ext_resource type="Texture2D" uid="uid://d2s1h44lwjjqf" path="res://textures/plus-pressed.png" id="23_66wdi"]
+
+[sub_resource type="Gradient" id="Gradient_n2oxx"]
+offsets = PackedFloat32Array(0, 0.226667, 0.806667, 1)
+colors = PackedColorArray(0.831373, 0.0235294, 0.0235294, 1, 0.968627, 0.027451, 0.027451, 1, 0.968627, 0.027451, 0.027451, 1, 0.831373, 0.0235294, 0.0235294, 1)
 
 [sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_j11ek"]
 mix_rate = 32000.0
 
-[node name="WriteThing" type="Node2D"]
+[sub_resource type="InputEventAction" id="InputEventAction_3oa2r"]
+action = &"C"
+
+[sub_resource type="Shortcut" id="Shortcut_ljuqf"]
+events = [SubResource("InputEventAction_3oa2r")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0n41"]
+atlas = ExtResource("14_b6fpe")
+region = Rect2(0, 0, 640, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1tlw"]
+atlas = SubResource("AtlasTexture_h0n41")
+region = Rect2(0, 0, 64, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqpkt"]
+atlas = SubResource("AtlasTexture_o1tlw")
+region = Rect2(0, 0, 64, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i35d7"]
+atlas = ExtResource("15_1ht65")
+region = Rect2(0, 0, 64, 256)
+
+[sub_resource type="InputEventAction" id="InputEventAction_rk7g2"]
+action = &"D"
+
+[sub_resource type="Shortcut" id="Shortcut_rqoe5"]
+events = [SubResource("InputEventAction_rk7g2")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxwoj"]
+atlas = ExtResource("14_b6fpe")
+region = Rect2(0, 0, 640, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4o3v"]
+atlas = SubResource("AtlasTexture_kxwoj")
+region = Rect2(64, 0, 64, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smrue"]
+atlas = ExtResource("15_1ht65")
+region = Rect2(64, 0, 64, 256)
+
+[sub_resource type="InputEventAction" id="InputEventAction_iyka6"]
+action = &"E"
+
+[sub_resource type="Shortcut" id="Shortcut_o04f5"]
+events = [SubResource("InputEventAction_iyka6")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfscu"]
+atlas = ExtResource("14_b6fpe")
+region = Rect2(128, 0, 64, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3gdd"]
+atlas = ExtResource("15_1ht65")
+region = Rect2(128, 0, 64, 256)
+
+[sub_resource type="InputEventAction" id="InputEventAction_7s4d7"]
+action = &"F"
+
+[sub_resource type="Shortcut" id="Shortcut_1v67f"]
+events = [SubResource("InputEventAction_7s4d7")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aytut"]
+atlas = ExtResource("14_b6fpe")
+region = Rect2(192, 0, 64, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_posrl"]
+atlas = ExtResource("15_1ht65")
+region = Rect2(192, 0, 64, 256)
+
+[sub_resource type="InputEventAction" id="InputEventAction_ws1ij"]
+action = &"G"
+
+[sub_resource type="Shortcut" id="Shortcut_xq78v"]
+events = [SubResource("InputEventAction_ws1ij")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_husw8"]
+atlas = ExtResource("14_b6fpe")
+region = Rect2(256, 0, 64, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g63qy"]
+atlas = ExtResource("15_1ht65")
+region = Rect2(256, 0, 64, 256)
+
+[sub_resource type="InputEventAction" id="InputEventAction_fshdh"]
+action = &"A"
+
+[sub_resource type="Shortcut" id="Shortcut_cmhdo"]
+events = [SubResource("InputEventAction_fshdh")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmgxk"]
+atlas = ExtResource("14_b6fpe")
+region = Rect2(320, 0, 64, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1k3v"]
+atlas = ExtResource("15_1ht65")
+region = Rect2(320, 0, 64, 256)
+
+[sub_resource type="InputEventAction" id="InputEventAction_ivnds"]
+action = &"B"
+
+[sub_resource type="Shortcut" id="Shortcut_x4l82"]
+events = [SubResource("InputEventAction_ivnds")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxdxf"]
+atlas = ExtResource("14_b6fpe")
+region = Rect2(384, 0, 64, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d76se"]
+atlas = ExtResource("15_1ht65")
+region = Rect2(384, 0, 64, 256)
+
+[sub_resource type="InputEventAction" id="InputEventAction_ddvrk"]
+action = &"C-UP"
+
+[sub_resource type="Shortcut" id="Shortcut_81nii"]
+events = [SubResource("InputEventAction_ddvrk")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wsui"]
+atlas = ExtResource("14_b6fpe")
+region = Rect2(448, 0, 64, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jh68b"]
+atlas = ExtResource("15_1ht65")
+region = Rect2(448, 0, 64, 256)
+
+[sub_resource type="InputEventAction" id="InputEventAction_vptr2"]
+action = &"D-UP"
+
+[sub_resource type="Shortcut" id="Shortcut_ggqjh"]
+events = [SubResource("InputEventAction_vptr2")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fn81d"]
+atlas = ExtResource("14_b6fpe")
+region = Rect2(512, 0, 64, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dm188"]
+atlas = ExtResource("15_1ht65")
+region = Rect2(512, 0, 64, 256)
+
+[sub_resource type="InputEventAction" id="InputEventAction_8nsxv"]
+action = &"E-UP"
+
+[sub_resource type="Shortcut" id="Shortcut_wwdvg"]
+events = [SubResource("InputEventAction_8nsxv")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5rdh"]
+atlas = ExtResource("14_b6fpe")
+region = Rect2(576, 0, 64, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnfjr"]
+atlas = ExtResource("15_1ht65")
+region = Rect2(576, 0, 64, 256)
+
+[sub_resource type="InputEventAction" id="InputEventAction_6rnbh"]
+action = &"C#"
+
+[sub_resource type="Shortcut" id="Shortcut_tpnd3"]
+events = [SubResource("InputEventAction_6rnbh")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j881x"]
+atlas = ExtResource("16_4a78q")
+region = Rect2(32, 0, 64, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4atv"]
+atlas = ExtResource("15_bhcj0")
+region = Rect2(32, 0, 64, 160)
+
+[sub_resource type="InputEventAction" id="InputEventAction_rxvk4"]
+action = &"D#"
+
+[sub_resource type="Shortcut" id="Shortcut_n0pqy"]
+events = [SubResource("InputEventAction_rxvk4")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbb2i"]
+atlas = ExtResource("16_4a78q")
+region = Rect2(96, 0, 64, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnhck"]
+atlas = ExtResource("15_bhcj0")
+region = Rect2(96, 0, 64, 160)
+
+[sub_resource type="InputEventAction" id="InputEventAction_e3ckh"]
+action = &"F#"
+
+[sub_resource type="Shortcut" id="Shortcut_mvik3"]
+events = [SubResource("InputEventAction_e3ckh")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnui1"]
+atlas = ExtResource("16_4a78q")
+region = Rect2(224, 0, 64, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2i32"]
+atlas = ExtResource("15_bhcj0")
+region = Rect2(224, 0, 64, 160)
+
+[sub_resource type="InputEventAction" id="InputEventAction_psiyg"]
+action = &"G#"
+
+[sub_resource type="Shortcut" id="Shortcut_q1cpp"]
+events = [SubResource("InputEventAction_psiyg")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwu8m"]
+atlas = ExtResource("16_4a78q")
+region = Rect2(288, 0, 64, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7many"]
+atlas = ExtResource("15_bhcj0")
+region = Rect2(288, 0, 64, 160)
+
+[sub_resource type="InputEventAction" id="InputEventAction_4ipsd"]
+action = &"A#"
+
+[sub_resource type="Shortcut" id="Shortcut_oao6r"]
+events = [SubResource("InputEventAction_4ipsd")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfwqa"]
+atlas = ExtResource("16_4a78q")
+region = Rect2(352, 0, 64, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogl6s"]
+atlas = ExtResource("15_bhcj0")
+region = Rect2(352, 0, 64, 160)
+
+[sub_resource type="InputEventAction" id="InputEventAction_whm16"]
+action = &"C-UP#"
+
+[sub_resource type="Shortcut" id="Shortcut_0c7dc"]
+events = [SubResource("InputEventAction_whm16")]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lqveb"]
+load_path = "res://.godot/imported/black_keys1.png-66b4626cab7e63a0c4a3cb9d2428ce99.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xuce7"]
+atlas = SubResource("CompressedTexture2D_lqveb")
+region = Rect2(480, 0, 64, 160)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ol8fi"]
+load_path = "res://.godot/imported/black_keys2.png-b6f6101affdb649b760b9a57e9dafd40.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfjys"]
+atlas = SubResource("CompressedTexture2D_ol8fi")
+region = Rect2(480, 0, 64, 160)
+
+[sub_resource type="InputEventAction" id="InputEventAction_21cmi"]
+action = &"D-UP#"
+
+[sub_resource type="Shortcut" id="Shortcut_acpdg"]
+events = [SubResource("InputEventAction_21cmi")]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3qasp"]
+load_path = "res://.godot/imported/black_keys1.png-66b4626cab7e63a0c4a3cb9d2428ce99.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rifto"]
+atlas = SubResource("CompressedTexture2D_3qasp")
+region = Rect2(544, 0, 64, 160)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4txbg"]
+load_path = "res://.godot/imported/black_keys2.png-b6f6101affdb649b760b9a57e9dafd40.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11x6k"]
+atlas = SubResource("CompressedTexture2D_4txbg")
+region = Rect2(544, 0, 64, 160)
+
+[node name="Synth" type="Control"]
 texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_i6qhu")
 script = ExtResource("1_uf1ao")
 
-[node name="Line2D" type="Line2D" parent="."]
+[node name="Frame" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -53.0
+offset_top = -53.0
+offset_right = 947.0
+offset_bottom = 547.0
+texture = ExtResource("14_r6q4y")
+
+[node name="Wave" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Line2D" type="Line2D" parent="Wave"]
 position = Vector2(-174, 16)
 points = PackedVector2Array(176, 98)
 width = 3.0
-default_color = Color(0, 0, 0, 1)
+default_color = Color(0.968627, 0.027451, 0.027451, 1)
+gradient = SubResource("Gradient_n2oxx")
 joint_mode = 2
 
-[node name="AnimationProgress" type="Line2D" parent="."]
+[node name="AnimationProgress" type="Line2D" parent="Wave"]
 visible = false
 points = PackedVector2Array(0, 0, 0, 152)
 width = 8.0
 default_color = Color(1, 0.258824, 0.258824, 0.54902)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(246, 140)
-
-[node name="WaveBG" type="ColorRect" parent="."]
-show_behind_parent = true
-offset_right = 300.0
-offset_bottom = 100.0
-
-[node name="WaveBG2" type="ColorRect" parent="WaveBG"]
+[node name="BG" type="ColorRect" parent="Wave"]
 show_behind_parent = true
 layout_mode = 0
-offset_left = -14.0
-offset_top = -11.0
-offset_right = 42.0
-offset_bottom = 45.0
-color = Color(0.831373, 0.901961, 0.8, 1)
+offset_right = 300.0
+offset_bottom = 100.0
+color = Color(0.121569, 0.14902, 0.113725, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(443, 247)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamGenerator_j11ek")
 volume_db = -10.0
 max_polyphony = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = 80.0
-offset_top = 163.0
-offset_right = 293.0
-offset_bottom = 306.0
+[node name="Presets" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = -4.0
+offset_top = 155.0
+offset_right = 258.0
+offset_bottom = 187.0
 
-[node name="SinButton" type="TextureButton" parent="VBoxContainer"]
+[node name="SinButton" type="TextureButton" parent="Presets"]
 layout_mode = 2
 keep_pressed_outside = true
 texture_normal = ExtResource("2_tvkac")
 texture_pressed = ExtResource("3_uf50g")
 stretch_mode = 5
 
-[node name="SawButton" type="TextureButton" parent="VBoxContainer"]
+[node name="SawButton" type="TextureButton" parent="Presets"]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_vertical = 4
 texture_normal = ExtResource("4_5tawg")
 texture_pressed = ExtResource("5_43u28")
 
-[node name="SqrButton" type="TextureButton" parent="VBoxContainer"]
+[node name="SqrButton" type="TextureButton" parent="Presets"]
 layout_mode = 2
 keep_pressed_outside = true
 texture_normal = ExtResource("6_glyjw")
 texture_pressed = ExtResource("7_luik6")
 stretch_mode = 5
 
-[node name="TriButton" type="TextureButton" parent="VBoxContainer"]
+[node name="TriButton" type="TextureButton" parent="Presets"]
 layout_mode = 2
 keep_pressed_outside = true
 texture_normal = ExtResource("8_uswvd")
 texture_pressed = ExtResource("9_b0twm")
 stretch_mode = 5
 
-[node name="HSlider" type="HSlider" parent="."]
-offset_left = 368.0
-offset_top = 109.0
-offset_right = 554.0
-offset_bottom = 125.0
+[node name="Smoothness" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 85.0
+offset_top = 194.0
+offset_right = 258.0
+offset_bottom = 226.0
 min_value = 3.0
-max_value = 13.0
+max_value = 27.0
+step = 8.0
 value = 3.0
+tick_count = 4
+ticks_on_borders = true
 
-[connection signal="pressed" from="VBoxContainer/SinButton" to="." method="_on_sin_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/SawButton" to="." method="_on_saw_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/SqrButton" to="." method="_on_sqr_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/TriButton" to="." method="_on_tri_button_pressed"]
+[node name="SmoothButton" type="TextureButton" parent="Smoothness"]
+layout_mode = 0
+offset_left = -89.0
+offset_top = 1.0
+offset_right = -5.0
+offset_bottom = 41.0
+texture_normal = ExtResource("11_0xq04")
+texture_pressed = ExtResource("12_al5v2")
+
+[node name="Piano" type="Control" parent="."]
+anchors_preset = 0
+offset_left = -53.0
+offset_top = 229.0
+offset_right = -13.0
+offset_bottom = 269.0
+script = ExtResource("13_b6qyf")
+
+[node name="WhiteKeys" type="HBoxContainer" parent="Piano"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 38.0
+offset_right = 694.0
+offset_bottom = 294.0
+
+[node name="C" type="TextureButton" parent="Piano/WhiteKeys"]
+layout_mode = 2
+mouse_filter = 1
+action_mode = 0
+shortcut = SubResource("Shortcut_ljuqf")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_qqpkt")
+texture_pressed = SubResource("AtlasTexture_i35d7")
+
+[node name="D" type="TextureButton" parent="Piano/WhiteKeys"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_rqoe5")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_i4o3v")
+texture_pressed = SubResource("AtlasTexture_smrue")
+
+[node name="E" type="TextureButton" parent="Piano/WhiteKeys"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_o04f5")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_wfscu")
+texture_pressed = SubResource("AtlasTexture_o3gdd")
+
+[node name="F" type="TextureButton" parent="Piano/WhiteKeys"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_1v67f")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_aytut")
+texture_pressed = SubResource("AtlasTexture_posrl")
+
+[node name="G" type="TextureButton" parent="Piano/WhiteKeys"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_xq78v")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_husw8")
+texture_pressed = SubResource("AtlasTexture_g63qy")
+
+[node name="A" type="TextureButton" parent="Piano/WhiteKeys"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_cmhdo")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_gmgxk")
+texture_pressed = SubResource("AtlasTexture_l1k3v")
+
+[node name="B" type="TextureButton" parent="Piano/WhiteKeys"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_x4l82")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_hxdxf")
+texture_pressed = SubResource("AtlasTexture_d76se")
+
+[node name="C-UP" type="TextureButton" parent="Piano/WhiteKeys"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_81nii")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_8wsui")
+texture_pressed = SubResource("AtlasTexture_jh68b")
+
+[node name="D-UP" type="TextureButton" parent="Piano/WhiteKeys"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_ggqjh")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_fn81d")
+texture_pressed = SubResource("AtlasTexture_dm188")
+
+[node name="E-UP" type="TextureButton" parent="Piano/WhiteKeys"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_wwdvg")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_l5rdh")
+texture_pressed = SubResource("AtlasTexture_gnfjr")
+
+[node name="BlackKeys1" type="HBoxContainer" parent="Piano"]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 38.0
+offset_right = 199.0
+offset_bottom = 198.0
+
+[node name="C#" type="TextureButton" parent="Piano/BlackKeys1"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_tpnd3")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_j881x")
+texture_pressed = SubResource("AtlasTexture_g4atv")
+
+[node name="D#" type="TextureButton" parent="Piano/BlackKeys1"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_n0pqy")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_lbb2i")
+texture_pressed = SubResource("AtlasTexture_gnhck")
+
+[node name="BlackKeys2" type="HBoxContainer" parent="Piano"]
+layout_mode = 2
+offset_left = 267.0
+offset_top = 38.0
+offset_right = 463.0
+offset_bottom = 198.0
+
+[node name="F#" type="TextureButton" parent="Piano/BlackKeys2"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_mvik3")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_bnui1")
+texture_pressed = SubResource("AtlasTexture_a2i32")
+
+[node name="G#" type="TextureButton" parent="Piano/BlackKeys2"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_q1cpp")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_hwu8m")
+texture_pressed = SubResource("AtlasTexture_7many")
+
+[node name="A#" type="TextureButton" parent="Piano/BlackKeys2"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_oao6r")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_dfwqa")
+texture_pressed = SubResource("AtlasTexture_ogl6s")
+
+[node name="BlackKeys3" type="HBoxContainer" parent="Piano"]
+layout_mode = 2
+offset_left = 531.0
+offset_top = 38.0
+offset_right = 661.0
+offset_bottom = 198.0
+
+[node name="C-UP#" type="TextureButton" parent="Piano/BlackKeys3"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_0c7dc")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_xuce7")
+texture_pressed = SubResource("AtlasTexture_kfjys")
+
+[node name="D-UP#" type="TextureButton" parent="Piano/BlackKeys3"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_acpdg")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_rifto")
+texture_pressed = SubResource("AtlasTexture_11x6k")
+
+[node name="Volume" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 727.0
+offset_top = 477.0
+offset_right = 896.0
+offset_bottom = 509.0
+value = 75.0
+
+[node name="Label" type="Label" parent="Volume"]
+layout_mode = 0
+offset_left = -42.0
+offset_right = -2.0
+offset_bottom = 26.0
+text = "VOL"
+
+[node name="Octave" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 273.0
+offset_top = 184.0
+offset_right = 313.0
+offset_bottom = 224.0
+script = ExtResource("19_ie677")
+
+[node name="Indicator" type="Sprite2D" parent="Octave"]
+position = Vector2(0, -2)
+texture = ExtResource("19_fdrc6")
+centered = false
+hframes = 5
+frame = 2
+
+[node name="Minus" type="TextureButton" parent="Octave"]
+layout_mode = 0
+offset_top = 13.0
+offset_right = 40.0
+offset_bottom = 53.0
+texture_normal = ExtResource("20_daaw3")
+texture_pressed = ExtResource("21_afu18")
+
+[node name="Plus" type="TextureButton" parent="Octave"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 13.0
+offset_right = 108.0
+offset_bottom = 53.0
+texture_normal = ExtResource("22_g1f8q")
+texture_pressed = ExtResource("23_66wdi")
+
+[node name="Label" type="Label" parent="Octave"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 17.0
+offset_right = 72.0
+offset_bottom = 43.0
+text = "OCT"
+
+[connection signal="pressed" from="Presets/SinButton" to="." method="_on_sin_button_pressed"]
+[connection signal="pressed" from="Presets/SawButton" to="." method="_on_saw_button_pressed"]
+[connection signal="pressed" from="Presets/SqrButton" to="." method="_on_sqr_button_pressed"]
+[connection signal="pressed" from="Presets/TriButton" to="." method="_on_tri_button_pressed"]
+[connection signal="pressed" from="Smoothness/SmoothButton" to="." method="_on_smooth_button_pressed"]
+[connection signal="pressed" from="Piano/WhiteKeys/C" to="Piano" method="_on_c_button_down"]
+[connection signal="pressed" from="Piano/WhiteKeys/D" to="Piano" method="_on_d_button_down"]
+[connection signal="pressed" from="Piano/WhiteKeys/E" to="Piano" method="_on_e_button_down"]
+[connection signal="pressed" from="Piano/WhiteKeys/F" to="Piano" method="_on_f_button_down"]
+[connection signal="pressed" from="Piano/WhiteKeys/G" to="Piano" method="_on_g_button_down"]
+[connection signal="pressed" from="Piano/WhiteKeys/A" to="Piano" method="_on_a_button_down"]
+[connection signal="pressed" from="Piano/WhiteKeys/B" to="Piano" method="_on_b_button_down"]
+[connection signal="pressed" from="Piano/WhiteKeys/C-UP" to="Piano" method="_on_cup_button_down"]
+[connection signal="pressed" from="Piano/WhiteKeys/D-UP" to="Piano" method="_on_dup_button_down"]
+[connection signal="pressed" from="Piano/WhiteKeys/E-UP" to="Piano" method="_on_eup_button_down"]
+[connection signal="pressed" from="Piano/BlackKeys1/C#" to="Piano" method="_on_c_sharp_button_down"]
+[connection signal="pressed" from="Piano/BlackKeys1/D#" to="Piano" method="_on_d_sharp_button_down"]
+[connection signal="pressed" from="Piano/BlackKeys2/F#" to="Piano" method="_on_f_sharp_button_down"]
+[connection signal="pressed" from="Piano/BlackKeys2/G#" to="Piano" method="_on_g_sharp_button_down"]
+[connection signal="pressed" from="Piano/BlackKeys2/A#" to="Piano" method="_on_a_sharp_button_down"]
+[connection signal="pressed" from="Piano/BlackKeys3/C-UP#" to="Piano" method="_on_cup_sharp_button_down"]
+[connection signal="pressed" from="Piano/BlackKeys3/D-UP#" to="Piano" method="_on_dup_sharp_button_down"]
+[connection signal="value_changed" from="Volume" to="." method="_on_volume_value_changed"]
+[connection signal="pressed" from="Octave/Minus" to="Octave" method="_on_minus_pressed"]
+[connection signal="pressed" from="Octave/Plus" to="Octave" method="_on_plus_pressed"]
