@@ -1,12 +1,9 @@
 extends Control
-
+class_name Synth
 
 @export var width = 400
 @export var height = 135
 var padding = 4
-
-var playback
-@onready var sample_hz = $AudioStreamPlayer.stream.mix_rate
 
 var last_mouse_pos
 var animating = false
@@ -15,23 +12,39 @@ var percentage = 0.0
 var prev_percentage
 var animation_speed = 0.75
 
+@export var sample_hz = 44100
+var player_index = 0
+@onready var n_players = len($AudioStreamPlayers.get_children())
+var note_length = 0.5
+
+@onready var line : Line2D = $Wave/Line2D
+@onready var amp : VSlider = $Frame/Amp
+
 func _ready():
+	Global.w = width
+	Global.h = height
 	OS.open_midi_inputs()
 	print(OS.get_connected_midi_inputs())
 	
-	$Wave/Line2D.clear_points()
-	$Wave/Line2D.position = Vector2(0, 0)
+	line.clear_points()
+	line.position = Vector2(0, 0)
 	
 	for x in width:
-		$Wave/Line2D.add_point(Vector2(x, (height/2)-(height/2)*sin(float(x)*TAU/width)))
+		line.add_point(Vector2(x, (height/2)-(height/2)*sin(float(x)*TAU/width)))
 		
 	$Wave/BG.size = Vector2(width+padding*2, height+padding*2)
 	$Wave/BG.position = Vector2(-padding, -padding)
 	$Wave/AnimationProgress.points[0] = Vector2(0, -padding)
 	$Wave/AnimationProgress.points[1] = Vector2(0, height+padding)
 	$Wave/AnimationProgress.position  = Vector2(0, 0)
+	$"Wave/0Line".points[0] = Vector2(0, height/2)
+	$"Wave/0Line".points[1] = Vector2(width, height/2)
 	
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), remap($Volume.value, 0, 100, -40, -4))
+	
+	for player in $AudioStreamPlayers.get_children():
+		player.stream.mix_rate = sample_hz
+		player.stream.buffer_length = note_length
+	
 	
 func _process(delta):
 	if animating:
@@ -43,7 +56,7 @@ func _process(delta):
 				$Wave/AnimationProgress.hide()
 				break
 			
-			$Wave/Line2D.points[i].y = desired_curve[i]
+			line.points[i].y = desired_curve[i]
 			$Wave/AnimationProgress.position.x = i
 			
 
@@ -57,7 +70,7 @@ func _process(delta):
 		mouse_pos.y = clamp(mouse_pos.y, 0, height)
 		
 		if mouse_pos.x >= 0 and mouse_pos.x < width:
-			$Wave/Line2D.points[mouse_pos.x] = mouse_pos
+			line.points[mouse_pos.x] = mouse_pos
 		
 		
 		if last_mouse_pos:
@@ -76,24 +89,37 @@ func _process(delta):
 			for x in range(start.x, finish.x):
 				var weight = (x-start.x)/(finish.x-start.x)
 				
-				$Wave/Line2D.points[x].y = lerp(start.y, finish.y, weight)
+				line.points[x].y = lerp(start.y, finish.y, weight)
 		last_mouse_pos = mouse_pos
 	else:
 		last_mouse_pos = null
 	
-
+var fade_out = 0.1
 
 func sound_wave(pulse_hz=440.0):
-	$AudioStreamPlayer.play()
-	playback = $AudioStreamPlayer.get_stream_playback()
+	var player = get_player()
+	if not player:
+		print_debug("No available players")
+	player.play()
+	var playback = player.get_stream_playback()
 	var phase = 0.0
 	var increment = pulse_hz / sample_hz
 	var frames_available = playback.get_frames_available()
+	var fade_out = 1.0
 	for i in range(frames_available):
-		var value = $Wave/Line2D.points[int(phase*width)].y
-		value = remap(value, height, 0, 0.0, 1.0)
-		playback.push_frame(Vector2.ONE * value)
+		if i > frames_available * (1-0.15):
+			fade_out *= 0.99
+		var value = line.points[int(phase*width)].y
+		value = remap(value, height, 0, -0.5, 0.5)
+		playback.push_frame(Vector2.ONE * value * fade_out)
 		phase = fmod(phase + increment, 1.0)
+		
+		
+func get_player():
+	player_index += 1
+	player_index = player_index % n_players
+	return $AudioStreamPlayers.get_children()[player_index]
+
 
 func _1D_convolution(kernel=[1, 7, 30, 74, 99, 74, 30, 7, 1]):
 	assert(len(kernel)%2==1)
@@ -110,7 +136,7 @@ func _1D_convolution(kernel=[1, 7, 30, 74, 99, 74, 30, 7, 1]):
 			var input_value = height/2.0
 			
 			if index >= 0 and index<width:
-				input_value = $Wave/Line2D.points[index].y
+				input_value = line.points[index].y
 			
 			temp_sum += input_value * kernel[j]
 		output.append((temp_sum/kernel_sum))
@@ -118,37 +144,9 @@ func _1D_convolution(kernel=[1, 7, 30, 74, 99, 74, 30, 7, 1]):
 
 
 
-func preset_saw():
-	desired_curve = []
-	for i in width:
-		desired_curve.append(height*(float(i)/width))
-	desired_curve[0] = height	
-	start_animation()
 
-func preset_sqr():
-	desired_curve = []
-	for i in width:
-		desired_curve.append(0 if i<width/2 else height)
-	start_animation()
-
-func preset_sin():
-	desired_curve = []
-	for i in width:
-		desired_curve.append((height/2)-(height/2)*sin(float(i)*TAU/width))
-	start_animation()
-
-func preset_tri():
-	desired_curve = []
-	for i in width:
-		if i<= width/4:
-			desired_curve.append((height/2)-(height/2)*float(i)/(width/4))
-		elif i <= width*3/4:
-			desired_curve.append(height*float(i-width/4)/(width/2))
-		else:
-			desired_curve.append((height)-(height/2.0)*float(i-width*3.0/4.0)/(width/4.0))
-	start_animation()
-
-func start_animation():
+func start_animation(curve):
+	desired_curve = curve
 	prev_percentage = null
 	percentage = 0.0
 	animating = true
@@ -156,35 +154,16 @@ func start_animation():
 
 func _input(input_event):
 	if input_event is InputEventMIDI:
-		pass
-		_print_midi_info(input_event)
+		if input_event.message == 8:
+			var note = PianoKeys.get_note(input_event.pitch)
+			print(note)
+			sound_wave(note["frequency"])
 
-func _print_midi_info(midi_event: InputEventMIDI):
-	if midi_event.message == 8:
-		var note = PianoKeys.get_note(midi_event.pitch)
-		print(note)
-		sound_wave(note["frequency"])
-#	print(midi_event)
-
-
-
-func _on_sin_button_pressed():
-	preset_sin()
-
-func _on_saw_button_pressed():
-	preset_saw()
-
-func _on_sqr_button_pressed():
-	preset_sqr()
-
-func _on_tri_button_pressed():
-	preset_tri()
 
 
 func _on_smooth_button_pressed():
-	var smoothness = int($Smoothness.value)
+	var smoothness = int($Frame/Smoothness.value)
 	var kernel = [1]
-	print(smoothness)
 	match smoothness:
 		3:
 			kernel = [0.3191677684538592, 0.36166446309228156, 0.3191677684538592]
@@ -195,12 +174,13 @@ func _on_smooth_button_pressed():
 		27:
 			kernel = [1.3347783073939505e-10, 3.0379414249401485e-09, 5.3848800213221655e-08, 7.433597573741239e-07, 7.991870553527727e-06, 6.691511288307056e-05, 0.00043634134752697435, 0.002215924205989796, 0.008764150246866505, 0.026995483256847336, 0.06475879783355351, 0.12098536226070691, 0.1760326633838015, 0.19947114020258802, 0.1760326633838015, 0.12098536226070691, 0.06475879783355351, 0.026995483256847336, 0.008764150246866505, 0.002215924205989796, 0.00043634134752697435, 6.691511288307056e-05, 7.991870553527727e-06, 7.433597573741239e-07, 5.3848800213221655e-08, 3.0379414249401485e-09, 1.3347783073939505e-10]
 			
-	desired_curve = _1D_convolution(kernel)
-	start_animation()
+	
+	start_animation(_1D_convolution(kernel))
 
 
-func _on_volume_value_changed(value):
-	var volume_db = remap(value, 0, 100, -40, -4)
-	if value <= 2:
-		volume_db = -1000
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), volume_db)
+
+
+
+
+
+

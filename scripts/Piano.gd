@@ -1,21 +1,13 @@
 extends Control
 
-var Synth
+@onready var synth : Synth = get_tree().get_root().get_node("Synth")
 
-func _ready():
-	Synth = get_tree().get_root().get_node("Synth")
-	pass
-
-
-func _process(delta):
-	pass
-	
 
 func play_note(idx):
 	idx += Global.octave * 12
 	if idx >= 12 and idx <= 118:
 		var f = PianoKeys.get_note(idx)["frequency"]
-		Synth.sound_wave(f)
+		synth.sound_wave(f)
 
 func _on_c_button_down():
 	play_note(48)

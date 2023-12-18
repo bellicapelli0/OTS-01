@@ -1,10 +1,11 @@
-[gd_scene load_steps=102 format=3 uid="uid://cq0eo3pk8nqoc"]
+[gd_scene load_steps=123 format=3 uid="uid://cq0eo3pk8nqoc"]
 
 [ext_resource type="Theme" uid="uid://bxnauddw6v7c3" path="res://assets/theme.tres" id="1_i6qhu"]
 [ext_resource type="Script" path="res://scripts/Synth.gd" id="1_uf1ao"]
 [ext_resource type="Texture2D" uid="uid://c3shnbmthgqq2" path="res://textures/sin.png" id="2_tvkac"]
 [ext_resource type="Texture2D" uid="uid://dw08y32fu7n7j" path="res://textures/sin-pressed.png" id="3_uf50g"]
 [ext_resource type="Texture2D" uid="uid://h6wj5vvcf7r6" path="res://textures/saw.png" id="4_5tawg"]
+[ext_resource type="Script" path="res://scripts/Presets.gd" id="4_u5mn6"]
 [ext_resource type="Texture2D" uid="uid://bwjju4rsmoqgg" path="res://textures/saw-pressed.png" id="5_43u28"]
 [ext_resource type="Texture2D" uid="uid://bmkhejw6gj2fm" path="res://textures/sqr.png" id="6_glyjw"]
 [ext_resource type="Texture2D" uid="uid://ey0oox64snwv" path="res://textures/sqr-pressed.png" id="7_luik6"]
@@ -18,19 +19,28 @@
 [ext_resource type="Texture2D" uid="uid://eww5lokq82mf" path="res://textures/PianoKeys/white_keys2.png" id="15_1ht65"]
 [ext_resource type="Texture2D" uid="uid://cc8p3oaveif2g" path="res://textures/PianoKeys/black_keys2.png" id="15_bhcj0"]
 [ext_resource type="Texture2D" uid="uid://c6hrotfa1jtb" path="res://textures/PianoKeys/black_keys1.png" id="16_4a78q"]
+[ext_resource type="Texture2D" uid="uid://ben2lmuyicyoq" path="res://textures/lin.png" id="18_k7ij5"]
 [ext_resource type="Texture2D" uid="uid://ctmv0nbc3do4h" path="res://textures/octave-indicator.png" id="19_fdrc6"]
 [ext_resource type="Script" path="res://scripts/Octave.gd" id="19_ie677"]
+[ext_resource type="Texture2D" uid="uid://dyhgaepbbprxm" path="res://textures/lin-pressed.png" id="19_u7huv"]
 [ext_resource type="Texture2D" uid="uid://b1f16vxc188b6" path="res://textures/Minus.png" id="20_daaw3"]
 [ext_resource type="Texture2D" uid="uid://bfe4xunx4o8xg" path="res://textures/minus-pressed.png" id="21_afu18"]
 [ext_resource type="Texture2D" uid="uid://d1dwjxfn1vqvi" path="res://textures/plus.png" id="22_g1f8q"]
 [ext_resource type="Texture2D" uid="uid://d2s1h44lwjjqf" path="res://textures/plus-pressed.png" id="23_66wdi"]
-
-[sub_resource type="Gradient" id="Gradient_n2oxx"]
-offsets = PackedFloat32Array(0, 0.226667, 0.806667, 1)
-colors = PackedColorArray(0.831373, 0.0235294, 0.0235294, 1, 0.968627, 0.027451, 0.027451, 1, 0.968627, 0.027451, 0.027451, 1, 0.831373, 0.0235294, 0.0235294, 1)
-
-[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_j11ek"]
-mix_rate = 32000.0
+[ext_resource type="Script" path="res://scripts/NoteLength.gd" id="25_dtdnp"]
+[ext_resource type="Script" path="res://scripts/Amp.gd" id="27_6xlue"]
+[ext_resource type="Script" path="res://scripts/Speaker.gd" id="28_lsq45"]
+[ext_resource type="Texture2D" uid="uid://c3c0bsfbiws86" path="res://textures/speaker1.png" id="29_wosh7"]
+[ext_resource type="Texture2D" uid="uid://cje5g6qmk8k1g" path="res://textures/speaker2.png" id="30_e1otb"]
+[ext_resource type="Script" path="res://scripts/AudioStreamPlayers.gd" id="31_gip70"]
+[ext_resource type="Script" path="res://scripts/HFO.gd" id="33_4fu32"]
+[ext_resource type="Texture2D" uid="uid://3o5qf7v7r0y6" path="res://textures/symbols/sin.png" id="33_h608m"]
+[ext_resource type="Texture2D" uid="uid://cf8ey23ljk6qa" path="res://textures/line-texture.png" id="33_ke18s"]
+[ext_resource type="Texture2D" uid="uid://8dn31qmudraq" path="res://textures/symbols/sqr.png" id="34_fsh78"]
+[ext_resource type="Texture2D" uid="uid://dl30cgutfbb3" path="res://textures/symbols/tri.png" id="35_v1448"]
+[ext_resource type="Texture2D" uid="uid://cahn7rv4kinoa" path="res://textures/symbols/saw.png" id="36_2507b"]
+[ext_resource type="Texture2D" uid="uid://m41s0n0ir53p" path="res://textures/hfo.png" id="37_thiam"]
+[ext_resource type="Texture2D" uid="uid://hso635cpn6ci" path="res://textures/hfo-pressed.png" id="38_7i40i"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_3oa2r"]
 action = &"C"
@@ -294,6 +304,20 @@ load_path = "res://.godot/imported/black_keys2.png-b6f6101affdb649b760b9a57e9daf
 atlas = SubResource("CompressedTexture2D_4txbg")
 region = Rect2(544, 0, 64, 160)
 
+[sub_resource type="Gradient" id="Gradient_n2oxx"]
+offsets = PackedFloat32Array(0, 0.226667, 0.806667, 1)
+colors = PackedColorArray(0.831373, 0.0235294, 0.0235294, 1, 0.968627, 0.027451, 0.027451, 1, 0.968627, 0.027451, 0.027451, 1, 0.831373, 0.0235294, 0.0235294, 1)
+
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_k1b1u"]
+
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_65epj"]
+
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_3adlp"]
+
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_7lml7"]
+
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_aya6c"]
+
 [node name="Synth" type="Control"]
 texture_filter = 1
 layout_mode = 3
@@ -303,16 +327,485 @@ script = ExtResource("1_uf1ao")
 
 [node name="Frame" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = -53.0
+offset_left = -92.0
 offset_top = -53.0
-offset_right = 947.0
+offset_right = 908.0
 offset_bottom = 547.0
 texture = ExtResource("14_r6q4y")
+
+[node name="Piano" type="Control" parent="Frame"]
+anchors_preset = 0
+offset_top = 282.0
+offset_right = 40.0
+offset_bottom = 322.0
+script = ExtResource("13_b6qyf")
+
+[node name="WhiteKeys" type="HBoxContainer" parent="Frame/Piano"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 38.0
+offset_right = 694.0
+offset_bottom = 294.0
+
+[node name="C" type="TextureButton" parent="Frame/Piano/WhiteKeys"]
+layout_mode = 2
+mouse_filter = 1
+action_mode = 0
+shortcut = SubResource("Shortcut_ljuqf")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_qqpkt")
+texture_pressed = SubResource("AtlasTexture_i35d7")
+
+[node name="D" type="TextureButton" parent="Frame/Piano/WhiteKeys"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_rqoe5")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_i4o3v")
+texture_pressed = SubResource("AtlasTexture_smrue")
+
+[node name="E" type="TextureButton" parent="Frame/Piano/WhiteKeys"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_o04f5")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_wfscu")
+texture_pressed = SubResource("AtlasTexture_o3gdd")
+
+[node name="F" type="TextureButton" parent="Frame/Piano/WhiteKeys"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_1v67f")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_aytut")
+texture_pressed = SubResource("AtlasTexture_posrl")
+
+[node name="G" type="TextureButton" parent="Frame/Piano/WhiteKeys"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_xq78v")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_husw8")
+texture_pressed = SubResource("AtlasTexture_g63qy")
+
+[node name="A" type="TextureButton" parent="Frame/Piano/WhiteKeys"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_cmhdo")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_gmgxk")
+texture_pressed = SubResource("AtlasTexture_l1k3v")
+
+[node name="B" type="TextureButton" parent="Frame/Piano/WhiteKeys"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_x4l82")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_hxdxf")
+texture_pressed = SubResource("AtlasTexture_d76se")
+
+[node name="C-UP" type="TextureButton" parent="Frame/Piano/WhiteKeys"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_81nii")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_8wsui")
+texture_pressed = SubResource("AtlasTexture_jh68b")
+
+[node name="D-UP" type="TextureButton" parent="Frame/Piano/WhiteKeys"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_ggqjh")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_fn81d")
+texture_pressed = SubResource("AtlasTexture_dm188")
+
+[node name="E-UP" type="TextureButton" parent="Frame/Piano/WhiteKeys"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_wwdvg")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_l5rdh")
+texture_pressed = SubResource("AtlasTexture_gnfjr")
+
+[node name="BlackKeys1" type="HBoxContainer" parent="Frame/Piano"]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 38.0
+offset_right = 199.0
+offset_bottom = 198.0
+
+[node name="C#" type="TextureButton" parent="Frame/Piano/BlackKeys1"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_tpnd3")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_j881x")
+texture_pressed = SubResource("AtlasTexture_g4atv")
+
+[node name="D#" type="TextureButton" parent="Frame/Piano/BlackKeys1"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_n0pqy")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_lbb2i")
+texture_pressed = SubResource("AtlasTexture_gnhck")
+
+[node name="BlackKeys2" type="HBoxContainer" parent="Frame/Piano"]
+layout_mode = 2
+offset_left = 267.0
+offset_top = 38.0
+offset_right = 463.0
+offset_bottom = 198.0
+
+[node name="F#" type="TextureButton" parent="Frame/Piano/BlackKeys2"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_mvik3")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_bnui1")
+texture_pressed = SubResource("AtlasTexture_a2i32")
+
+[node name="G#" type="TextureButton" parent="Frame/Piano/BlackKeys2"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_q1cpp")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_hwu8m")
+texture_pressed = SubResource("AtlasTexture_7many")
+
+[node name="A#" type="TextureButton" parent="Frame/Piano/BlackKeys2"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_oao6r")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_dfwqa")
+texture_pressed = SubResource("AtlasTexture_ogl6s")
+
+[node name="BlackKeys3" type="HBoxContainer" parent="Frame/Piano"]
+layout_mode = 2
+offset_left = 531.0
+offset_top = 38.0
+offset_right = 661.0
+offset_bottom = 198.0
+
+[node name="C-UP#" type="TextureButton" parent="Frame/Piano/BlackKeys3"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_0c7dc")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_xuce7")
+texture_pressed = SubResource("AtlasTexture_kfjys")
+
+[node name="D-UP#" type="TextureButton" parent="Frame/Piano/BlackKeys3"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_acpdg")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_rifto")
+texture_pressed = SubResource("AtlasTexture_11x6k")
+
+[node name="Presets" type="HBoxContainer" parent="Frame"]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 208.0
+offset_right = 311.0
+offset_bottom = 240.0
+script = ExtResource("4_u5mn6")
+
+[node name="SinButton" type="TextureButton" parent="Frame/Presets"]
+layout_mode = 2
+keep_pressed_outside = true
+texture_normal = ExtResource("2_tvkac")
+texture_pressed = ExtResource("3_uf50g")
+stretch_mode = 5
+
+[node name="SawButton" type="TextureButton" parent="Frame/Presets"]
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("4_5tawg")
+texture_pressed = ExtResource("5_43u28")
+
+[node name="SqrButton" type="TextureButton" parent="Frame/Presets"]
+layout_mode = 2
+keep_pressed_outside = true
+texture_normal = ExtResource("6_glyjw")
+texture_pressed = ExtResource("7_luik6")
+stretch_mode = 5
+
+[node name="TriButton" type="TextureButton" parent="Frame/Presets"]
+layout_mode = 2
+keep_pressed_outside = true
+texture_normal = ExtResource("8_uswvd")
+texture_pressed = ExtResource("9_b0twm")
+stretch_mode = 5
+
+[node name="TextureButton" type="TextureButton" parent="Frame/Presets"]
+layout_mode = 2
+texture_normal = ExtResource("18_k7ij5")
+texture_pressed = ExtResource("19_u7huv")
+
+[node name="Smoothness" type="HSlider" parent="Frame"]
+layout_mode = 0
+offset_left = 138.0
+offset_top = 247.0
+offset_right = 311.0
+offset_bottom = 279.0
+min_value = 3.0
+max_value = 27.0
+step = 8.0
+value = 3.0
+tick_count = 4
+ticks_on_borders = true
+
+[node name="SmoothButton" type="TextureButton" parent="Frame/Smoothness"]
+layout_mode = 0
+offset_left = -89.0
+offset_top = 1.0
+offset_right = -5.0
+offset_bottom = 41.0
+texture_normal = ExtResource("11_0xq04")
+texture_pressed = ExtResource("12_al5v2")
+
+[node name="Octave" type="Control" parent="Frame"]
+anchors_preset = 0
+offset_left = 326.0
+offset_top = 237.0
+offset_right = 366.0
+offset_bottom = 277.0
+script = ExtResource("19_ie677")
+
+[node name="Indicator" type="Sprite2D" parent="Frame/Octave"]
+position = Vector2(0, -2)
+texture = ExtResource("19_fdrc6")
+centered = false
+hframes = 5
+frame = 2
+
+[node name="Minus" type="TextureButton" parent="Frame/Octave"]
+layout_mode = 0
+offset_top = 13.0
+offset_right = 40.0
+offset_bottom = 53.0
+texture_normal = ExtResource("20_daaw3")
+texture_pressed = ExtResource("21_afu18")
+
+[node name="Plus" type="TextureButton" parent="Frame/Octave"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 13.0
+offset_right = 108.0
+offset_bottom = 53.0
+texture_normal = ExtResource("22_g1f8q")
+texture_pressed = ExtResource("23_66wdi")
+
+[node name="Label" type="Label" parent="Frame/Octave"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 17.0
+offset_right = 72.0
+offset_bottom = 43.0
+text = "OCT"
+
+[node name="NoteLength" type="VSlider" parent="Frame"]
+layout_mode = 0
+offset_left = 918.0
+offset_top = 105.0
+offset_right = 950.0
+offset_bottom = 255.0
+min_value = 0.1
+max_value = 1.2
+step = 0.05
+value = 0.1
+script = ExtResource("25_dtdnp")
+
+[node name="Label" type="Label" parent="Frame/NoteLength"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 150.0
+offset_right = 34.0
+offset_bottom = 176.0
+text = "LEN"
+
+[node name="Amp" type="VSlider" parent="Frame"]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 53.0
+offset_right = 81.0
+offset_bottom = 170.0
+min_value = 0.51
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource("27_6xlue")
+
+[node name="Label" type="Label" parent="Frame/Amp"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 117.0
+offset_right = 37.0
+offset_bottom = 143.0
+text = "Amp"
+
+[node name="Camera2D" type="Camera2D" parent="Frame"]
+position = Vector2(498, 300)
+
+[node name="Speaker" type="Control" parent="Frame"]
+show_behind_parent = true
+anchors_preset = 0
+offset_left = 844.0
+offset_top = 425.0
+offset_right = 884.0
+offset_bottom = 465.0
+script = ExtResource("28_lsq45")
+
+[node name="Back" type="Sprite2D" parent="Frame/Speaker"]
+texture = ExtResource("29_wosh7")
+
+[node name="Front" type="Sprite2D" parent="Frame/Speaker"]
+texture = ExtResource("30_e1otb")
+
+[node name="Volume" type="HSlider" parent="Frame/Speaker"]
+z_index = 1
+layout_mode = 0
+offset_left = -64.0
+offset_top = 105.0
+offset_right = 105.0
+offset_bottom = 137.0
+value = 75.0
+
+[node name="Label" type="Label" parent="Frame/Speaker/Volume"]
+layout_mode = 0
+offset_left = -42.0
+offset_right = -2.0
+offset_bottom = 26.0
+text = "VOL"
+
+[node name="HFO" type="Control" parent="Frame"]
+anchors_preset = 0
+offset_left = 603.0
+offset_top = 53.0
+offset_right = 643.0
+offset_bottom = 93.0
+script = ExtResource("33_4fu32")
+
+[node name="Panel" type="Panel" parent="Frame/HFO"]
+layout_mode = 0
+offset_left = -8.0
+offset_top = -6.0
+offset_right = 182.0
+offset_bottom = 160.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Frame/HFO"]
+layout_mode = 0
+offset_right = 104.0
+offset_bottom = 149.0
+
+[node name="Sliders" type="HBoxContainer" parent="Frame/HFO/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 20.0
+theme_override_constants/separation = 6
+
+[node name="Frequency" type="VSlider" parent="Frame/HFO/VBoxContainer/Sliders"]
+layout_mode = 2
+min_value = 2.0
+max_value = 40.0
+value = 10.0
+rounded = true
+
+[node name="Depth" type="VSlider" parent="Frame/HFO/VBoxContainer/Sliders"]
+layout_mode = 2
+min_value = 0.05
+max_value = 0.2
+step = 0.01
+value = 0.1
+
+[node name="Oscillator" type="VSlider" parent="Frame/HFO/VBoxContainer/Sliders"]
+layout_mode = 2
+min_value = 1.0
+max_value = 4.0
+value = 4.0
+tick_count = 4
+ticks_on_borders = true
+
+[node name="Labels" type="HBoxContainer" parent="Frame/HFO/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/separation = 6
+
+[node name="Label" type="Label" parent="Frame/HFO/VBoxContainer/Labels"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "F"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Frame/HFO/VBoxContainer/Labels"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "D"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Frame/HFO/VBoxContainer/Labels"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "O"
+horizontal_alignment = 1
+
+[node name="Symbols" type="Control" parent="Frame/HFO"]
+anchors_preset = 0
+offset_left = 122.0
+offset_top = 7.0
+offset_right = 162.0
+offset_bottom = 47.0
+
+[node name="Sin" type="TextureRect" parent="Frame/HFO/Symbols"]
+layout_mode = 0
+offset_right = 38.0
+offset_bottom = 16.0
+texture = ExtResource("33_h608m")
+
+[node name="Sqr" type="TextureRect" parent="Frame/HFO/Symbols"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 30.0
+offset_right = 41.0
+offset_bottom = 46.0
+texture = ExtResource("34_fsh78")
+
+[node name="Tri" type="TextureRect" parent="Frame/HFO/Symbols"]
+layout_mode = 0
+offset_top = 58.0
+offset_right = 42.0
+offset_bottom = 74.0
+texture = ExtResource("35_v1448")
+
+[node name="Saw" type="TextureRect" parent="Frame/HFO/Symbols"]
+layout_mode = 0
+offset_top = 87.0
+offset_right = 42.0
+offset_bottom = 103.0
+texture = ExtResource("36_2507b")
+
+[node name="Button" type="TextureButton" parent="Frame/HFO"]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 123.0
+offset_right = 173.0
+offset_bottom = 163.0
+texture_normal = ExtResource("37_thiam")
+texture_pressed = ExtResource("38_7i40i")
 
 [node name="Wave" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="0Line" type="Line2D" parent="Wave"]
+points = PackedVector2Array(273, 50, 157, 45)
+width = 2.0
+texture = ExtResource("33_ke18s")
+texture_mode = 2
 
 [node name="Line2D" type="Line2D" parent="Wave"]
 position = Vector2(-174, 16)
@@ -335,320 +828,53 @@ offset_right = 300.0
 offset_bottom = 100.0
 color = Color(0.121569, 0.14902, 0.113725, 1)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(443, 247)
+[node name="AudioStreamPlayers" type="Node" parent="."]
+script = ExtResource("31_gip70")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamGenerator_j11ek")
+[node name="1" type="AudioStreamPlayer" parent="AudioStreamPlayers"]
+stream = SubResource("AudioStreamGenerator_k1b1u")
 volume_db = -10.0
-max_polyphony = 5
+max_polyphony = 2
 
-[node name="Presets" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_left = -4.0
-offset_top = 155.0
-offset_right = 258.0
-offset_bottom = 187.0
+[node name="2" type="AudioStreamPlayer" parent="AudioStreamPlayers"]
+stream = SubResource("AudioStreamGenerator_65epj")
+volume_db = -10.0
 
-[node name="SinButton" type="TextureButton" parent="Presets"]
-layout_mode = 2
-keep_pressed_outside = true
-texture_normal = ExtResource("2_tvkac")
-texture_pressed = ExtResource("3_uf50g")
-stretch_mode = 5
+[node name="3" type="AudioStreamPlayer" parent="AudioStreamPlayers"]
+stream = SubResource("AudioStreamGenerator_3adlp")
 
-[node name="SawButton" type="TextureButton" parent="Presets"]
-layout_mode = 2
-size_flags_vertical = 4
-texture_normal = ExtResource("4_5tawg")
-texture_pressed = ExtResource("5_43u28")
+[node name="4" type="AudioStreamPlayer" parent="AudioStreamPlayers"]
+stream = SubResource("AudioStreamGenerator_7lml7")
 
-[node name="SqrButton" type="TextureButton" parent="Presets"]
-layout_mode = 2
-keep_pressed_outside = true
-texture_normal = ExtResource("6_glyjw")
-texture_pressed = ExtResource("7_luik6")
-stretch_mode = 5
+[node name="5" type="AudioStreamPlayer" parent="AudioStreamPlayers"]
+stream = SubResource("AudioStreamGenerator_aya6c")
 
-[node name="TriButton" type="TextureButton" parent="Presets"]
-layout_mode = 2
-keep_pressed_outside = true
-texture_normal = ExtResource("8_uswvd")
-texture_pressed = ExtResource("9_b0twm")
-stretch_mode = 5
-
-[node name="Smoothness" type="HSlider" parent="."]
-layout_mode = 0
-offset_left = 85.0
-offset_top = 194.0
-offset_right = 258.0
-offset_bottom = 226.0
-min_value = 3.0
-max_value = 27.0
-step = 8.0
-value = 3.0
-tick_count = 4
-ticks_on_borders = true
-
-[node name="SmoothButton" type="TextureButton" parent="Smoothness"]
-layout_mode = 0
-offset_left = -89.0
-offset_top = 1.0
-offset_right = -5.0
-offset_bottom = 41.0
-texture_normal = ExtResource("11_0xq04")
-texture_pressed = ExtResource("12_al5v2")
-
-[node name="Piano" type="Control" parent="."]
-anchors_preset = 0
-offset_left = -53.0
-offset_top = 229.0
-offset_right = -13.0
-offset_bottom = 269.0
-script = ExtResource("13_b6qyf")
-
-[node name="WhiteKeys" type="HBoxContainer" parent="Piano"]
-layout_mode = 0
-offset_left = 36.0
-offset_top = 38.0
-offset_right = 694.0
-offset_bottom = 294.0
-
-[node name="C" type="TextureButton" parent="Piano/WhiteKeys"]
-layout_mode = 2
-mouse_filter = 1
-action_mode = 0
-shortcut = SubResource("Shortcut_ljuqf")
-shortcut_in_tooltip = false
-texture_normal = SubResource("AtlasTexture_qqpkt")
-texture_pressed = SubResource("AtlasTexture_i35d7")
-
-[node name="D" type="TextureButton" parent="Piano/WhiteKeys"]
-layout_mode = 2
-action_mode = 0
-shortcut = SubResource("Shortcut_rqoe5")
-shortcut_in_tooltip = false
-texture_normal = SubResource("AtlasTexture_i4o3v")
-texture_pressed = SubResource("AtlasTexture_smrue")
-
-[node name="E" type="TextureButton" parent="Piano/WhiteKeys"]
-layout_mode = 2
-action_mode = 0
-shortcut = SubResource("Shortcut_o04f5")
-shortcut_in_tooltip = false
-texture_normal = SubResource("AtlasTexture_wfscu")
-texture_pressed = SubResource("AtlasTexture_o3gdd")
-
-[node name="F" type="TextureButton" parent="Piano/WhiteKeys"]
-layout_mode = 2
-action_mode = 0
-shortcut = SubResource("Shortcut_1v67f")
-shortcut_in_tooltip = false
-texture_normal = SubResource("AtlasTexture_aytut")
-texture_pressed = SubResource("AtlasTexture_posrl")
-
-[node name="G" type="TextureButton" parent="Piano/WhiteKeys"]
-layout_mode = 2
-action_mode = 0
-shortcut = SubResource("Shortcut_xq78v")
-shortcut_in_tooltip = false
-texture_normal = SubResource("AtlasTexture_husw8")
-texture_pressed = SubResource("AtlasTexture_g63qy")
-
-[node name="A" type="TextureButton" parent="Piano/WhiteKeys"]
-layout_mode = 2
-action_mode = 0
-shortcut = SubResource("Shortcut_cmhdo")
-shortcut_in_tooltip = false
-texture_normal = SubResource("AtlasTexture_gmgxk")
-texture_pressed = SubResource("AtlasTexture_l1k3v")
-
-[node name="B" type="TextureButton" parent="Piano/WhiteKeys"]
-layout_mode = 2
-action_mode = 0
-shortcut = SubResource("Shortcut_x4l82")
-shortcut_in_tooltip = false
-texture_normal = SubResource("AtlasTexture_hxdxf")
-texture_pressed = SubResource("AtlasTexture_d76se")
-
-[node name="C-UP" type="TextureButton" parent="Piano/WhiteKeys"]
-layout_mode = 2
-action_mode = 0
-shortcut = SubResource("Shortcut_81nii")
-shortcut_in_tooltip = false
-texture_normal = SubResource("AtlasTexture_8wsui")
-texture_pressed = SubResource("AtlasTexture_jh68b")
-
-[node name="D-UP" type="TextureButton" parent="Piano/WhiteKeys"]
-layout_mode = 2
-action_mode = 0
-shortcut = SubResource("Shortcut_ggqjh")
-shortcut_in_tooltip = false
-texture_normal = SubResource("AtlasTexture_fn81d")
-texture_pressed = SubResource("AtlasTexture_dm188")
-
-[node name="E-UP" type="TextureButton" parent="Piano/WhiteKeys"]
-layout_mode = 2
-action_mode = 0
-shortcut = SubResource("Shortcut_wwdvg")
-shortcut_in_tooltip = false
-texture_normal = SubResource("AtlasTexture_l5rdh")
-texture_pressed = SubResource("AtlasTexture_gnfjr")
-
-[node name="BlackKeys1" type="HBoxContainer" parent="Piano"]
-layout_mode = 0
-offset_left = 69.0
-offset_top = 38.0
-offset_right = 199.0
-offset_bottom = 198.0
-
-[node name="C#" type="TextureButton" parent="Piano/BlackKeys1"]
-layout_mode = 2
-action_mode = 0
-shortcut = SubResource("Shortcut_tpnd3")
-shortcut_in_tooltip = false
-texture_normal = SubResource("AtlasTexture_j881x")
-texture_pressed = SubResource("AtlasTexture_g4atv")
-
-[node name="D#" type="TextureButton" parent="Piano/BlackKeys1"]
-layout_mode = 2
-action_mode = 0
-shortcut = SubResource("Shortcut_n0pqy")
-shortcut_in_tooltip = false
-texture_normal = SubResource("AtlasTexture_lbb2i")
-texture_pressed = SubResource("AtlasTexture_gnhck")
-
-[node name="BlackKeys2" type="HBoxContainer" parent="Piano"]
-layout_mode = 2
-offset_left = 267.0
-offset_top = 38.0
-offset_right = 463.0
-offset_bottom = 198.0
-
-[node name="F#" type="TextureButton" parent="Piano/BlackKeys2"]
-layout_mode = 2
-action_mode = 0
-shortcut = SubResource("Shortcut_mvik3")
-shortcut_in_tooltip = false
-texture_normal = SubResource("AtlasTexture_bnui1")
-texture_pressed = SubResource("AtlasTexture_a2i32")
-
-[node name="G#" type="TextureButton" parent="Piano/BlackKeys2"]
-layout_mode = 2
-action_mode = 0
-shortcut = SubResource("Shortcut_q1cpp")
-shortcut_in_tooltip = false
-texture_normal = SubResource("AtlasTexture_hwu8m")
-texture_pressed = SubResource("AtlasTexture_7many")
-
-[node name="A#" type="TextureButton" parent="Piano/BlackKeys2"]
-layout_mode = 2
-action_mode = 0
-shortcut = SubResource("Shortcut_oao6r")
-shortcut_in_tooltip = false
-texture_normal = SubResource("AtlasTexture_dfwqa")
-texture_pressed = SubResource("AtlasTexture_ogl6s")
-
-[node name="BlackKeys3" type="HBoxContainer" parent="Piano"]
-layout_mode = 2
-offset_left = 531.0
-offset_top = 38.0
-offset_right = 661.0
-offset_bottom = 198.0
-
-[node name="C-UP#" type="TextureButton" parent="Piano/BlackKeys3"]
-layout_mode = 2
-action_mode = 0
-shortcut = SubResource("Shortcut_0c7dc")
-shortcut_in_tooltip = false
-texture_normal = SubResource("AtlasTexture_xuce7")
-texture_pressed = SubResource("AtlasTexture_kfjys")
-
-[node name="D-UP#" type="TextureButton" parent="Piano/BlackKeys3"]
-layout_mode = 2
-action_mode = 0
-shortcut = SubResource("Shortcut_acpdg")
-shortcut_in_tooltip = false
-texture_normal = SubResource("AtlasTexture_rifto")
-texture_pressed = SubResource("AtlasTexture_11x6k")
-
-[node name="Volume" type="HSlider" parent="."]
-layout_mode = 0
-offset_left = 727.0
-offset_top = 477.0
-offset_right = 896.0
-offset_bottom = 509.0
-value = 75.0
-
-[node name="Label" type="Label" parent="Volume"]
-layout_mode = 0
-offset_left = -42.0
-offset_right = -2.0
-offset_bottom = 26.0
-text = "VOL"
-
-[node name="Octave" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 273.0
-offset_top = 184.0
-offset_right = 313.0
-offset_bottom = 224.0
-script = ExtResource("19_ie677")
-
-[node name="Indicator" type="Sprite2D" parent="Octave"]
-position = Vector2(0, -2)
-texture = ExtResource("19_fdrc6")
-centered = false
-hframes = 5
-frame = 2
-
-[node name="Minus" type="TextureButton" parent="Octave"]
-layout_mode = 0
-offset_top = 13.0
-offset_right = 40.0
-offset_bottom = 53.0
-texture_normal = ExtResource("20_daaw3")
-texture_pressed = ExtResource("21_afu18")
-
-[node name="Plus" type="TextureButton" parent="Octave"]
-layout_mode = 0
-offset_left = 68.0
-offset_top = 13.0
-offset_right = 108.0
-offset_bottom = 53.0
-texture_normal = ExtResource("22_g1f8q")
-texture_pressed = ExtResource("23_66wdi")
-
-[node name="Label" type="Label" parent="Octave"]
-layout_mode = 0
-offset_left = 32.0
-offset_top = 17.0
-offset_right = 72.0
-offset_bottom = 43.0
-text = "OCT"
-
-[connection signal="pressed" from="Presets/SinButton" to="." method="_on_sin_button_pressed"]
-[connection signal="pressed" from="Presets/SawButton" to="." method="_on_saw_button_pressed"]
-[connection signal="pressed" from="Presets/SqrButton" to="." method="_on_sqr_button_pressed"]
-[connection signal="pressed" from="Presets/TriButton" to="." method="_on_tri_button_pressed"]
-[connection signal="pressed" from="Smoothness/SmoothButton" to="." method="_on_smooth_button_pressed"]
-[connection signal="pressed" from="Piano/WhiteKeys/C" to="Piano" method="_on_c_button_down"]
-[connection signal="pressed" from="Piano/WhiteKeys/D" to="Piano" method="_on_d_button_down"]
-[connection signal="pressed" from="Piano/WhiteKeys/E" to="Piano" method="_on_e_button_down"]
-[connection signal="pressed" from="Piano/WhiteKeys/F" to="Piano" method="_on_f_button_down"]
-[connection signal="pressed" from="Piano/WhiteKeys/G" to="Piano" method="_on_g_button_down"]
-[connection signal="pressed" from="Piano/WhiteKeys/A" to="Piano" method="_on_a_button_down"]
-[connection signal="pressed" from="Piano/WhiteKeys/B" to="Piano" method="_on_b_button_down"]
-[connection signal="pressed" from="Piano/WhiteKeys/C-UP" to="Piano" method="_on_cup_button_down"]
-[connection signal="pressed" from="Piano/WhiteKeys/D-UP" to="Piano" method="_on_dup_button_down"]
-[connection signal="pressed" from="Piano/WhiteKeys/E-UP" to="Piano" method="_on_eup_button_down"]
-[connection signal="pressed" from="Piano/BlackKeys1/C#" to="Piano" method="_on_c_sharp_button_down"]
-[connection signal="pressed" from="Piano/BlackKeys1/D#" to="Piano" method="_on_d_sharp_button_down"]
-[connection signal="pressed" from="Piano/BlackKeys2/F#" to="Piano" method="_on_f_sharp_button_down"]
-[connection signal="pressed" from="Piano/BlackKeys2/G#" to="Piano" method="_on_g_sharp_button_down"]
-[connection signal="pressed" from="Piano/BlackKeys2/A#" to="Piano" method="_on_a_sharp_button_down"]
-[connection signal="pressed" from="Piano/BlackKeys3/C-UP#" to="Piano" method="_on_cup_sharp_button_down"]
-[connection signal="pressed" from="Piano/BlackKeys3/D-UP#" to="Piano" method="_on_dup_sharp_button_down"]
-[connection signal="value_changed" from="Volume" to="." method="_on_volume_value_changed"]
-[connection signal="pressed" from="Octave/Minus" to="Octave" method="_on_minus_pressed"]
-[connection signal="pressed" from="Octave/Plus" to="Octave" method="_on_plus_pressed"]
+[connection signal="pressed" from="Frame/Piano/WhiteKeys/C" to="Frame/Piano" method="_on_c_button_down"]
+[connection signal="pressed" from="Frame/Piano/WhiteKeys/D" to="Frame/Piano" method="_on_d_button_down"]
+[connection signal="pressed" from="Frame/Piano/WhiteKeys/E" to="Frame/Piano" method="_on_e_button_down"]
+[connection signal="pressed" from="Frame/Piano/WhiteKeys/F" to="Frame/Piano" method="_on_f_button_down"]
+[connection signal="pressed" from="Frame/Piano/WhiteKeys/G" to="Frame/Piano" method="_on_g_button_down"]
+[connection signal="pressed" from="Frame/Piano/WhiteKeys/A" to="Frame/Piano" method="_on_a_button_down"]
+[connection signal="pressed" from="Frame/Piano/WhiteKeys/B" to="Frame/Piano" method="_on_b_button_down"]
+[connection signal="pressed" from="Frame/Piano/WhiteKeys/C-UP" to="Frame/Piano" method="_on_cup_button_down"]
+[connection signal="pressed" from="Frame/Piano/WhiteKeys/D-UP" to="Frame/Piano" method="_on_dup_button_down"]
+[connection signal="pressed" from="Frame/Piano/WhiteKeys/E-UP" to="Frame/Piano" method="_on_eup_button_down"]
+[connection signal="pressed" from="Frame/Piano/BlackKeys1/C#" to="Frame/Piano" method="_on_c_sharp_button_down"]
+[connection signal="pressed" from="Frame/Piano/BlackKeys1/D#" to="Frame/Piano" method="_on_d_sharp_button_down"]
+[connection signal="pressed" from="Frame/Piano/BlackKeys2/F#" to="Frame/Piano" method="_on_f_sharp_button_down"]
+[connection signal="pressed" from="Frame/Piano/BlackKeys2/G#" to="Frame/Piano" method="_on_g_sharp_button_down"]
+[connection signal="pressed" from="Frame/Piano/BlackKeys2/A#" to="Frame/Piano" method="_on_a_sharp_button_down"]
+[connection signal="pressed" from="Frame/Piano/BlackKeys3/C-UP#" to="Frame/Piano" method="_on_cup_sharp_button_down"]
+[connection signal="pressed" from="Frame/Piano/BlackKeys3/D-UP#" to="Frame/Piano" method="_on_dup_sharp_button_down"]
+[connection signal="pressed" from="Frame/Presets/SinButton" to="Frame/Presets" method="preset_sin"]
+[connection signal="pressed" from="Frame/Presets/SawButton" to="Frame/Presets" method="preset_saw"]
+[connection signal="pressed" from="Frame/Presets/SqrButton" to="Frame/Presets" method="preset_sqr"]
+[connection signal="pressed" from="Frame/Presets/TriButton" to="Frame/Presets" method="preset_tri"]
+[connection signal="pressed" from="Frame/Presets/TextureButton" to="Frame/Presets" method="preset_lin"]
+[connection signal="pressed" from="Frame/Smoothness/SmoothButton" to="." method="_on_smooth_button_pressed"]
+[connection signal="pressed" from="Frame/Octave/Minus" to="Frame/Octave" method="_on_minus_pressed"]
+[connection signal="pressed" from="Frame/Octave/Plus" to="Frame/Octave" method="_on_plus_pressed"]
+[connection signal="drag_ended" from="Frame/NoteLength" to="Frame/NoteLength" method="_on_drag_ended"]
+[connection signal="drag_ended" from="Frame/Amp" to="Frame/Amp" method="_on_drag_ended"]
+[connection signal="value_changed" from="Frame/Speaker/Volume" to="Frame/Speaker" method="_on_volume_value_changed"]
+[connection signal="pressed" from="Frame/HFO/Button" to="Frame/HFO" method="_on_button_pressed"]
