@@ -15,6 +15,10 @@ run/main_scene="res://scenes/write_thing.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://assets/default_bus_layout.tres"
+
 [autoload]
 
 PianoKeys="*res://scripts/PianoKeys.gd"
@@ -24,7 +28,19 @@ Global="*res://scripts/Global.gd"
 
 window/size/viewport_width=1000
 window/size/viewport_height=600
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 window/stretch/scale_mode="integer"
+
+[file_customization]
+
+folder_colors={
+"res://assets/": "red",
+"res://export/": "orange",
+"res://scenes/": "blue",
+"res://scripts/": "green",
+"res://textures/": "red"
+}
 
 [input]
 

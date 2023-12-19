@@ -2,17 +2,13 @@ extends VSlider
 
 @onready var synth : Synth = get_tree().get_root().get_node("Synth")
 
-@onready var old_val = value
-
+var dragging = false
 
 
 func _on_drag_ended(value_changed):
-	if not value_changed:
-		return
-	var desired_curve = []
-
-	for x in Global.w:
-		desired_curve.append(synth.line.points[x].y)
+	print(456)
+	dragging = false
+	var desired_curve = synth.get_wave()
 	var min_val = desired_curve.min()
 	var max_val = desired_curve.max()
 	if min_val == max_val:
@@ -31,3 +27,4 @@ func _on_drag_ended(value_changed):
 	synth.start_animation(desired_curve)
 
 	
+

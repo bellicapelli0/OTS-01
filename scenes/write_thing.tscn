@@ -1,4 +1,4 @@
-[gd_scene load_steps=123 format=3 uid="uid://cq0eo3pk8nqoc"]
+[gd_scene load_steps=125 format=3 uid="uid://cq0eo3pk8nqoc"]
 
 [ext_resource type="Theme" uid="uid://bxnauddw6v7c3" path="res://assets/theme.tres" id="1_i6qhu"]
 [ext_resource type="Script" path="res://scripts/Synth.gd" id="1_uf1ao"]
@@ -24,6 +24,7 @@
 [ext_resource type="Script" path="res://scripts/Octave.gd" id="19_ie677"]
 [ext_resource type="Texture2D" uid="uid://dyhgaepbbprxm" path="res://textures/lin-pressed.png" id="19_u7huv"]
 [ext_resource type="Texture2D" uid="uid://b1f16vxc188b6" path="res://textures/Minus.png" id="20_daaw3"]
+[ext_resource type="Script" path="res://scripts/Smoothness.gd" id="20_ypyh4"]
 [ext_resource type="Texture2D" uid="uid://bfe4xunx4o8xg" path="res://textures/minus-pressed.png" id="21_afu18"]
 [ext_resource type="Texture2D" uid="uid://d1dwjxfn1vqvi" path="res://textures/plus.png" id="22_g1f8q"]
 [ext_resource type="Texture2D" uid="uid://d2s1h44lwjjqf" path="res://textures/plus-pressed.png" id="23_66wdi"]
@@ -41,6 +42,7 @@
 [ext_resource type="Texture2D" uid="uid://cahn7rv4kinoa" path="res://textures/symbols/saw.png" id="36_2507b"]
 [ext_resource type="Texture2D" uid="uid://m41s0n0ir53p" path="res://textures/hfo.png" id="37_thiam"]
 [ext_resource type="Texture2D" uid="uid://hso635cpn6ci" path="res://textures/hfo-pressed.png" id="38_7i40i"]
+[ext_resource type="Script" path="res://scripts/SampleAndHold.gd" id="40_vr4ax"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_3oa2r"]
 action = &"C"
@@ -333,6 +335,9 @@ offset_right = 908.0
 offset_bottom = 547.0
 texture = ExtResource("14_r6q4y")
 
+[node name="Camera" type="Camera2D" parent="Frame"]
+position = Vector2(498, 300)
+
 [node name="Piano" type="Control" parent="Frame"]
 anchors_preset = 0
 offset_top = 282.0
@@ -555,10 +560,12 @@ min_value = 3.0
 max_value = 27.0
 step = 8.0
 value = 3.0
+rounded = true
 tick_count = 4
 ticks_on_borders = true
+script = ExtResource("20_ypyh4")
 
-[node name="SmoothButton" type="TextureButton" parent="Frame/Smoothness"]
+[node name="Button" type="TextureButton" parent="Frame/Smoothness"]
 layout_mode = 0
 offset_left = -89.0
 offset_top = 1.0
@@ -647,9 +654,6 @@ offset_right = 37.0
 offset_bottom = 143.0
 text = "Amp"
 
-[node name="Camera2D" type="Camera2D" parent="Frame"]
-position = Vector2(498, 300)
-
 [node name="Speaker" type="Control" parent="Frame"]
 show_behind_parent = true
 anchors_preset = 0
@@ -734,21 +738,27 @@ layout_mode = 2
 size_flags_vertical = 10
 theme_override_constants/separation = 6
 
-[node name="Label" type="Label" parent="Frame/HFO/VBoxContainer/Labels"]
+[node name="F" type="Label" parent="Frame/HFO/VBoxContainer/Labels"]
 layout_mode = 2
 size_flags_horizontal = 6
+tooltip_text = "Frequency"
+mouse_filter = 1
 text = "F"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="Frame/HFO/VBoxContainer/Labels"]
+[node name="D" type="Label" parent="Frame/HFO/VBoxContainer/Labels"]
 layout_mode = 2
 size_flags_horizontal = 3
+tooltip_text = "Depth"
+mouse_filter = 0
 text = "D"
 horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="Frame/HFO/VBoxContainer/Labels"]
+[node name="O" type="Label" parent="Frame/HFO/VBoxContainer/Labels"]
 layout_mode = 2
 size_flags_horizontal = 3
+tooltip_text = "Oscillator"
+mouse_filter = 0
 text = "O"
 horizontal_alignment = 1
 
@@ -795,6 +805,26 @@ offset_right = 173.0
 offset_bottom = 163.0
 texture_normal = ExtResource("37_thiam")
 texture_pressed = ExtResource("38_7i40i")
+
+[node name="SampleAndHold" type="HSlider" parent="Frame"]
+layout_mode = 0
+offset_left = 484.0
+offset_top = 244.0
+offset_right = 717.0
+offset_bottom = 276.0
+min_value = 10.0
+max_value = 40.0
+value = 20.0
+script = ExtResource("40_vr4ax")
+
+[node name="Button" type="TextureButton" parent="Frame/SampleAndHold"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = -38.0
+offset_right = 39.0
+offset_bottom = -9.0
+texture_normal = ExtResource("6_glyjw")
+texture_pressed = ExtResource("7_luik6")
 
 [node name="Wave" type="Control" parent="."]
 anchors_preset = 0
@@ -871,10 +901,11 @@ stream = SubResource("AudioStreamGenerator_aya6c")
 [connection signal="pressed" from="Frame/Presets/SqrButton" to="Frame/Presets" method="preset_sqr"]
 [connection signal="pressed" from="Frame/Presets/TriButton" to="Frame/Presets" method="preset_tri"]
 [connection signal="pressed" from="Frame/Presets/TextureButton" to="Frame/Presets" method="preset_lin"]
-[connection signal="pressed" from="Frame/Smoothness/SmoothButton" to="." method="_on_smooth_button_pressed"]
+[connection signal="pressed" from="Frame/Smoothness/Button" to="Frame/Smoothness" method="_on_button_pressed"]
 [connection signal="pressed" from="Frame/Octave/Minus" to="Frame/Octave" method="_on_minus_pressed"]
 [connection signal="pressed" from="Frame/Octave/Plus" to="Frame/Octave" method="_on_plus_pressed"]
 [connection signal="drag_ended" from="Frame/NoteLength" to="Frame/NoteLength" method="_on_drag_ended"]
 [connection signal="drag_ended" from="Frame/Amp" to="Frame/Amp" method="_on_drag_ended"]
 [connection signal="value_changed" from="Frame/Speaker/Volume" to="Frame/Speaker" method="_on_volume_value_changed"]
 [connection signal="pressed" from="Frame/HFO/Button" to="Frame/HFO" method="_on_button_pressed"]
+[connection signal="pressed" from="Frame/SampleAndHold/Button" to="Frame/SampleAndHold" method="_on_button_pressed"]

@@ -17,9 +17,8 @@ func _on_button_pressed():
 	if oscillator == 1:
 		curve = _saw(length, depth)
 	
-	var desired_curve = []
-	for x in Global.w:
-		desired_curve.append(synth.line.points[x].y)
+	var desired_curve = synth.get_wave()
+
 	
 	for i in frequency:
 		for j in length:
