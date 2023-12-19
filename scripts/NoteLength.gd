@@ -5,6 +5,6 @@ extends VSlider
 func _ready():
 	value = synth.note_length
 
-func _on_drag_ended(value_changed):
+func _on_drag_ended(_value_changed):
 	for player in synth.get_node("AudioStreamPlayers").get_children():
 		player.stream.buffer_length = value

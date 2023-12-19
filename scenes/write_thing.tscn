@@ -1,4 +1,4 @@
-[gd_scene load_steps=125 format=3 uid="uid://cq0eo3pk8nqoc"]
+[gd_scene load_steps=127 format=3 uid="uid://cq0eo3pk8nqoc"]
 
 [ext_resource type="Theme" uid="uid://bxnauddw6v7c3" path="res://assets/theme.tres" id="1_i6qhu"]
 [ext_resource type="Script" path="res://scripts/Synth.gd" id="1_uf1ao"]
@@ -42,6 +42,8 @@
 [ext_resource type="Texture2D" uid="uid://cahn7rv4kinoa" path="res://textures/symbols/saw.png" id="36_2507b"]
 [ext_resource type="Texture2D" uid="uid://m41s0n0ir53p" path="res://textures/hfo.png" id="37_thiam"]
 [ext_resource type="Texture2D" uid="uid://hso635cpn6ci" path="res://textures/hfo-pressed.png" id="38_7i40i"]
+[ext_resource type="Texture2D" uid="uid://b8w718a84keo5" path="res://textures/s&h.png" id="39_be8ch"]
+[ext_resource type="Texture2D" uid="uid://bjfkucmiphuw5" path="res://textures/s&h-pressed.png" id="40_1tfvf"]
 [ext_resource type="Script" path="res://scripts/SampleAndHold.gd" id="40_vr4ax"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_3oa2r"]
@@ -326,6 +328,8 @@ layout_mode = 3
 anchors_preset = 0
 theme = ExtResource("1_i6qhu")
 script = ExtResource("1_uf1ao")
+width = 600
+height = 200
 
 [node name="Frame" type="TextureRect" parent="."]
 layout_mode = 0
@@ -336,13 +340,13 @@ offset_bottom = 547.0
 texture = ExtResource("14_r6q4y")
 
 [node name="Camera" type="Camera2D" parent="Frame"]
-position = Vector2(498, 300)
+position = Vector2(498, 351)
 
 [node name="Piano" type="Control" parent="Frame"]
 anchors_preset = 0
-offset_top = 282.0
+offset_top = 381.0
 offset_right = 40.0
-offset_bottom = 322.0
+offset_bottom = 421.0
 script = ExtResource("13_b6qyf")
 
 [node name="WhiteKeys" type="HBoxContainer" parent="Frame/Piano"]
@@ -510,12 +514,13 @@ shortcut_in_tooltip = false
 texture_normal = SubResource("AtlasTexture_rifto")
 texture_pressed = SubResource("AtlasTexture_11x6k")
 
-[node name="Presets" type="HBoxContainer" parent="Frame"]
+[node name="Presets" type="GridContainer" parent="Frame"]
 layout_mode = 0
-offset_left = 49.0
-offset_top = 208.0
-offset_right = 311.0
-offset_bottom = 240.0
+offset_left = 40.0
+offset_top = 312.0
+offset_right = 240.0
+offset_bottom = 380.0
+columns = 3
 script = ExtResource("4_u5mn6")
 
 [node name="SinButton" type="TextureButton" parent="Frame/Presets"]
@@ -531,12 +536,10 @@ size_flags_vertical = 4
 texture_normal = ExtResource("4_5tawg")
 texture_pressed = ExtResource("5_43u28")
 
-[node name="SqrButton" type="TextureButton" parent="Frame/Presets"]
+[node name="LineButton" type="TextureButton" parent="Frame/Presets"]
 layout_mode = 2
-keep_pressed_outside = true
-texture_normal = ExtResource("6_glyjw")
-texture_pressed = ExtResource("7_luik6")
-stretch_mode = 5
+texture_normal = ExtResource("18_k7ij5")
+texture_pressed = ExtResource("19_u7huv")
 
 [node name="TriButton" type="TextureButton" parent="Frame/Presets"]
 layout_mode = 2
@@ -545,42 +548,27 @@ texture_normal = ExtResource("8_uswvd")
 texture_pressed = ExtResource("9_b0twm")
 stretch_mode = 5
 
-[node name="TextureButton" type="TextureButton" parent="Frame/Presets"]
+[node name="SqrButton" type="TextureButton" parent="Frame/Presets"]
 layout_mode = 2
-texture_normal = ExtResource("18_k7ij5")
-texture_pressed = ExtResource("19_u7huv")
-
-[node name="Smoothness" type="HSlider" parent="Frame"]
-layout_mode = 0
-offset_left = 138.0
-offset_top = 247.0
-offset_right = 311.0
-offset_bottom = 279.0
-min_value = 3.0
-max_value = 27.0
-step = 8.0
-value = 3.0
-rounded = true
-tick_count = 4
-ticks_on_borders = true
-script = ExtResource("20_ypyh4")
-
-[node name="Button" type="TextureButton" parent="Frame/Smoothness"]
-layout_mode = 0
-offset_left = -89.0
-offset_top = 1.0
-offset_right = -5.0
-offset_bottom = 41.0
-texture_normal = ExtResource("11_0xq04")
-texture_pressed = ExtResource("12_al5v2")
+keep_pressed_outside = true
+texture_normal = ExtResource("6_glyjw")
+texture_pressed = ExtResource("7_luik6")
+stretch_mode = 5
 
 [node name="Octave" type="Control" parent="Frame"]
 anchors_preset = 0
-offset_left = 326.0
-offset_top = 237.0
-offset_right = 366.0
-offset_bottom = 277.0
+offset_left = 580.0
+offset_top = 317.0
+offset_right = 620.0
+offset_bottom = 357.0
 script = ExtResource("19_ie677")
+
+[node name="Panel" type="Panel" parent="Frame/Octave"]
+layout_mode = 0
+offset_left = -11.0
+offset_top = -9.0
+offset_right = 106.0
+offset_bottom = 53.0
 
 [node name="Indicator" type="Sprite2D" parent="Frame/Octave"]
 position = Vector2(0, -2)
@@ -616,10 +604,10 @@ text = "OCT"
 
 [node name="NoteLength" type="VSlider" parent="Frame"]
 layout_mode = 0
-offset_left = 918.0
-offset_top = 105.0
-offset_right = 950.0
-offset_bottom = 255.0
+offset_left = 919.0
+offset_top = 206.0
+offset_right = 951.0
+offset_bottom = 356.0
 min_value = 0.1
 max_value = 1.2
 step = 0.05
@@ -635,11 +623,12 @@ offset_bottom = 176.0
 text = "LEN"
 
 [node name="Amp" type="VSlider" parent="Frame"]
+modulate = Color(0.721569, 0.721569, 0.721569, 1)
 layout_mode = 0
 offset_left = 49.0
 offset_top = 53.0
 offset_right = 81.0
-offset_bottom = 170.0
+offset_bottom = 213.0
 min_value = 0.51
 max_value = 1.0
 step = 0.01
@@ -648,19 +637,18 @@ script = ExtResource("27_6xlue")
 
 [node name="Label" type="Label" parent="Frame/Amp"]
 layout_mode = 0
-offset_left = -3.0
-offset_top = 117.0
-offset_right = 37.0
-offset_bottom = 143.0
+offset_top = 175.0
+offset_right = 40.0
+offset_bottom = 201.0
 text = "Amp"
 
 [node name="Speaker" type="Control" parent="Frame"]
 show_behind_parent = true
 anchors_preset = 0
 offset_left = 844.0
-offset_top = 425.0
+offset_top = 525.0
 offset_right = 884.0
-offset_bottom = 465.0
+offset_bottom = 565.0
 script = ExtResource("28_lsq45")
 
 [node name="Back" type="Sprite2D" parent="Frame/Speaker"]
@@ -685,12 +673,16 @@ offset_right = -2.0
 offset_bottom = 26.0
 text = "VOL"
 
+[node name="Timer" type="Timer" parent="Frame/Speaker"]
+wait_time = 3.0
+autostart = true
+
 [node name="HFO" type="Control" parent="Frame"]
 anchors_preset = 0
-offset_left = 603.0
-offset_top = 53.0
-offset_right = 643.0
-offset_bottom = 93.0
+offset_left = 720.0
+offset_top = 212.0
+offset_right = 760.0
+offset_bottom = 252.0
 script = ExtResource("33_4fu32")
 
 [node name="Panel" type="Panel" parent="Frame/HFO"]
@@ -806,25 +798,47 @@ offset_bottom = 163.0
 texture_normal = ExtResource("37_thiam")
 texture_pressed = ExtResource("38_7i40i")
 
-[node name="SampleAndHold" type="HSlider" parent="Frame"]
+[node name="Sliders" type="VBoxContainer" parent="Frame"]
 layout_mode = 0
-offset_left = 484.0
-offset_top = 244.0
-offset_right = 717.0
-offset_bottom = 276.0
-min_value = 10.0
-max_value = 40.0
+offset_left = 263.0
+offset_top = 307.0
+offset_right = 544.0
+offset_bottom = 377.0
+
+[node name="S&H" type="HBoxContainer" parent="Frame/Sliders"]
+layout_mode = 2
+
+[node name="SampleAndHold" type="HSlider" parent="Frame/Sliders/S&H"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 20.0
 value = 20.0
 script = ExtResource("40_vr4ax")
 
-[node name="Button" type="TextureButton" parent="Frame/SampleAndHold"]
-layout_mode = 0
-offset_left = -3.0
-offset_top = -38.0
-offset_right = 39.0
-offset_bottom = -9.0
-texture_normal = ExtResource("6_glyjw")
-texture_pressed = ExtResource("7_luik6")
+[node name="Button" type="TextureButton" parent="Frame/Sliders/S&H"]
+layout_mode = 2
+texture_normal = ExtResource("39_be8ch")
+texture_pressed = ExtResource("40_1tfvf")
+
+[node name="Smooth" type="HBoxContainer" parent="Frame/Sliders"]
+layout_mode = 2
+
+[node name="Slider" type="HSlider" parent="Frame/Sliders/Smooth"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 3.0
+max_value = 27.0
+step = 8.0
+value = 3.0
+rounded = true
+tick_count = 4
+ticks_on_borders = true
+script = ExtResource("20_ypyh4")
+
+[node name="Button" type="TextureButton" parent="Frame/Sliders/Smooth"]
+layout_mode = 2
+texture_normal = ExtResource("11_0xq04")
+texture_pressed = ExtResource("12_al5v2")
 
 [node name="Wave" type="Control" parent="."]
 anchors_preset = 0
@@ -854,8 +868,8 @@ default_color = Color(1, 0.258824, 0.258824, 0.54902)
 [node name="BG" type="ColorRect" parent="Wave"]
 show_behind_parent = true
 layout_mode = 0
-offset_right = 300.0
-offset_bottom = 100.0
+offset_right = 600.0
+offset_bottom = 200.0
 color = Color(0.121569, 0.14902, 0.113725, 1)
 
 [node name="AudioStreamPlayers" type="Node" parent="."]
@@ -864,7 +878,6 @@ script = ExtResource("31_gip70")
 [node name="1" type="AudioStreamPlayer" parent="AudioStreamPlayers"]
 stream = SubResource("AudioStreamGenerator_k1b1u")
 volume_db = -10.0
-max_polyphony = 2
 
 [node name="2" type="AudioStreamPlayer" parent="AudioStreamPlayers"]
 stream = SubResource("AudioStreamGenerator_65epj")
@@ -898,14 +911,15 @@ stream = SubResource("AudioStreamGenerator_aya6c")
 [connection signal="pressed" from="Frame/Piano/BlackKeys3/D-UP#" to="Frame/Piano" method="_on_dup_sharp_button_down"]
 [connection signal="pressed" from="Frame/Presets/SinButton" to="Frame/Presets" method="preset_sin"]
 [connection signal="pressed" from="Frame/Presets/SawButton" to="Frame/Presets" method="preset_saw"]
-[connection signal="pressed" from="Frame/Presets/SqrButton" to="Frame/Presets" method="preset_sqr"]
+[connection signal="pressed" from="Frame/Presets/LineButton" to="Frame/Presets" method="preset_lin"]
 [connection signal="pressed" from="Frame/Presets/TriButton" to="Frame/Presets" method="preset_tri"]
-[connection signal="pressed" from="Frame/Presets/TextureButton" to="Frame/Presets" method="preset_lin"]
-[connection signal="pressed" from="Frame/Smoothness/Button" to="Frame/Smoothness" method="_on_button_pressed"]
+[connection signal="pressed" from="Frame/Presets/SqrButton" to="Frame/Presets" method="preset_sqr"]
 [connection signal="pressed" from="Frame/Octave/Minus" to="Frame/Octave" method="_on_minus_pressed"]
 [connection signal="pressed" from="Frame/Octave/Plus" to="Frame/Octave" method="_on_plus_pressed"]
 [connection signal="drag_ended" from="Frame/NoteLength" to="Frame/NoteLength" method="_on_drag_ended"]
 [connection signal="drag_ended" from="Frame/Amp" to="Frame/Amp" method="_on_drag_ended"]
 [connection signal="value_changed" from="Frame/Speaker/Volume" to="Frame/Speaker" method="_on_volume_value_changed"]
+[connection signal="timeout" from="Frame/Speaker/Timer" to="Frame/Speaker" method="_on_timer_timeout"]
 [connection signal="pressed" from="Frame/HFO/Button" to="Frame/HFO" method="_on_button_pressed"]
-[connection signal="pressed" from="Frame/SampleAndHold/Button" to="Frame/SampleAndHold" method="_on_button_pressed"]
+[connection signal="pressed" from="Frame/Sliders/S&H/Button" to="Frame/Sliders/S&H/SampleAndHold" method="_on_button_pressed"]
+[connection signal="pressed" from="Frame/Sliders/Smooth/Button" to="Frame/Sliders/Smooth/Slider" method="_on_button_pressed"]

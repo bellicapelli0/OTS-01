@@ -1,15 +1,8 @@
-extends HBoxContainer
+extends GridContainer
 
 @onready var synth: Synth = get_tree().get_root().get_node("Synth")
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func send_preset(desired_curve):
 	synth.start_animation(desired_curve)
@@ -27,6 +20,8 @@ func preset_sqr():
 	var desired_curve = []
 	for i in Global.w:
 		desired_curve.append(0 if i<Global.w/2 else Global.h)
+	desired_curve[0] = Global.h
+	desired_curve[Global.w-1] = 0
 	send_preset(desired_curve)
 
 func preset_sin():

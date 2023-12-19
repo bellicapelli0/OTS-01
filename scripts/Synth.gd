@@ -15,7 +15,7 @@ var animation_speed = 0.75
 @export var sample_hz = 44100
 var player_index = 0
 @onready var n_players = len($AudioStreamPlayers.get_children())
-var note_length = 0.5
+var note_length = 0.1
 
 @onready var line : Line2D = $Wave/Line2D
 @onready var amp : VSlider = $Frame/Amp
@@ -30,15 +30,15 @@ func _ready():
 	line.position = Vector2(0, 0)
 	
 	for x in width:
-		line.add_point(Vector2(x, (height/2)-(height/2)*sin(float(x)*TAU/width)))
+		line.add_point(Vector2(x, (height/2.0)-(height/2.0)*sin(float(x)*TAU/width)))
 		
 	$Wave/BG.size = Vector2(width+padding*2, height+padding*2)
 	$Wave/BG.position = Vector2(-padding, -padding)
 	$Wave/AnimationProgress.points[0] = Vector2(0, -padding)
 	$Wave/AnimationProgress.points[1] = Vector2(0, height+padding)
 	$Wave/AnimationProgress.position  = Vector2(0, 0)
-	$"Wave/0Line".points[0] = Vector2(0, height/2)
-	$"Wave/0Line".points[1] = Vector2(width, height/2)
+	$"Wave/0Line".points[0] = Vector2(0, height/2.0)
+	$"Wave/0Line".points[1] = Vector2(width, height/2.0)
 	
 	
 	for player in $AudioStreamPlayers.get_children():
@@ -96,23 +96,7 @@ func _process(delta):
 	
 var fade_out = 0.1
 
-func sound_wave(pulse_hz=440.0):
-	var player = get_player()
-	if not player:
-		print_debug("No available players")
-	player.play()
-	var playback = player.get_stream_playback()
-	var phase = 0.0
-	var increment = pulse_hz / sample_hz
-	var frames_available = playback.get_frames_available()
-	var fade_out = 1.0
-	for i in range(frames_available):
-		if i > frames_available * (1-0.15):
-			fade_out *= 0.99
-		var value = line.points[int(phase*width)].y
-		value = remap(value, height, 0, -0.5, 0.5)
-		playback.push_frame(Vector2.ONE * value * fade_out)
-		phase = fmod(phase + increment, 1.0)
+
 		
 		
 func get_wave():
@@ -130,7 +114,7 @@ func get_player():
 func _1D_convolution(kernel=[1, 7, 30, 74, 99, 74, 30, 7, 1]):
 	assert(len(kernel)%2==1)
 	var output = []
-	var half_kernel = (len(kernel)-1)/2
+	var half_kernel = (len(kernel)-1)/2.0
 	var kernel_sum = 0
 	for k in kernel:
 		kernel_sum += k
@@ -163,7 +147,7 @@ func _input(input_event):
 		if input_event.message == 8:
 			var note = PianoKeys.get_note(input_event.pitch)
 			print(note)
-			sound_wave(note["frequency"])
+			$Frame/Piano.play_note(note["frequency"])
 
 
 

@@ -5,7 +5,7 @@ extends VSlider
 var dragging = false
 
 
-func _on_drag_ended(value_changed):
+func _on_drag_ended(_value_changed):
 	print(456)
 	dragging = false
 	var desired_curve = synth.get_wave()
