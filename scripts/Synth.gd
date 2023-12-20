@@ -10,15 +10,17 @@ var animating = false
 var desired_curve
 var percentage = 0.0
 var prev_percentage
-var animation_speed = 0.75
+@export var animation_speed = 0.75
+var _undo = false
 
 @export var sample_hz = 44100
 var player_index = 0
 @onready var n_players = len($AudioStreamPlayers.get_children())
-var note_length = 0.1
+@export var note_length = 0.5
 
 @onready var line : Line2D = $Wave/Line2D
 @onready var amp : VSlider = $Frame/Amp
+@onready var undo : TextureButton = $Frame/Undo
 
 func _ready():
 	Global.w = width
@@ -47,19 +49,38 @@ func _ready():
 	
 	
 func _process(delta):
+#region animation
 	if animating:
 		prev_percentage = percentage
-		percentage+=delta*animation_speed
-		for i in range(int(prev_percentage*width), int(percentage*width)):
-			if i>= width:
-				animating = false
-				$Wave/AnimationProgress.hide()
-				break
-			
-			line.points[i].y = desired_curve[i]
-			$Wave/AnimationProgress.position.x = i
-			
-
+		if _undo:
+			percentage-=delta*animation_speed
+			for i in range(int(percentage*width),int(prev_percentage*width)):
+				if i< 0:
+					_undo = false
+					animating = false
+					$Wave/AnimationProgress.hide()
+					break
+				
+				line.points[i].y = desired_curve[i]
+				$Wave/AnimationProgress.position.x = i
+		else:
+			percentage+=delta*animation_speed
+			for i in range(int(prev_percentage*width), int(percentage*width)):
+				if i>= width:
+					animating = false
+					$Wave/AnimationProgress.hide()
+					break
+				
+				line.points[i].y = desired_curve[i]
+				$Wave/AnimationProgress.position.x = i
+#endregion
+		
+#region mouse control
+	if Input.is_action_just_pressed("LMB"):
+		var mouse_pos = get_local_mouse_position()
+		if mouse_pos.y > 0-padding and mouse_pos.y < height+padding:
+			if mouse_pos.x > 0-padding and mouse_pos.x < width+padding:
+				undo.save_curve(get_wave())
 		
 	if Input.is_action_pressed("LMB"):
 		var mouse_pos = get_local_mouse_position()
@@ -93,12 +114,9 @@ func _process(delta):
 		last_mouse_pos = mouse_pos
 	else:
 		last_mouse_pos = null
+#endregion
 	
-var fade_out = 0.1
 
-
-		
-		
 func get_wave():
 	var wave = []
 	for x in width:
@@ -110,8 +128,30 @@ func get_player():
 	player_index = player_index % n_players
 	return $AudioStreamPlayers.get_children()[player_index]
 
+func start_animation(curve, backwards=false):
+	if get_wave() == curve:
+		return
+		
+	if not backwards:
+		undo.save_curve(get_wave())
+	desired_curve = curve
+	
+	if backwards:
+		if not animating or _undo:
+			percentage = 1.0
+		_undo = true
+	else:
+		percentage = 0.0
+		_undo = false
+		
+	prev_percentage = null
+	animating = true
+	$Wave/AnimationProgress.show()
 
-func _1D_convolution(kernel=[1, 7, 30, 74, 99, 74, 30, 7, 1]):
+
+
+
+func _1D_convolution(kernel=[1]):
 	assert(len(kernel)%2==1)
 	var output = []
 	var half_kernel = (len(kernel)-1)/2.0
@@ -131,29 +171,6 @@ func _1D_convolution(kernel=[1, 7, 30, 74, 99, 74, 30, 7, 1]):
 			temp_sum += input_value * kernel[j]
 		output.append((temp_sum/kernel_sum))
 	return output
-
-
-
-
-func start_animation(curve):
-	desired_curve = curve
-	prev_percentage = null
-	percentage = 0.0
-	animating = true
-	$Wave/AnimationProgress.show()
-
-func _input(input_event):
-	if input_event is InputEventMIDI:
-		if input_event.message == 8:
-			var note = PianoKeys.get_note(input_event.pitch)
-			print(note)
-			$Frame/Piano.play_note(note["frequency"])
-
-
-
-
-
-
 
 
 

@@ -1,50 +1,65 @@
-[gd_scene load_steps=127 format=3 uid="uid://cq0eo3pk8nqoc"]
+[gd_scene load_steps=144 format=3 uid="uid://cq0eo3pk8nqoc"]
 
-[ext_resource type="Theme" uid="uid://bxnauddw6v7c3" path="res://assets/theme.tres" id="1_i6qhu"]
-[ext_resource type="Script" path="res://scripts/Synth.gd" id="1_uf1ao"]
-[ext_resource type="Texture2D" uid="uid://c3shnbmthgqq2" path="res://textures/sin.png" id="2_tvkac"]
-[ext_resource type="Texture2D" uid="uid://dw08y32fu7n7j" path="res://textures/sin-pressed.png" id="3_uf50g"]
-[ext_resource type="Texture2D" uid="uid://h6wj5vvcf7r6" path="res://textures/saw.png" id="4_5tawg"]
-[ext_resource type="Script" path="res://scripts/Presets.gd" id="4_u5mn6"]
-[ext_resource type="Texture2D" uid="uid://bwjju4rsmoqgg" path="res://textures/saw-pressed.png" id="5_43u28"]
-[ext_resource type="Texture2D" uid="uid://bmkhejw6gj2fm" path="res://textures/sqr.png" id="6_glyjw"]
-[ext_resource type="Texture2D" uid="uid://ey0oox64snwv" path="res://textures/sqr-pressed.png" id="7_luik6"]
-[ext_resource type="Texture2D" uid="uid://cbt5an1xjeqyd" path="res://textures/tri.png" id="8_uswvd"]
-[ext_resource type="Texture2D" uid="uid://2udao23o64n4" path="res://textures/tri-pressed.png" id="9_b0twm"]
-[ext_resource type="Texture2D" uid="uid://c47byt6b2vcbt" path="res://textures/smooth.png" id="11_0xq04"]
-[ext_resource type="Texture2D" uid="uid://bj2fmsstk7kuh" path="res://textures/smooth-pressed.png" id="12_al5v2"]
-[ext_resource type="Script" path="res://scripts/Piano.gd" id="13_b6qyf"]
-[ext_resource type="Texture2D" uid="uid://dajolyy6jwhy0" path="res://textures/PianoKeys/white_keys1.png" id="14_b6fpe"]
-[ext_resource type="Texture2D" uid="uid://dxq06lx18bk21" path="res://textures/pianoframe.png" id="14_r6q4y"]
-[ext_resource type="Texture2D" uid="uid://eww5lokq82mf" path="res://textures/PianoKeys/white_keys2.png" id="15_1ht65"]
-[ext_resource type="Texture2D" uid="uid://cc8p3oaveif2g" path="res://textures/PianoKeys/black_keys2.png" id="15_bhcj0"]
-[ext_resource type="Texture2D" uid="uid://c6hrotfa1jtb" path="res://textures/PianoKeys/black_keys1.png" id="16_4a78q"]
-[ext_resource type="Texture2D" uid="uid://ben2lmuyicyoq" path="res://textures/lin.png" id="18_k7ij5"]
-[ext_resource type="Texture2D" uid="uid://ctmv0nbc3do4h" path="res://textures/octave-indicator.png" id="19_fdrc6"]
-[ext_resource type="Script" path="res://scripts/Octave.gd" id="19_ie677"]
-[ext_resource type="Texture2D" uid="uid://dyhgaepbbprxm" path="res://textures/lin-pressed.png" id="19_u7huv"]
-[ext_resource type="Texture2D" uid="uid://b1f16vxc188b6" path="res://textures/Minus.png" id="20_daaw3"]
-[ext_resource type="Script" path="res://scripts/Smoothness.gd" id="20_ypyh4"]
-[ext_resource type="Texture2D" uid="uid://bfe4xunx4o8xg" path="res://textures/minus-pressed.png" id="21_afu18"]
-[ext_resource type="Texture2D" uid="uid://d1dwjxfn1vqvi" path="res://textures/plus.png" id="22_g1f8q"]
-[ext_resource type="Texture2D" uid="uid://d2s1h44lwjjqf" path="res://textures/plus-pressed.png" id="23_66wdi"]
-[ext_resource type="Script" path="res://scripts/NoteLength.gd" id="25_dtdnp"]
-[ext_resource type="Script" path="res://scripts/Amp.gd" id="27_6xlue"]
-[ext_resource type="Script" path="res://scripts/Speaker.gd" id="28_lsq45"]
-[ext_resource type="Texture2D" uid="uid://c3c0bsfbiws86" path="res://textures/speaker1.png" id="29_wosh7"]
-[ext_resource type="Texture2D" uid="uid://cje5g6qmk8k1g" path="res://textures/speaker2.png" id="30_e1otb"]
-[ext_resource type="Script" path="res://scripts/AudioStreamPlayers.gd" id="31_gip70"]
-[ext_resource type="Script" path="res://scripts/HFO.gd" id="33_4fu32"]
-[ext_resource type="Texture2D" uid="uid://3o5qf7v7r0y6" path="res://textures/symbols/sin.png" id="33_h608m"]
-[ext_resource type="Texture2D" uid="uid://cf8ey23ljk6qa" path="res://textures/line-texture.png" id="33_ke18s"]
-[ext_resource type="Texture2D" uid="uid://8dn31qmudraq" path="res://textures/symbols/sqr.png" id="34_fsh78"]
-[ext_resource type="Texture2D" uid="uid://dl30cgutfbb3" path="res://textures/symbols/tri.png" id="35_v1448"]
-[ext_resource type="Texture2D" uid="uid://cahn7rv4kinoa" path="res://textures/symbols/saw.png" id="36_2507b"]
-[ext_resource type="Texture2D" uid="uid://m41s0n0ir53p" path="res://textures/hfo.png" id="37_thiam"]
-[ext_resource type="Texture2D" uid="uid://hso635cpn6ci" path="res://textures/hfo-pressed.png" id="38_7i40i"]
-[ext_resource type="Texture2D" uid="uid://b8w718a84keo5" path="res://textures/s&h.png" id="39_be8ch"]
-[ext_resource type="Texture2D" uid="uid://bjfkucmiphuw5" path="res://textures/s&h-pressed.png" id="40_1tfvf"]
-[ext_resource type="Script" path="res://scripts/SampleAndHold.gd" id="40_vr4ax"]
+[ext_resource type="Theme" uid="uid://bxnauddw6v7c3" path="res://assets/theme.tres" id="1_uylf7"]
+[ext_resource type="Script" path="res://scripts/Synth.gd" id="2_2s38u"]
+[ext_resource type="Texture2D" uid="uid://dxq06lx18bk21" path="res://textures/pianoframe.png" id="3_3ga8v"]
+[ext_resource type="Script" path="res://scripts/Piano.gd" id="4_4m6bh"]
+[ext_resource type="Texture2D" uid="uid://dajolyy6jwhy0" path="res://textures/PianoKeys/white_keys1.png" id="5_klrjv"]
+[ext_resource type="Texture2D" uid="uid://eww5lokq82mf" path="res://textures/PianoKeys/white_keys2.png" id="6_5h7l1"]
+[ext_resource type="Texture2D" uid="uid://c6hrotfa1jtb" path="res://textures/PianoKeys/black_keys1.png" id="7_cf62q"]
+[ext_resource type="Texture2D" uid="uid://cc8p3oaveif2g" path="res://textures/PianoKeys/black_keys2.png" id="8_03ugj"]
+[ext_resource type="Script" path="res://scripts/Presets.gd" id="9_ctcp7"]
+[ext_resource type="Texture2D" uid="uid://c3shnbmthgqq2" path="res://textures/sin.png" id="10_momov"]
+[ext_resource type="Texture2D" uid="uid://dw08y32fu7n7j" path="res://textures/sin-pressed.png" id="11_qo4ax"]
+[ext_resource type="Texture2D" uid="uid://h6wj5vvcf7r6" path="res://textures/saw.png" id="12_div7s"]
+[ext_resource type="Texture2D" uid="uid://bwjju4rsmoqgg" path="res://textures/saw-pressed.png" id="13_6q866"]
+[ext_resource type="Texture2D" uid="uid://ben2lmuyicyoq" path="res://textures/lin.png" id="14_vrnkv"]
+[ext_resource type="Texture2D" uid="uid://dyhgaepbbprxm" path="res://textures/lin-pressed.png" id="15_fs2y8"]
+[ext_resource type="Texture2D" uid="uid://cbt5an1xjeqyd" path="res://textures/tri.png" id="16_jwdwn"]
+[ext_resource type="Texture2D" uid="uid://2udao23o64n4" path="res://textures/tri-pressed.png" id="17_8eahx"]
+[ext_resource type="Texture2D" uid="uid://bmkhejw6gj2fm" path="res://textures/sqr.png" id="18_54wux"]
+[ext_resource type="Texture2D" uid="uid://ey0oox64snwv" path="res://textures/sqr-pressed.png" id="19_o4jso"]
+[ext_resource type="Script" path="res://scripts/GlobalData.gd" id="20_e32en"]
+[ext_resource type="Script" path="res://scripts/Octave.gd" id="20_mltv8"]
+[ext_resource type="Texture2D" uid="uid://65qpsi25h4rl" path="res://textures/global.png" id="20_vm4db"]
+[ext_resource type="Texture2D" uid="uid://ctmv0nbc3do4h" path="res://textures/octave-indicator.png" id="21_5gu60"]
+[ext_resource type="Texture2D" uid="uid://d3513vq6prmmd" path="res://textures/global-pressed.png" id="21_m1u2q"]
+[ext_resource type="Texture2D" uid="uid://b1f16vxc188b6" path="res://textures/Minus.png" id="22_lrmvv"]
+[ext_resource type="Texture2D" uid="uid://bfe4xunx4o8xg" path="res://textures/minus-pressed.png" id="23_iqnjy"]
+[ext_resource type="Texture2D" uid="uid://d1dwjxfn1vqvi" path="res://textures/plus.png" id="24_ofmss"]
+[ext_resource type="Texture2D" uid="uid://d2s1h44lwjjqf" path="res://textures/plus-pressed.png" id="25_7631a"]
+[ext_resource type="Script" path="res://scripts/NoteLength.gd" id="26_5543f"]
+[ext_resource type="Script" path="res://scripts/Amp.gd" id="27_2cy22"]
+[ext_resource type="Script" path="res://scripts/Speaker.gd" id="28_ga5l0"]
+[ext_resource type="Texture2D" uid="uid://c3c0bsfbiws86" path="res://textures/speaker1.png" id="29_wbf4v"]
+[ext_resource type="Texture2D" uid="uid://cje5g6qmk8k1g" path="res://textures/speaker2.png" id="30_s13xo"]
+[ext_resource type="Script" path="res://scripts/HFO.gd" id="31_wndd2"]
+[ext_resource type="Texture2D" uid="uid://3o5qf7v7r0y6" path="res://textures/symbols/sin.png" id="32_qmbc4"]
+[ext_resource type="Texture2D" uid="uid://8dn31qmudraq" path="res://textures/symbols/sqr.png" id="33_71sia"]
+[ext_resource type="Texture2D" uid="uid://dl30cgutfbb3" path="res://textures/symbols/tri.png" id="34_qgvpk"]
+[ext_resource type="Texture2D" uid="uid://cahn7rv4kinoa" path="res://textures/symbols/saw.png" id="35_lav07"]
+[ext_resource type="Texture2D" uid="uid://m41s0n0ir53p" path="res://textures/hfo.png" id="36_u201u"]
+[ext_resource type="Texture2D" uid="uid://hso635cpn6ci" path="res://textures/hfo-pressed.png" id="37_71yow"]
+[ext_resource type="Script" path="res://scripts/SampleAndHold.gd" id="38_h6caw"]
+[ext_resource type="Texture2D" uid="uid://b8w718a84keo5" path="res://textures/s&h.png" id="39_6lmuw"]
+[ext_resource type="Texture2D" uid="uid://bjfkucmiphuw5" path="res://textures/s&h-pressed.png" id="40_p5sbl"]
+[ext_resource type="Script" path="res://scripts/Smoothness.gd" id="41_6gjon"]
+[ext_resource type="Texture2D" uid="uid://c47byt6b2vcbt" path="res://textures/smooth.png" id="42_upg50"]
+[ext_resource type="Texture2D" uid="uid://bj2fmsstk7kuh" path="res://textures/smooth-pressed.png" id="43_flvd7"]
+[ext_resource type="Script" path="res://scripts/PWM.gd" id="44_wi00u"]
+[ext_resource type="Texture2D" uid="uid://d3sw1beko8guh" path="res://textures/undo.png" id="45_crfk2"]
+[ext_resource type="Texture2D" uid="uid://bi0m62ww3bny8" path="res://textures/pwm.png" id="45_fd5a7"]
+[ext_resource type="Texture2D" uid="uid://duschen5sloy2" path="res://textures/undo-disabled.png" id="46_65e54"]
+[ext_resource type="Texture2D" uid="uid://c6ksaqeumk04p" path="res://textures/pwm-pressed.png" id="46_ojmxm"]
+[ext_resource type="Script" path="res://scripts/Undo.gd" id="47_0o2xt"]
+[ext_resource type="Texture2D" uid="uid://b2qfb7vohlkgh" path="res://textures/pwm-disabled.png" id="47_irxhb"]
+[ext_resource type="Texture2D" uid="uid://cf8ey23ljk6qa" path="res://textures/line-texture.png" id="48_4py3e"]
+[ext_resource type="Script" path="res://scripts/AudioStreamPlayers.gd" id="49_ru7c7"]
+[ext_resource type="Script" path="res://scripts/Filters.gd" id="54_dr268"]
+[ext_resource type="Texture2D" uid="uid://boivxpngk3rwf" path="res://textures/lpf.png" id="54_ryq0r"]
+[ext_resource type="Texture2D" uid="uid://dnm18orx1h8y4" path="res://textures/lpf-pressed.png" id="55_wwq56"]
+[ext_resource type="Texture2D" uid="uid://b1mttj3q3fr0c" path="res://textures/hpf.png" id="56_dlxke"]
+[ext_resource type="Texture2D" uid="uid://den2ltre6nnqb" path="res://textures/hpf-pressed.png" id="57_f1esm"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_3oa2r"]
 action = &"C"
@@ -53,7 +68,7 @@ action = &"C"
 events = [SubResource("InputEventAction_3oa2r")]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h0n41"]
-atlas = ExtResource("14_b6fpe")
+atlas = ExtResource("5_klrjv")
 region = Rect2(0, 0, 640, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o1tlw"]
@@ -65,7 +80,7 @@ atlas = SubResource("AtlasTexture_o1tlw")
 region = Rect2(0, 0, 64, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i35d7"]
-atlas = ExtResource("15_1ht65")
+atlas = ExtResource("6_5h7l1")
 region = Rect2(0, 0, 64, 256)
 
 [sub_resource type="InputEventAction" id="InputEventAction_rk7g2"]
@@ -75,7 +90,7 @@ action = &"D"
 events = [SubResource("InputEventAction_rk7g2")]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kxwoj"]
-atlas = ExtResource("14_b6fpe")
+atlas = ExtResource("5_klrjv")
 region = Rect2(0, 0, 640, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i4o3v"]
@@ -83,7 +98,7 @@ atlas = SubResource("AtlasTexture_kxwoj")
 region = Rect2(64, 0, 64, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_smrue"]
-atlas = ExtResource("15_1ht65")
+atlas = ExtResource("6_5h7l1")
 region = Rect2(64, 0, 64, 256)
 
 [sub_resource type="InputEventAction" id="InputEventAction_iyka6"]
@@ -93,11 +108,11 @@ action = &"E"
 events = [SubResource("InputEventAction_iyka6")]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wfscu"]
-atlas = ExtResource("14_b6fpe")
+atlas = ExtResource("5_klrjv")
 region = Rect2(128, 0, 64, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o3gdd"]
-atlas = ExtResource("15_1ht65")
+atlas = ExtResource("6_5h7l1")
 region = Rect2(128, 0, 64, 256)
 
 [sub_resource type="InputEventAction" id="InputEventAction_7s4d7"]
@@ -107,11 +122,11 @@ action = &"F"
 events = [SubResource("InputEventAction_7s4d7")]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aytut"]
-atlas = ExtResource("14_b6fpe")
+atlas = ExtResource("5_klrjv")
 region = Rect2(192, 0, 64, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_posrl"]
-atlas = ExtResource("15_1ht65")
+atlas = ExtResource("6_5h7l1")
 region = Rect2(192, 0, 64, 256)
 
 [sub_resource type="InputEventAction" id="InputEventAction_ws1ij"]
@@ -121,11 +136,11 @@ action = &"G"
 events = [SubResource("InputEventAction_ws1ij")]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_husw8"]
-atlas = ExtResource("14_b6fpe")
+atlas = ExtResource("5_klrjv")
 region = Rect2(256, 0, 64, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g63qy"]
-atlas = ExtResource("15_1ht65")
+atlas = ExtResource("6_5h7l1")
 region = Rect2(256, 0, 64, 256)
 
 [sub_resource type="InputEventAction" id="InputEventAction_fshdh"]
@@ -135,11 +150,11 @@ action = &"A"
 events = [SubResource("InputEventAction_fshdh")]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gmgxk"]
-atlas = ExtResource("14_b6fpe")
+atlas = ExtResource("5_klrjv")
 region = Rect2(320, 0, 64, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l1k3v"]
-atlas = ExtResource("15_1ht65")
+atlas = ExtResource("6_5h7l1")
 region = Rect2(320, 0, 64, 256)
 
 [sub_resource type="InputEventAction" id="InputEventAction_ivnds"]
@@ -149,11 +164,11 @@ action = &"B"
 events = [SubResource("InputEventAction_ivnds")]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hxdxf"]
-atlas = ExtResource("14_b6fpe")
+atlas = ExtResource("5_klrjv")
 region = Rect2(384, 0, 64, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d76se"]
-atlas = ExtResource("15_1ht65")
+atlas = ExtResource("6_5h7l1")
 region = Rect2(384, 0, 64, 256)
 
 [sub_resource type="InputEventAction" id="InputEventAction_ddvrk"]
@@ -163,11 +178,11 @@ action = &"C-UP"
 events = [SubResource("InputEventAction_ddvrk")]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8wsui"]
-atlas = ExtResource("14_b6fpe")
+atlas = ExtResource("5_klrjv")
 region = Rect2(448, 0, 64, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jh68b"]
-atlas = ExtResource("15_1ht65")
+atlas = ExtResource("6_5h7l1")
 region = Rect2(448, 0, 64, 256)
 
 [sub_resource type="InputEventAction" id="InputEventAction_vptr2"]
@@ -177,11 +192,11 @@ action = &"D-UP"
 events = [SubResource("InputEventAction_vptr2")]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fn81d"]
-atlas = ExtResource("14_b6fpe")
+atlas = ExtResource("5_klrjv")
 region = Rect2(512, 0, 64, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dm188"]
-atlas = ExtResource("15_1ht65")
+atlas = ExtResource("6_5h7l1")
 region = Rect2(512, 0, 64, 256)
 
 [sub_resource type="InputEventAction" id="InputEventAction_8nsxv"]
@@ -191,11 +206,11 @@ action = &"E-UP"
 events = [SubResource("InputEventAction_8nsxv")]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l5rdh"]
-atlas = ExtResource("14_b6fpe")
+atlas = ExtResource("5_klrjv")
 region = Rect2(576, 0, 64, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gnfjr"]
-atlas = ExtResource("15_1ht65")
+atlas = ExtResource("6_5h7l1")
 region = Rect2(576, 0, 64, 256)
 
 [sub_resource type="InputEventAction" id="InputEventAction_6rnbh"]
@@ -205,11 +220,11 @@ action = &"C#"
 events = [SubResource("InputEventAction_6rnbh")]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j881x"]
-atlas = ExtResource("16_4a78q")
+atlas = ExtResource("7_cf62q")
 region = Rect2(32, 0, 64, 160)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g4atv"]
-atlas = ExtResource("15_bhcj0")
+atlas = ExtResource("8_03ugj")
 region = Rect2(32, 0, 64, 160)
 
 [sub_resource type="InputEventAction" id="InputEventAction_rxvk4"]
@@ -219,11 +234,11 @@ action = &"D#"
 events = [SubResource("InputEventAction_rxvk4")]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lbb2i"]
-atlas = ExtResource("16_4a78q")
+atlas = ExtResource("7_cf62q")
 region = Rect2(96, 0, 64, 160)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gnhck"]
-atlas = ExtResource("15_bhcj0")
+atlas = ExtResource("8_03ugj")
 region = Rect2(96, 0, 64, 160)
 
 [sub_resource type="InputEventAction" id="InputEventAction_e3ckh"]
@@ -233,11 +248,11 @@ action = &"F#"
 events = [SubResource("InputEventAction_e3ckh")]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bnui1"]
-atlas = ExtResource("16_4a78q")
+atlas = ExtResource("7_cf62q")
 region = Rect2(224, 0, 64, 160)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a2i32"]
-atlas = ExtResource("15_bhcj0")
+atlas = ExtResource("8_03ugj")
 region = Rect2(224, 0, 64, 160)
 
 [sub_resource type="InputEventAction" id="InputEventAction_psiyg"]
@@ -247,11 +262,11 @@ action = &"G#"
 events = [SubResource("InputEventAction_psiyg")]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hwu8m"]
-atlas = ExtResource("16_4a78q")
+atlas = ExtResource("7_cf62q")
 region = Rect2(288, 0, 64, 160)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7many"]
-atlas = ExtResource("15_bhcj0")
+atlas = ExtResource("8_03ugj")
 region = Rect2(288, 0, 64, 160)
 
 [sub_resource type="InputEventAction" id="InputEventAction_4ipsd"]
@@ -261,11 +276,11 @@ action = &"A#"
 events = [SubResource("InputEventAction_4ipsd")]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dfwqa"]
-atlas = ExtResource("16_4a78q")
+atlas = ExtResource("7_cf62q")
 region = Rect2(352, 0, 64, 160)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ogl6s"]
-atlas = ExtResource("15_bhcj0")
+atlas = ExtResource("8_03ugj")
 region = Rect2(352, 0, 64, 160)
 
 [sub_resource type="InputEventAction" id="InputEventAction_whm16"]
@@ -308,6 +323,12 @@ load_path = "res://.godot/imported/black_keys2.png-b6f6101affdb649b760b9a57e9daf
 atlas = SubResource("CompressedTexture2D_4txbg")
 region = Rect2(544, 0, 64, 160)
 
+[sub_resource type="InputEventAction" id="InputEventAction_s46nu"]
+action = &"Undo"
+
+[sub_resource type="Shortcut" id="Shortcut_ytye8"]
+events = [SubResource("InputEventAction_s46nu")]
+
 [sub_resource type="Gradient" id="Gradient_n2oxx"]
 offsets = PackedFloat32Array(0, 0.226667, 0.806667, 1)
 colors = PackedColorArray(0.831373, 0.0235294, 0.0235294, 1, 0.968627, 0.027451, 0.027451, 1, 0.968627, 0.027451, 0.027451, 1, 0.831373, 0.0235294, 0.0235294, 1)
@@ -326,10 +347,11 @@ colors = PackedColorArray(0.831373, 0.0235294, 0.0235294, 1, 0.968627, 0.027451,
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
-theme = ExtResource("1_i6qhu")
-script = ExtResource("1_uf1ao")
+theme = ExtResource("1_uylf7")
+script = ExtResource("2_2s38u")
 width = 600
 height = 200
+animation_speed = 1.0
 
 [node name="Frame" type="TextureRect" parent="."]
 layout_mode = 0
@@ -337,7 +359,7 @@ offset_left = -92.0
 offset_top = -53.0
 offset_right = 908.0
 offset_bottom = 547.0
-texture = ExtResource("14_r6q4y")
+texture = ExtResource("3_3ga8v")
 
 [node name="Camera" type="Camera2D" parent="Frame"]
 position = Vector2(498, 351)
@@ -347,7 +369,7 @@ anchors_preset = 0
 offset_top = 381.0
 offset_right = 40.0
 offset_bottom = 421.0
-script = ExtResource("13_b6qyf")
+script = ExtResource("4_4m6bh")
 
 [node name="WhiteKeys" type="HBoxContainer" parent="Frame/Piano"]
 layout_mode = 0
@@ -517,51 +539,63 @@ texture_pressed = SubResource("AtlasTexture_11x6k")
 [node name="Presets" type="GridContainer" parent="Frame"]
 layout_mode = 0
 offset_left = 40.0
-offset_top = 312.0
+offset_top = 272.0
 offset_right = 240.0
-offset_bottom = 380.0
+offset_bottom = 340.0
 columns = 3
-script = ExtResource("4_u5mn6")
+script = ExtResource("9_ctcp7")
 
 [node name="SinButton" type="TextureButton" parent="Frame/Presets"]
 layout_mode = 2
+tooltip_text = "Sine"
 keep_pressed_outside = true
-texture_normal = ExtResource("2_tvkac")
-texture_pressed = ExtResource("3_uf50g")
+texture_normal = ExtResource("10_momov")
+texture_pressed = ExtResource("11_qo4ax")
 stretch_mode = 5
 
 [node name="SawButton" type="TextureButton" parent="Frame/Presets"]
 layout_mode = 2
 size_flags_vertical = 4
-texture_normal = ExtResource("4_5tawg")
-texture_pressed = ExtResource("5_43u28")
+tooltip_text = "Sawtooth"
+texture_normal = ExtResource("12_div7s")
+texture_pressed = ExtResource("13_6q866")
 
 [node name="LineButton" type="TextureButton" parent="Frame/Presets"]
 layout_mode = 2
-texture_normal = ExtResource("18_k7ij5")
-texture_pressed = ExtResource("19_u7huv")
+tooltip_text = "Line"
+texture_normal = ExtResource("14_vrnkv")
+texture_pressed = ExtResource("15_fs2y8")
 
 [node name="TriButton" type="TextureButton" parent="Frame/Presets"]
 layout_mode = 2
+tooltip_text = "Triangle"
 keep_pressed_outside = true
-texture_normal = ExtResource("8_uswvd")
-texture_pressed = ExtResource("9_b0twm")
+texture_normal = ExtResource("16_jwdwn")
+texture_pressed = ExtResource("17_8eahx")
 stretch_mode = 5
 
 [node name="SqrButton" type="TextureButton" parent="Frame/Presets"]
 layout_mode = 2
+tooltip_text = "Square"
 keep_pressed_outside = true
-texture_normal = ExtResource("6_glyjw")
-texture_pressed = ExtResource("7_luik6")
+texture_normal = ExtResource("18_54wux")
+texture_pressed = ExtResource("19_o4jso")
 stretch_mode = 5
+
+[node name="GlobalButton" type="TextureButton" parent="Frame/Presets"]
+layout_mode = 2
+tooltip_text = "Global Warming"
+texture_normal = ExtResource("20_vm4db")
+texture_pressed = ExtResource("21_m1u2q")
+script = ExtResource("20_e32en")
 
 [node name="Octave" type="Control" parent="Frame"]
 anchors_preset = 0
-offset_left = 580.0
-offset_top = 317.0
-offset_right = 620.0
-offset_bottom = 357.0
-script = ExtResource("19_ie677")
+offset_left = 597.0
+offset_top = 323.0
+offset_right = 637.0
+offset_bottom = 363.0
+script = ExtResource("20_mltv8")
 
 [node name="Panel" type="Panel" parent="Frame/Octave"]
 layout_mode = 0
@@ -572,7 +606,7 @@ offset_bottom = 53.0
 
 [node name="Indicator" type="Sprite2D" parent="Frame/Octave"]
 position = Vector2(0, -2)
-texture = ExtResource("19_fdrc6")
+texture = ExtResource("21_5gu60")
 centered = false
 hframes = 5
 frame = 2
@@ -580,26 +614,30 @@ frame = 2
 [node name="Minus" type="TextureButton" parent="Frame/Octave"]
 layout_mode = 0
 offset_top = 13.0
-offset_right = 40.0
-offset_bottom = 53.0
-texture_normal = ExtResource("20_daaw3")
-texture_pressed = ExtResource("21_afu18")
+offset_right = 32.0
+offset_bottom = 45.0
+tooltip_text = "Octave -"
+texture_normal = ExtResource("22_lrmvv")
+texture_pressed = ExtResource("23_iqnjy")
 
 [node name="Plus" type="TextureButton" parent="Frame/Octave"]
 layout_mode = 0
 offset_left = 68.0
 offset_top = 13.0
-offset_right = 108.0
-offset_bottom = 53.0
-texture_normal = ExtResource("22_g1f8q")
-texture_pressed = ExtResource("23_66wdi")
+offset_right = 100.0
+offset_bottom = 45.0
+tooltip_text = "Octave +"
+texture_normal = ExtResource("24_ofmss")
+texture_pressed = ExtResource("25_7631a")
 
 [node name="Label" type="Label" parent="Frame/Octave"]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 17.0
-offset_right = 72.0
+offset_right = 68.0
 offset_bottom = 43.0
+tooltip_text = "Octave"
+mouse_filter = 1
 text = "OCT"
 
 [node name="NoteLength" type="VSlider" parent="Frame"]
@@ -612,7 +650,7 @@ min_value = 0.1
 max_value = 1.2
 step = 0.05
 value = 0.1
-script = ExtResource("25_dtdnp")
+script = ExtResource("26_5543f")
 
 [node name="Label" type="Label" parent="Frame/NoteLength"]
 layout_mode = 0
@@ -620,26 +658,31 @@ offset_left = -2.0
 offset_top = 150.0
 offset_right = 34.0
 offset_bottom = 176.0
+tooltip_text = "Note Length"
+mouse_filter = 1
 text = "LEN"
 
 [node name="Amp" type="VSlider" parent="Frame"]
 modulate = Color(0.721569, 0.721569, 0.721569, 1)
+z_index = 1
 layout_mode = 0
-offset_left = 49.0
-offset_top = 53.0
-offset_right = 81.0
-offset_bottom = 213.0
+offset_left = 46.0
+offset_top = 51.0
+offset_right = 78.0
+offset_bottom = 237.0
 min_value = 0.51
 max_value = 1.0
 step = 0.01
 value = 1.0
-script = ExtResource("27_6xlue")
+script = ExtResource("27_2cy22")
 
 [node name="Label" type="Label" parent="Frame/Amp"]
 layout_mode = 0
-offset_top = 175.0
+offset_top = 186.0
 offset_right = 40.0
-offset_bottom = 201.0
+offset_bottom = 212.0
+tooltip_text = "Amplitude"
+mouse_filter = 1
 text = "Amp"
 
 [node name="Speaker" type="Control" parent="Frame"]
@@ -649,13 +692,13 @@ offset_left = 844.0
 offset_top = 525.0
 offset_right = 884.0
 offset_bottom = 565.0
-script = ExtResource("28_lsq45")
+script = ExtResource("28_ga5l0")
 
 [node name="Back" type="Sprite2D" parent="Frame/Speaker"]
-texture = ExtResource("29_wosh7")
+texture = ExtResource("29_wbf4v")
 
 [node name="Front" type="Sprite2D" parent="Frame/Speaker"]
-texture = ExtResource("30_e1otb")
+texture = ExtResource("30_s13xo")
 
 [node name="Volume" type="HSlider" parent="Frame/Speaker"]
 z_index = 1
@@ -680,21 +723,22 @@ autostart = true
 [node name="HFO" type="Control" parent="Frame"]
 anchors_preset = 0
 offset_left = 720.0
-offset_top = 212.0
+offset_top = 217.0
 offset_right = 760.0
-offset_bottom = 252.0
-script = ExtResource("33_4fu32")
+offset_bottom = 257.0
+script = ExtResource("31_wndd2")
 
 [node name="Panel" type="Panel" parent="Frame/HFO"]
 layout_mode = 0
 offset_left = -8.0
-offset_top = -6.0
+offset_top = -1.0
 offset_right = 182.0
 offset_bottom = 160.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Frame/HFO"]
 layout_mode = 0
-offset_right = 104.0
+offset_top = 4.0
+offset_right = 108.0
 offset_bottom = 149.0
 
 [node name="Sliders" type="HBoxContainer" parent="Frame/HFO/VBoxContainer"]
@@ -749,7 +793,7 @@ horizontal_alignment = 1
 [node name="O" type="Label" parent="Frame/HFO/VBoxContainer/Labels"]
 layout_mode = 2
 size_flags_horizontal = 3
-tooltip_text = "Oscillator"
+tooltip_text = "Oscillator Type"
 mouse_filter = 0
 text = "O"
 horizontal_alignment = 1
@@ -765,45 +809,46 @@ offset_bottom = 47.0
 layout_mode = 0
 offset_right = 38.0
 offset_bottom = 16.0
-texture = ExtResource("33_h608m")
+texture = ExtResource("32_qmbc4")
 
 [node name="Sqr" type="TextureRect" parent="Frame/HFO/Symbols"]
 layout_mode = 0
-offset_left = -1.0
 offset_top = 30.0
-offset_right = 41.0
+offset_right = 38.0
 offset_bottom = 46.0
-texture = ExtResource("34_fsh78")
+texture = ExtResource("33_71sia")
 
 [node name="Tri" type="TextureRect" parent="Frame/HFO/Symbols"]
 layout_mode = 0
 offset_top = 58.0
-offset_right = 42.0
+offset_right = 38.0
 offset_bottom = 74.0
-texture = ExtResource("35_v1448")
+texture = ExtResource("34_qgvpk")
 
 [node name="Saw" type="TextureRect" parent="Frame/HFO/Symbols"]
 layout_mode = 0
 offset_top = 87.0
-offset_right = 42.0
+offset_right = 38.0
 offset_bottom = 103.0
-texture = ExtResource("36_2507b")
+texture = ExtResource("35_lav07")
 
 [node name="Button" type="TextureButton" parent="Frame/HFO"]
 layout_mode = 0
 offset_left = 115.0
 offset_top = 123.0
 offset_right = 173.0
-offset_bottom = 163.0
-texture_normal = ExtResource("37_thiam")
-texture_pressed = ExtResource("38_7i40i")
+offset_bottom = 153.0
+tooltip_text = "High Frequency Oscillator"
+texture_normal = ExtResource("36_u201u")
+texture_pressed = ExtResource("37_71yow")
 
 [node name="Sliders" type="VBoxContainer" parent="Frame"]
 layout_mode = 0
-offset_left = 263.0
-offset_top = 307.0
-offset_right = 544.0
-offset_bottom = 377.0
+offset_left = 258.0
+offset_top = 268.0
+offset_right = 580.0
+offset_bottom = 380.0
+theme_override_constants/separation = 6
 
 [node name="S&H" type="HBoxContainer" parent="Frame/Sliders"]
 layout_mode = 2
@@ -812,13 +857,14 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = 20.0
-value = 20.0
-script = ExtResource("40_vr4ax")
+value = 50.0
+script = ExtResource("38_h6caw")
 
 [node name="Button" type="TextureButton" parent="Frame/Sliders/S&H"]
 layout_mode = 2
-texture_normal = ExtResource("39_be8ch")
-texture_pressed = ExtResource("40_1tfvf")
+tooltip_text = "Sample & Hold"
+texture_normal = ExtResource("39_6lmuw")
+texture_pressed = ExtResource("40_p5sbl")
 
 [node name="Smooth" type="HBoxContainer" parent="Frame/Sliders"]
 layout_mode = 2
@@ -826,6 +872,7 @@ layout_mode = 2
 [node name="Slider" type="HSlider" parent="Frame/Sliders/Smooth"]
 layout_mode = 2
 size_flags_horizontal = 3
+tooltip_text = "asd"
 min_value = 3.0
 max_value = 27.0
 step = 8.0
@@ -833,22 +880,148 @@ value = 3.0
 rounded = true
 tick_count = 4
 ticks_on_borders = true
-script = ExtResource("20_ypyh4")
+script = ExtResource("41_6gjon")
 
 [node name="Button" type="TextureButton" parent="Frame/Sliders/Smooth"]
 layout_mode = 2
-texture_normal = ExtResource("11_0xq04")
-texture_pressed = ExtResource("12_al5v2")
+tooltip_text = "Gaussian Smoothing"
+texture_normal = ExtResource("42_upg50")
+texture_pressed = ExtResource("43_flvd7")
+
+[node name="PWM" type="HBoxContainer" parent="Frame/Sliders"]
+layout_mode = 2
+
+[node name="Slider" type="HSlider" parent="Frame/Sliders/PWM"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.05
+max_value = 0.95
+step = 0.01
+value = 0.3
+tick_count = 3
+ticks_on_borders = true
+script = ExtResource("44_wi00u")
+
+[node name="Button" type="TextureButton" parent="Frame/Sliders/PWM"]
+layout_mode = 2
+tooltip_text = "Pulse Width Modulation"
+texture_normal = ExtResource("45_fd5a7")
+texture_pressed = ExtResource("46_ojmxm")
+texture_disabled = ExtResource("47_irxhb")
+
+[node name="Undo" type="TextureButton" parent="Frame"]
+layout_mode = 0
+offset_left = 661.0
+offset_top = 268.0
+offset_right = 701.0
+offset_bottom = 310.0
+tooltip_text = "Undo"
+shortcut = SubResource("Shortcut_ytye8")
+shortcut_in_tooltip = false
+texture_normal = ExtResource("45_crfk2")
+texture_pressed = ExtResource("46_65e54")
+texture_disabled = ExtResource("46_65e54")
+script = ExtResource("47_0o2xt")
+
+[node name="Separator" type="Line2D" parent="Frame"]
+points = PackedVector2Array(249, 374, 249, 274)
+width = 4.0
+default_color = Color(0.815686, 0.0431373, 0.0431373, 1)
+
+[node name="Filters" type="Panel" parent="Frame"]
+layout_mode = 0
+offset_left = 712.0
+offset_top = 44.0
+offset_right = 835.0
+offset_bottom = 210.0
+script = ExtResource("54_dr268")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Frame/Filters"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 118.0
+offset_bottom = 163.0
+
+[node name="Buttons" type="HBoxContainer" parent="Frame/Filters/VBoxContainer"]
+layout_mode = 2
+
+[node name="LPF" type="TextureButton" parent="Frame/Filters/VBoxContainer/Buttons"]
+layout_mode = 2
+texture_normal = ExtResource("54_ryq0r")
+texture_pressed = ExtResource("55_wwq56")
+texture_disabled = ExtResource("55_wwq56")
+
+[node name="HPF" type="TextureButton" parent="Frame/Filters/VBoxContainer/Buttons"]
+layout_mode = 2
+texture_normal = ExtResource("56_dlxke")
+texture_pressed = ExtResource("57_f1esm")
+texture_disabled = ExtResource("57_f1esm")
+
+[node name="Sliders" type="HBoxContainer" parent="Frame/Filters/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Cutoff" type="VSlider" parent="Frame/Filters/VBoxContainer/Sliders"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 50.0
+max_value = 2500.0
+value = 2000.0
+
+[node name="Resonance" type="VSlider" parent="Frame/Filters/VBoxContainer/Sliders"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.2
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="Labels" type="HBoxContainer" parent="Frame/Filters/VBoxContainer"]
+layout_mode = 2
+
+[node name="C" type="Label" parent="Frame/Filters/VBoxContainer/Labels"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Cutoff Frequency"
+mouse_filter = 1
+text = "C"
+horizontal_alignment = 1
+
+[node name="R" type="Label" parent="Frame/Filters/VBoxContainer/Labels"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Resonance"
+mouse_filter = 1
+text = "R"
+horizontal_alignment = 1
 
 [node name="Wave" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="ColorRect" type="ColorRect" parent="Wave"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -53.0
+offset_top = -10.0
+offset_right = 611.0
+offset_bottom = 212.0
+mouse_filter = 2
+color = Color(0.815686, 0.0431373, 0.0431373, 1)
+
+[node name="BG" type="ColorRect" parent="Wave"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 600.0
+offset_bottom = 200.0
+color = Color(0.121569, 0.14902, 0.113725, 1)
+
 [node name="0Line" type="Line2D" parent="Wave"]
 points = PackedVector2Array(273, 50, 157, 45)
 width = 2.0
-texture = ExtResource("33_ke18s")
+texture = ExtResource("48_4py3e")
 texture_mode = 2
 
 [node name="Line2D" type="Line2D" parent="Wave"]
@@ -865,15 +1038,8 @@ points = PackedVector2Array(0, 0, 0, 152)
 width = 8.0
 default_color = Color(1, 0.258824, 0.258824, 0.54902)
 
-[node name="BG" type="ColorRect" parent="Wave"]
-show_behind_parent = true
-layout_mode = 0
-offset_right = 600.0
-offset_bottom = 200.0
-color = Color(0.121569, 0.14902, 0.113725, 1)
-
 [node name="AudioStreamPlayers" type="Node" parent="."]
-script = ExtResource("31_gip70")
+script = ExtResource("49_ru7c7")
 
 [node name="1" type="AudioStreamPlayer" parent="AudioStreamPlayers"]
 stream = SubResource("AudioStreamGenerator_k1b1u")
@@ -914,12 +1080,21 @@ stream = SubResource("AudioStreamGenerator_aya6c")
 [connection signal="pressed" from="Frame/Presets/LineButton" to="Frame/Presets" method="preset_lin"]
 [connection signal="pressed" from="Frame/Presets/TriButton" to="Frame/Presets" method="preset_tri"]
 [connection signal="pressed" from="Frame/Presets/SqrButton" to="Frame/Presets" method="preset_sqr"]
+[connection signal="pressed" from="Frame/Presets/GlobalButton" to="Frame/Presets" method="preset_global"]
 [connection signal="pressed" from="Frame/Octave/Minus" to="Frame/Octave" method="_on_minus_pressed"]
 [connection signal="pressed" from="Frame/Octave/Plus" to="Frame/Octave" method="_on_plus_pressed"]
-[connection signal="drag_ended" from="Frame/NoteLength" to="Frame/NoteLength" method="_on_drag_ended"]
+[connection signal="value_changed" from="Frame/NoteLength" to="Frame/NoteLength" method="_on_value_changed"]
 [connection signal="drag_ended" from="Frame/Amp" to="Frame/Amp" method="_on_drag_ended"]
 [connection signal="value_changed" from="Frame/Speaker/Volume" to="Frame/Speaker" method="_on_volume_value_changed"]
 [connection signal="timeout" from="Frame/Speaker/Timer" to="Frame/Speaker" method="_on_timer_timeout"]
 [connection signal="pressed" from="Frame/HFO/Button" to="Frame/HFO" method="_on_button_pressed"]
 [connection signal="pressed" from="Frame/Sliders/S&H/Button" to="Frame/Sliders/S&H/SampleAndHold" method="_on_button_pressed"]
 [connection signal="pressed" from="Frame/Sliders/Smooth/Button" to="Frame/Sliders/Smooth/Slider" method="_on_button_pressed"]
+[connection signal="drag_started" from="Frame/Sliders/PWM/Slider" to="Frame/Sliders/PWM/Slider" method="_on_drag_started"]
+[connection signal="value_changed" from="Frame/Sliders/PWM/Slider" to="Frame/Sliders/PWM/Slider" method="_on_value_changed"]
+[connection signal="pressed" from="Frame/Sliders/PWM/Button" to="Frame/Sliders/PWM/Slider" method="_on_button_pressed"]
+[connection signal="pressed" from="Frame/Undo" to="Frame/Undo" method="_on_pressed"]
+[connection signal="pressed" from="Frame/Filters/VBoxContainer/Buttons/LPF" to="Frame/Filters" method="_on_lpf_pressed"]
+[connection signal="pressed" from="Frame/Filters/VBoxContainer/Buttons/HPF" to="Frame/Filters" method="_on_hpf_pressed"]
+[connection signal="value_changed" from="Frame/Filters/VBoxContainer/Sliders/Cutoff" to="Frame/Filters" method="_on_cutoff_value_changed"]
+[connection signal="value_changed" from="Frame/Filters/VBoxContainer/Sliders/Resonance" to="Frame/Filters" method="_on_resonance_value_changed"]

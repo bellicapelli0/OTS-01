@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=13 format=3 uid="uid://bxnauddw6v7c3"]
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://bxnauddw6v7c3"]
 
 [ext_resource type="Texture2D" uid="uid://cmlki3wcblh0r" path="res://textures/slider.png" id="1_1dkjo"]
 [ext_resource type="Texture2D" uid="uid://d55jiy1ayde0" path="res://textures/tick.png" id="2_lw4c5"]
@@ -34,6 +34,20 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.815686, 0.0431373, 0.0431373, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjkj2"]
+bg_color = Color(0.831373, 0.831373, 0.831373, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vik2f"]
 content_margin_left = 0.0
@@ -75,6 +89,7 @@ HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_fsuft")
 HSlider/styles/slider = SubResource("StyleBoxFlat_djn37")
 Label/colors/font_color = Color(0.121569, 0.14902, 0.113725, 1)
 Panel/styles/panel = SubResource("StyleBoxFlat_hwe5e")
+TooltipPanel/styles/panel = SubResource("StyleBoxFlat_fjkj2")
 VSlider/icons/grabber = ExtResource("3_nw4mc")
 VSlider/icons/grabber_disabled = ExtResource("3_nw4mc")
 VSlider/icons/grabber_highlight = ExtResource("3_nw4mc")
