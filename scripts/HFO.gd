@@ -42,9 +42,9 @@ func _sqr(length, depth):
 	var curve = []
 	for i in length:
 		if i < length/2:
-			curve.append(Global.h*depth)
-		else:
 			curve.append(-Global.h*depth)
+		else:
+			curve.append(Global.h*depth)
 	return curve
 
 func _tri(length, depth):

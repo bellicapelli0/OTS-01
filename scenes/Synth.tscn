@@ -749,8 +749,7 @@ theme_override_constants/separation = 6
 
 [node name="Frequency" type="VSlider" parent="Frame/HFO/VBoxContainer/Sliders"]
 layout_mode = 2
-min_value = 2.0
-max_value = 40.0
+min_value = 1.0
 value = 10.0
 rounded = true
 
@@ -948,12 +947,14 @@ layout_mode = 2
 
 [node name="LPF" type="TextureButton" parent="Frame/Filters/VBoxContainer/Buttons"]
 layout_mode = 2
+toggle_mode = true
 texture_normal = ExtResource("54_ryq0r")
 texture_pressed = ExtResource("55_wwq56")
 texture_disabled = ExtResource("55_wwq56")
 
 [node name="HPF" type="TextureButton" parent="Frame/Filters/VBoxContainer/Buttons"]
 layout_mode = 2
+toggle_mode = true
 texture_normal = ExtResource("56_dlxke")
 texture_pressed = ExtResource("57_f1esm")
 texture_disabled = ExtResource("57_f1esm")
@@ -967,13 +968,14 @@ layout_mode = 2
 size_flags_horizontal = 3
 min_value = 50.0
 max_value = 2500.0
+step = 10.0
 value = 2000.0
 
 [node name="Resonance" type="VSlider" parent="Frame/Filters/VBoxContainer/Sliders"]
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = 0.2
-max_value = 1.0
+max_value = 5.0
 step = 0.01
 value = 0.5
 

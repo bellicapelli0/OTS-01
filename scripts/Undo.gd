@@ -2,7 +2,7 @@ extends TextureButton
 
 @onready var synth : Synth = get_tree().get_root().get_node("Synth")
 var saved_curves : Array = []
-var max_saved_curves = 5
+var max_saved_curves = 10
 
 func _ready():
 	disabled = true
