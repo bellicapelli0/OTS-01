@@ -1,7 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=4 format=3 uid="uid://ddpop4yetsim3"]
-
-[sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_72myc"]
-resource_name = "SpectrumAnalyzer"
+[gd_resource type="AudioBusLayout" load_steps=7 format=3 uid="uid://ddpop4yetsim3"]
 
 [sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_s37gf"]
 resource_name = "LowPassFilter"
@@ -11,10 +8,30 @@ db = 1
 resource_name = "HighPassFilter"
 db = 1
 
+[sub_resource type="AudioEffectDelay" id="AudioEffectDelay_7qydo"]
+resource_name = "Delay"
+tap1_delay_ms = 400.0
+tap2_delay_ms = 800.0
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_td2eu"]
+resource_name = "Reverb"
+
+[sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_72myc"]
+resource_name = "SpectrumAnalyzer"
+
+[sub_resource type="AudioEffectChorus" id="AudioEffectChorus_tkcmf"]
+resource_name = "Chorus"
+
 [resource]
-bus/0/effect/0/effect = SubResource("AudioEffectSpectrumAnalyzer_72myc")
-bus/0/effect/0/enabled = true
-bus/0/effect/1/effect = SubResource("AudioEffectLowPassFilter_s37gf")
-bus/0/effect/1/enabled = true
-bus/0/effect/2/effect = SubResource("AudioEffectHighPassFilter_g055q")
+bus/0/effect/0/effect = SubResource("AudioEffectLowPassFilter_s37gf")
+bus/0/effect/0/enabled = false
+bus/0/effect/1/effect = SubResource("AudioEffectHighPassFilter_g055q")
+bus/0/effect/1/enabled = false
+bus/0/effect/2/effect = SubResource("AudioEffectDelay_7qydo")
 bus/0/effect/2/enabled = false
+bus/0/effect/3/effect = SubResource("AudioEffectReverb_td2eu")
+bus/0/effect/3/enabled = false
+bus/0/effect/4/effect = SubResource("AudioEffectSpectrumAnalyzer_72myc")
+bus/0/effect/4/enabled = true
+bus/0/effect/5/effect = SubResource("AudioEffectChorus_tkcmf")
+bus/0/effect/5/enabled = false

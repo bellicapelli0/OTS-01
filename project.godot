@@ -26,11 +26,9 @@ Global="*res://scripts/Global.gd"
 
 [display]
 
-window/size/viewport_width=1000
-window/size/viewport_height=700
+window/size/viewport_width=1080
+window/size/viewport_height=720
 window/stretch/mode="viewport"
-window/stretch/aspect="expand"
-window/stretch/scale_mode="integer"
 
 [file_customization]
 

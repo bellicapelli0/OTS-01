@@ -14,12 +14,13 @@ var noise_max = 0.4
 
 var loud_max = 0.3
 
-@onready var master_i = AudioServer.get_bus_index("Master")
+@onready var bus_i = AudioServer.get_bus_index("Master")
 var slider_vol
+var spectrum_i = 4
 
 func _ready():
-	AudioServer.set_bus_volume_db(master_i, remap($Volume.value, 0, 100, -40, -10))
-	spectrum = AudioServer.get_bus_effect_instance(0, 0)
+	AudioServer.set_bus_volume_db(bus_i, remap($Volume.value, 0, 100, -40, -10))
+	spectrum = AudioServer.get_bus_effect_instance(bus_i, spectrum_i)
 
 func _process(_delta):
 	volume = spectrum.get_magnitude_for_frequency_range(200, 4000).length()

@@ -4,15 +4,15 @@ var lpf : AudioEffectLowPassFilter
 var hpf : AudioEffectHighPassFilter
 
 var bus_i = 0
-var lpf_i = 1
-var hpf_i = 2
+var lpf_i = 0
+var hpf_i = 1
 
 
 func _ready():
 	lpf = AudioServer.get_bus_effect(bus_i, lpf_i)
 	hpf = AudioServer.get_bus_effect(bus_i, hpf_i)
 	#$VBoxContainer/Buttons/LPF.disabled = true
-	$VBoxContainer/Buttons/LPF.button_pressed = true
+	#$VBoxContainer/Buttons/LPF.button_pressed = true
 	
 	_on_cutoff_value_changed($VBoxContainer/Sliders/Cutoff.value)
 	_on_resonance_value_changed($VBoxContainer/Sliders/Resonance.value)

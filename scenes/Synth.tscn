@@ -1,8 +1,8 @@
-[gd_scene load_steps=144 format=3 uid="uid://cq0eo3pk8nqoc"]
+[gd_scene load_steps=156 format=3 uid="uid://cq0eo3pk8nqoc"]
 
 [ext_resource type="Theme" uid="uid://bxnauddw6v7c3" path="res://assets/theme.tres" id="1_uylf7"]
 [ext_resource type="Script" path="res://scripts/Synth.gd" id="2_2s38u"]
-[ext_resource type="Texture2D" uid="uid://dxq06lx18bk21" path="res://textures/pianoframe.png" id="3_3ga8v"]
+[ext_resource type="Texture2D" uid="uid://ci3efkeyhxmix" path="res://textures/synth.png" id="3_5wlxt"]
 [ext_resource type="Script" path="res://scripts/Piano.gd" id="4_4m6bh"]
 [ext_resource type="Texture2D" uid="uid://dajolyy6jwhy0" path="res://textures/PianoKeys/white_keys1.png" id="5_klrjv"]
 [ext_resource type="Texture2D" uid="uid://eww5lokq82mf" path="res://textures/PianoKeys/white_keys2.png" id="6_5h7l1"]
@@ -55,11 +55,23 @@
 [ext_resource type="Texture2D" uid="uid://b2qfb7vohlkgh" path="res://textures/pwm-disabled.png" id="47_irxhb"]
 [ext_resource type="Texture2D" uid="uid://cf8ey23ljk6qa" path="res://textures/line-texture.png" id="48_4py3e"]
 [ext_resource type="Script" path="res://scripts/AudioStreamPlayers.gd" id="49_ru7c7"]
+[ext_resource type="Texture2D" uid="uid://dk3g784odiufs" path="res://textures/undo-pressed.png" id="52_2plo3"]
 [ext_resource type="Script" path="res://scripts/Filters.gd" id="54_dr268"]
 [ext_resource type="Texture2D" uid="uid://boivxpngk3rwf" path="res://textures/lpf.png" id="54_ryq0r"]
 [ext_resource type="Texture2D" uid="uid://dnm18orx1h8y4" path="res://textures/lpf-pressed.png" id="55_wwq56"]
 [ext_resource type="Texture2D" uid="uid://b1mttj3q3fr0c" path="res://textures/hpf.png" id="56_dlxke"]
 [ext_resource type="Texture2D" uid="uid://den2ltre6nnqb" path="res://textures/hpf-pressed.png" id="57_f1esm"]
+[ext_resource type="Script" path="res://scenes/Flip.gd" id="60_0d4dn"]
+[ext_resource type="Texture2D" uid="uid://d3ynnq8ubk8as" path="res://textures/flip_up_down.png" id="60_im55s"]
+[ext_resource type="Texture2D" uid="uid://dy57jvk65yl0y" path="res://textures/flip_up_down_pressed.png" id="61_spkmi"]
+[ext_resource type="Texture2D" uid="uid://cyoykqex80r0s" path="res://textures/flip_left_right.png" id="62_uuebv"]
+[ext_resource type="Texture2D" uid="uid://bswg55yomn5l8" path="res://textures/flip_left_right_pressed.png" id="63_qnc6m"]
+[ext_resource type="Script" path="res://scripts/Effects.gd" id="65_b07jp"]
+[ext_resource type="Texture2D" uid="uid://35dgi88sklnx" path="res://textures/delay.png" id="65_jc7n3"]
+[ext_resource type="Texture2D" uid="uid://cotw4nn3qo7x1" path="res://textures/delay-pressed.png" id="66_t3237"]
+[ext_resource type="Texture2D" uid="uid://dwl31nmhnyqns" path="res://textures/reverb.png" id="67_o53dn"]
+[ext_resource type="Texture2D" uid="uid://cymohplohbuhg" path="res://textures/reverb-pressed.png" id="68_pegko"]
+[ext_resource type="Texture2D" uid="uid://cka6weophqn11" path="res://textures/light.png" id="70_elpuh"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_3oa2r"]
 action = &"C"
@@ -349,27 +361,36 @@ layout_mode = 3
 anchors_preset = 0
 theme = ExtResource("1_uylf7")
 script = ExtResource("2_2s38u")
-width = 600
+width = 570
 height = 200
 animation_speed = 1.0
 
-[node name="Frame" type="TextureRect" parent="."]
-layout_mode = 0
+[node name="Frame" type="Control" parent="."]
+anchors_preset = 0
 offset_left = -92.0
 offset_top = -53.0
 offset_right = 908.0
 offset_bottom = 547.0
-texture = ExtResource("3_3ga8v")
+
+[node name="TextureRect" type="TextureRect" parent="Frame"]
+layout_mode = 0
+offset_left = -7.0
+offset_top = 1.0
+offset_right = 1033.0
+offset_bottom = 721.0
+texture = ExtResource("3_5wlxt")
 
 [node name="Camera" type="Camera2D" parent="Frame"]
-position = Vector2(498, 351)
+position = Vector2(510, 361)
 
 [node name="Piano" type="Control" parent="Frame"]
 anchors_preset = 0
-offset_top = 381.0
-offset_right = 40.0
-offset_bottom = 421.0
+offset_left = 10.0
+offset_top = 400.0
+offset_right = 50.0
+offset_bottom = 440.0
 script = ExtResource("4_4m6bh")
+metadata/_edit_group_ = true
 
 [node name="WhiteKeys" type="HBoxContainer" parent="Frame/Piano"]
 layout_mode = 0
@@ -544,6 +565,7 @@ offset_right = 240.0
 offset_bottom = 340.0
 columns = 3
 script = ExtResource("9_ctcp7")
+metadata/_edit_group_ = true
 
 [node name="SinButton" type="TextureButton" parent="Frame/Presets"]
 layout_mode = 2
@@ -591,11 +613,12 @@ script = ExtResource("20_e32en")
 
 [node name="Octave" type="Control" parent="Frame"]
 anchors_preset = 0
-offset_left = 597.0
-offset_top = 323.0
-offset_right = 637.0
-offset_bottom = 363.0
+offset_left = 566.0
+offset_top = 322.0
+offset_right = 606.0
+offset_bottom = 362.0
 script = ExtResource("20_mltv8")
+metadata/_edit_group_ = true
 
 [node name="Panel" type="Panel" parent="Frame/Octave"]
 layout_mode = 0
@@ -640,104 +663,39 @@ tooltip_text = "Octave"
 mouse_filter = 1
 text = "OCT"
 
-[node name="NoteLength" type="VSlider" parent="Frame"]
+[node name="Undo" type="TextureButton" parent="Frame"]
 layout_mode = 0
-offset_left = 919.0
-offset_top = 206.0
-offset_right = 951.0
-offset_bottom = 356.0
-min_value = 0.1
-max_value = 1.2
-step = 0.05
-value = 0.1
-script = ExtResource("26_5543f")
-
-[node name="Label" type="Label" parent="Frame/NoteLength"]
-layout_mode = 0
-offset_left = -2.0
-offset_top = 150.0
-offset_right = 34.0
-offset_bottom = 176.0
-tooltip_text = "Note Length"
-mouse_filter = 1
-text = "LEN"
-
-[node name="Amp" type="VSlider" parent="Frame"]
-modulate = Color(0.721569, 0.721569, 0.721569, 1)
-z_index = 1
-layout_mode = 0
-offset_left = 46.0
-offset_top = 51.0
-offset_right = 78.0
-offset_bottom = 237.0
-min_value = 0.51
-max_value = 1.0
-step = 0.01
-value = 1.0
-script = ExtResource("27_2cy22")
-
-[node name="Label" type="Label" parent="Frame/Amp"]
-layout_mode = 0
-offset_top = 186.0
-offset_right = 40.0
-offset_bottom = 212.0
-tooltip_text = "Amplitude"
-mouse_filter = 1
-text = "Amp"
-
-[node name="Speaker" type="Control" parent="Frame"]
-show_behind_parent = true
-anchors_preset = 0
-offset_left = 844.0
-offset_top = 525.0
-offset_right = 884.0
-offset_bottom = 565.0
-script = ExtResource("28_ga5l0")
-
-[node name="Back" type="Sprite2D" parent="Frame/Speaker"]
-texture = ExtResource("29_wbf4v")
-
-[node name="Front" type="Sprite2D" parent="Frame/Speaker"]
-texture = ExtResource("30_s13xo")
-
-[node name="Volume" type="HSlider" parent="Frame/Speaker"]
-z_index = 1
-layout_mode = 0
-offset_left = -64.0
-offset_top = 105.0
-offset_right = 105.0
-offset_bottom = 137.0
-value = 75.0
-
-[node name="Label" type="Label" parent="Frame/Speaker/Volume"]
-layout_mode = 0
-offset_left = -42.0
-offset_right = -2.0
-offset_bottom = 26.0
-text = "VOL"
-
-[node name="Timer" type="Timer" parent="Frame/Speaker"]
-wait_time = 3.0
-autostart = true
+offset_left = 632.0
+offset_top = 268.0
+offset_right = 672.0
+offset_bottom = 310.0
+tooltip_text = "Undo"
+shortcut = SubResource("Shortcut_ytye8")
+shortcut_in_tooltip = false
+texture_normal = ExtResource("45_crfk2")
+texture_pressed = ExtResource("52_2plo3")
+texture_disabled = ExtResource("46_65e54")
+script = ExtResource("47_0o2xt")
 
 [node name="HFO" type="Control" parent="Frame"]
 anchors_preset = 0
-offset_left = 720.0
-offset_top = 217.0
-offset_right = 760.0
-offset_bottom = 257.0
+offset_left = 686.0
+offset_top = 215.0
+offset_right = 726.0
+offset_bottom = 255.0
 script = ExtResource("31_wndd2")
+metadata/_edit_group_ = true
 
 [node name="Panel" type="Panel" parent="Frame/HFO"]
 layout_mode = 0
 offset_left = -8.0
-offset_top = -1.0
-offset_right = 182.0
+offset_top = -6.0
+offset_right = 174.0
 offset_bottom = 160.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Frame/HFO"]
 layout_mode = 0
-offset_top = 4.0
+offset_top = -1.0
 offset_right = 108.0
 offset_bottom = 149.0
 
@@ -750,6 +708,7 @@ theme_override_constants/separation = 6
 [node name="Frequency" type="VSlider" parent="Frame/HFO/VBoxContainer/Sliders"]
 layout_mode = 2
 min_value = 1.0
+max_value = 60.0
 value = 10.0
 rounded = true
 
@@ -799,10 +758,10 @@ horizontal_alignment = 1
 
 [node name="Symbols" type="Control" parent="Frame/HFO"]
 anchors_preset = 0
-offset_left = 122.0
-offset_top = 7.0
-offset_right = 162.0
-offset_bottom = 47.0
+offset_left = 121.0
+offset_top = 5.0
+offset_right = 161.0
+offset_bottom = 48.0
 
 [node name="Sin" type="TextureRect" parent="Frame/HFO/Symbols"]
 layout_mode = 0
@@ -819,35 +778,116 @@ texture = ExtResource("33_71sia")
 
 [node name="Tri" type="TextureRect" parent="Frame/HFO/Symbols"]
 layout_mode = 0
-offset_top = 58.0
+offset_top = 60.0
 offset_right = 38.0
-offset_bottom = 74.0
+offset_bottom = 76.0
 texture = ExtResource("34_qgvpk")
 
 [node name="Saw" type="TextureRect" parent="Frame/HFO/Symbols"]
 layout_mode = 0
-offset_top = 87.0
+offset_top = 89.0
 offset_right = 38.0
-offset_bottom = 103.0
+offset_bottom = 105.0
 texture = ExtResource("35_lav07")
 
 [node name="Button" type="TextureButton" parent="Frame/HFO"]
 layout_mode = 0
-offset_left = 115.0
-offset_top = 123.0
-offset_right = 173.0
-offset_bottom = 153.0
+offset_left = 110.0
+offset_top = 122.0
+offset_right = 168.0
+offset_bottom = 152.0
 tooltip_text = "High Frequency Oscillator"
 texture_normal = ExtResource("36_u201u")
 texture_pressed = ExtResource("37_71yow")
 
+[node name="NoteLength" type="VSlider" parent="Frame"]
+layout_mode = 0
+offset_left = 685.0
+offset_top = 51.0
+offset_right = 717.0
+offset_bottom = 174.0
+min_value = 0.1
+max_value = 1.2
+step = 0.05
+value = 0.1
+script = ExtResource("26_5543f")
+
+[node name="Label" type="Label" parent="Frame/NoteLength"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 122.0
+offset_right = 34.0
+offset_bottom = 148.0
+tooltip_text = "Note Length"
+mouse_filter = 1
+text = "LEN"
+
+[node name="Amp" type="VSlider" parent="Frame"]
+modulate = Color(0.721569, 0.721569, 0.721569, 1)
+z_index = 1
+layout_mode = 0
+offset_left = 46.0
+offset_top = 51.0
+offset_right = 78.0
+offset_bottom = 237.0
+min_value = 0.51
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource("27_2cy22")
+
+[node name="Label" type="Label" parent="Frame/Amp"]
+layout_mode = 0
+offset_top = 186.0
+offset_right = 40.0
+offset_bottom = 212.0
+tooltip_text = "Amplitude"
+mouse_filter = 1
+text = "Amp"
+
+[node name="Speaker" type="Control" parent="Frame"]
+show_behind_parent = true
+anchors_preset = 0
+offset_left = 869.0
+offset_top = 530.0
+offset_right = 909.0
+offset_bottom = 570.0
+script = ExtResource("28_ga5l0")
+
+[node name="Back" type="Sprite2D" parent="Frame/Speaker"]
+texture = ExtResource("29_wbf4v")
+
+[node name="Front" type="Sprite2D" parent="Frame/Speaker"]
+texture = ExtResource("30_s13xo")
+
+[node name="Volume" type="HSlider" parent="Frame/Speaker"]
+z_index = 1
+layout_mode = 0
+offset_left = -74.0
+offset_top = 116.0
+offset_right = 95.0
+offset_bottom = 148.0
+value = 75.0
+
+[node name="Label" type="Label" parent="Frame/Speaker/Volume"]
+layout_mode = 0
+offset_left = -42.0
+offset_right = -2.0
+offset_bottom = 26.0
+text = "VOL"
+
+[node name="Timer" type="Timer" parent="Frame/Speaker"]
+wait_time = 3.0
+autostart = true
+
 [node name="Sliders" type="VBoxContainer" parent="Frame"]
 layout_mode = 0
 offset_left = 258.0
-offset_top = 268.0
-offset_right = 580.0
-offset_bottom = 380.0
+offset_top = 266.0
+offset_right = 549.0
+offset_bottom = 378.0
 theme_override_constants/separation = 6
+metadata/_edit_group_ = true
 
 [node name="S&H" type="HBoxContainer" parent="Frame/Sliders"]
 layout_mode = 2
@@ -873,11 +913,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "asd"
 min_value = 3.0
-max_value = 27.0
+max_value = 43.0
 step = 8.0
 value = 3.0
 rounded = true
-tick_count = 4
+tick_count = 6
 ticks_on_borders = true
 script = ExtResource("41_6gjon")
 
@@ -908,20 +948,6 @@ texture_normal = ExtResource("45_fd5a7")
 texture_pressed = ExtResource("46_ojmxm")
 texture_disabled = ExtResource("47_irxhb")
 
-[node name="Undo" type="TextureButton" parent="Frame"]
-layout_mode = 0
-offset_left = 661.0
-offset_top = 268.0
-offset_right = 701.0
-offset_bottom = 310.0
-tooltip_text = "Undo"
-shortcut = SubResource("Shortcut_ytye8")
-shortcut_in_tooltip = false
-texture_normal = ExtResource("45_crfk2")
-texture_pressed = ExtResource("46_65e54")
-texture_disabled = ExtResource("46_65e54")
-script = ExtResource("47_0o2xt")
-
 [node name="Separator" type="Line2D" parent="Frame"]
 points = PackedVector2Array(249, 374, 249, 274)
 width = 4.0
@@ -929,11 +955,12 @@ default_color = Color(0.815686, 0.0431373, 0.0431373, 1)
 
 [node name="Filters" type="Panel" parent="Frame"]
 layout_mode = 0
-offset_left = 712.0
-offset_top = 44.0
-offset_right = 835.0
-offset_bottom = 210.0
+offset_left = 864.0
+offset_top = 209.0
+offset_right = 987.0
+offset_bottom = 375.0
 script = ExtResource("54_dr268")
+metadata/_edit_group_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Frame/Filters"]
 layout_mode = 0
@@ -966,8 +993,8 @@ size_flags_vertical = 3
 [node name="Cutoff" type="VSlider" parent="Frame/Filters/VBoxContainer/Sliders"]
 layout_mode = 2
 size_flags_horizontal = 3
-min_value = 50.0
-max_value = 2500.0
+min_value = 100.0
+max_value = 10000.0
 step = 10.0
 value = 2000.0
 
@@ -998,6 +1025,106 @@ mouse_filter = 1
 text = "R"
 horizontal_alignment = 1
 
+[node name="Flip" type="HBoxContainer" parent="Frame"]
+layout_mode = 0
+offset_left = 563.0
+offset_top = 272.0
+offset_right = 620.0
+offset_bottom = 304.0
+script = ExtResource("60_0d4dn")
+
+[node name="UpDown" type="TextureButton" parent="Frame/Flip"]
+layout_mode = 2
+texture_normal = ExtResource("60_im55s")
+texture_pressed = ExtResource("61_spkmi")
+
+[node name="LeftRight" type="TextureButton" parent="Frame/Flip"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+texture_normal = ExtResource("62_uuebv")
+texture_pressed = ExtResource("63_qnc6m")
+
+[node name="Effects" type="Control" parent="Frame"]
+anchors_preset = 0
+offset_left = 726.0
+offset_top = 44.0
+offset_right = 766.0
+offset_bottom = 84.0
+script = ExtResource("65_b07jp")
+metadata/_edit_group_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Frame/Effects"]
+layout_mode = 0
+offset_right = 111.0
+offset_bottom = 152.0
+
+[node name="Delay" type="VBoxContainer" parent="Frame/Effects/HBoxContainer"]
+layout_mode = 2
+
+[node name="DelButton" type="TextureButton" parent="Frame/Effects/HBoxContainer/Delay"]
+layout_mode = 2
+size_flags_horizontal = 0
+toggle_mode = true
+texture_normal = ExtResource("65_jc7n3")
+texture_pressed = ExtResource("66_t3237")
+
+[node name="DelSlider" type="VSlider" parent="Frame/Effects/HBoxContainer/Delay"]
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 3
+min_value = -40.0
+max_value = -6.0
+step = 0.5
+value = -12.0
+
+[node name="Reverb" type="VBoxContainer" parent="Frame/Effects/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RevButton" type="TextureButton" parent="Frame/Effects/HBoxContainer/Reverb"]
+layout_mode = 2
+size_flags_horizontal = 4
+toggle_mode = true
+texture_normal = ExtResource("67_o53dn")
+texture_pressed = ExtResource("68_pegko")
+
+[node name="RevSlider" type="VSlider" parent="Frame/Effects/HBoxContainer/Reverb"]
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 3
+
+[node name="Chorus" type="Control" parent="Frame"]
+anchors_preset = 0
+offset_left = 829.0
+offset_top = 157.0
+offset_right = 869.0
+offset_bottom = 197.0
+
+[node name="Voices" type="HSlider" parent="Frame/Chorus"]
+layout_mode = 2
+offset_left = 43.0
+offset_top = 8.0
+offset_right = 155.0
+offset_bottom = 40.0
+max_value = 3.0
+tick_count = 4
+ticks_on_borders = true
+
+[node name="Light" type="Sprite2D" parent="Frame/Chorus"]
+position = Vector2(22, 32)
+texture = ExtResource("70_elpuh")
+vframes = 2
+frame = 1
+
+[node name="Label" type="Label" parent="Frame/Chorus"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = -4.0
+offset_right = 45.0
+offset_bottom = 22.0
+text = "CHO"
+
 [node name="Wave" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
@@ -1008,7 +1135,7 @@ show_behind_parent = true
 layout_mode = 0
 offset_left = -53.0
 offset_top = -10.0
-offset_right = 611.0
+offset_right = 581.0
 offset_bottom = 212.0
 mouse_filter = 2
 color = Color(0.815686, 0.0431373, 0.0431373, 1)
@@ -1016,7 +1143,7 @@ color = Color(0.815686, 0.0431373, 0.0431373, 1)
 [node name="BG" type="ColorRect" parent="Wave"]
 show_behind_parent = true
 layout_mode = 0
-offset_right = 600.0
+offset_right = 568.0
 offset_bottom = 200.0
 color = Color(0.121569, 0.14902, 0.113725, 1)
 
@@ -1085,18 +1212,24 @@ stream = SubResource("AudioStreamGenerator_aya6c")
 [connection signal="pressed" from="Frame/Presets/GlobalButton" to="Frame/Presets" method="preset_global"]
 [connection signal="pressed" from="Frame/Octave/Minus" to="Frame/Octave" method="_on_minus_pressed"]
 [connection signal="pressed" from="Frame/Octave/Plus" to="Frame/Octave" method="_on_plus_pressed"]
+[connection signal="pressed" from="Frame/Undo" to="Frame/Undo" method="_on_pressed"]
+[connection signal="pressed" from="Frame/HFO/Button" to="Frame/HFO" method="_on_button_pressed"]
 [connection signal="value_changed" from="Frame/NoteLength" to="Frame/NoteLength" method="_on_value_changed"]
 [connection signal="drag_ended" from="Frame/Amp" to="Frame/Amp" method="_on_drag_ended"]
 [connection signal="value_changed" from="Frame/Speaker/Volume" to="Frame/Speaker" method="_on_volume_value_changed"]
 [connection signal="timeout" from="Frame/Speaker/Timer" to="Frame/Speaker" method="_on_timer_timeout"]
-[connection signal="pressed" from="Frame/HFO/Button" to="Frame/HFO" method="_on_button_pressed"]
 [connection signal="pressed" from="Frame/Sliders/S&H/Button" to="Frame/Sliders/S&H/SampleAndHold" method="_on_button_pressed"]
 [connection signal="pressed" from="Frame/Sliders/Smooth/Button" to="Frame/Sliders/Smooth/Slider" method="_on_button_pressed"]
 [connection signal="drag_started" from="Frame/Sliders/PWM/Slider" to="Frame/Sliders/PWM/Slider" method="_on_drag_started"]
 [connection signal="value_changed" from="Frame/Sliders/PWM/Slider" to="Frame/Sliders/PWM/Slider" method="_on_value_changed"]
 [connection signal="pressed" from="Frame/Sliders/PWM/Button" to="Frame/Sliders/PWM/Slider" method="_on_button_pressed"]
-[connection signal="pressed" from="Frame/Undo" to="Frame/Undo" method="_on_pressed"]
 [connection signal="pressed" from="Frame/Filters/VBoxContainer/Buttons/LPF" to="Frame/Filters" method="_on_lpf_pressed"]
 [connection signal="pressed" from="Frame/Filters/VBoxContainer/Buttons/HPF" to="Frame/Filters" method="_on_hpf_pressed"]
 [connection signal="value_changed" from="Frame/Filters/VBoxContainer/Sliders/Cutoff" to="Frame/Filters" method="_on_cutoff_value_changed"]
 [connection signal="value_changed" from="Frame/Filters/VBoxContainer/Sliders/Resonance" to="Frame/Filters" method="_on_resonance_value_changed"]
+[connection signal="pressed" from="Frame/Flip/UpDown" to="Frame/Flip" method="_on_up_down_pressed"]
+[connection signal="pressed" from="Frame/Flip/LeftRight" to="Frame/Flip" method="_on_left_right_pressed"]
+[connection signal="pressed" from="Frame/Effects/HBoxContainer/Delay/DelButton" to="Frame/Effects" method="_on_del_button_pressed"]
+[connection signal="value_changed" from="Frame/Effects/HBoxContainer/Delay/DelSlider" to="Frame/Effects" method="_on_del_slider_value_changed"]
+[connection signal="pressed" from="Frame/Effects/HBoxContainer/Reverb/RevButton" to="Frame/Effects" method="_on_rev_button_pressed"]
+[connection signal="value_changed" from="Frame/Effects/HBoxContainer/Reverb/RevSlider" to="Frame/Effects" method="_on_rev_slider_value_changed"]
