@@ -16,11 +16,11 @@ tap2_delay_ms = 800.0
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_td2eu"]
 resource_name = "Reverb"
 
-[sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_72myc"]
-resource_name = "SpectrumAnalyzer"
-
 [sub_resource type="AudioEffectChorus" id="AudioEffectChorus_tkcmf"]
 resource_name = "Chorus"
+
+[sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_72myc"]
+resource_name = "SpectrumAnalyzer"
 
 [resource]
 bus/0/effect/0/effect = SubResource("AudioEffectLowPassFilter_s37gf")
@@ -31,7 +31,7 @@ bus/0/effect/2/effect = SubResource("AudioEffectDelay_7qydo")
 bus/0/effect/2/enabled = false
 bus/0/effect/3/effect = SubResource("AudioEffectReverb_td2eu")
 bus/0/effect/3/enabled = false
-bus/0/effect/4/effect = SubResource("AudioEffectSpectrumAnalyzer_72myc")
-bus/0/effect/4/enabled = true
-bus/0/effect/5/effect = SubResource("AudioEffectChorus_tkcmf")
-bus/0/effect/5/enabled = false
+bus/0/effect/4/effect = SubResource("AudioEffectChorus_tkcmf")
+bus/0/effect/4/enabled = false
+bus/0/effect/5/effect = SubResource("AudioEffectSpectrumAnalyzer_72myc")
+bus/0/effect/5/enabled = true

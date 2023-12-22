@@ -1,4 +1,4 @@
-extends Panel
+extends Control
 
 var lpf : AudioEffectLowPassFilter
 var hpf : AudioEffectHighPassFilter

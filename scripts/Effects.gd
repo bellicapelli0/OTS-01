@@ -12,7 +12,9 @@ var rev_i = 3
 func _ready():
 	del = AudioServer.get_bus_effect(bus_i, del_i)
 	rev = AudioServer.get_bus_effect(bus_i, rev_i)
-
+	
+	_on_del_slider_value_changed($HBoxContainer/Delay/DelSlider.value)
+	_on_rev_slider_value_changed($HBoxContainer/Reverb/RevSlider.value)
 
 
 func _on_del_button_pressed():

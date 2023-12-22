@@ -16,10 +16,12 @@ var loud_max = 0.3
 
 @onready var bus_i = AudioServer.get_bus_index("Master")
 var slider_vol
-var spectrum_i = 4
+var spectrum_i = 5
+var volume_db_min = -40
+var volume_db_max = 0
 
 func _ready():
-	AudioServer.set_bus_volume_db(bus_i, remap($Volume.value, 0, 100, -40, -10))
+	_on_volume_value_changed($Volume.value)
 	spectrum = AudioServer.get_bus_effect_instance(bus_i, spectrum_i)
 
 func _process(_delta):
@@ -30,7 +32,7 @@ func _process(_delta):
 
 
 func _on_volume_value_changed(value):
-	var volume_db = remap(value, 0, 100, -40, -20)
+	var volume_db = remap(value, 0, 100, volume_db_min, volume_db_max)
 	if value <= 2:
 		volume_db = -1000
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), volume_db)

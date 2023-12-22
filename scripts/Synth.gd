@@ -3,7 +3,7 @@ class_name Synth
 
 @export var width = 400
 @export var height = 135
-var padding = 4
+var padding = 8
 
 var last_mouse_pos
 var animating = false
@@ -20,7 +20,7 @@ var player_index = 0
 
 @onready var line : Line2D = $Wave/Line2D
 @onready var amp : VSlider = $Frame/Amp
-@onready var undo : TextureButton = $Frame/Undo
+@onready var undo : TextureButton = $Frame/Buttons/Undo
 
 func _ready():
 	Global.w = width
@@ -148,7 +148,10 @@ func start_animation(curve, backwards=false):
 	animating = true
 	$Wave/AnimationProgress.show()
 
-
+func stop_animation():
+	_undo = false
+	animating = false
+	$Wave/AnimationProgress.hide()
 
 
 func _1D_convolution(kernel=[1]):
