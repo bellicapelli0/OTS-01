@@ -1,8 +1,9 @@
-[gd_scene load_steps=187 format=3 uid="uid://cq0eo3pk8nqoc"]
+[gd_scene load_steps=188 format=3 uid="uid://cq0eo3pk8nqoc"]
 
 [ext_resource type="Theme" uid="uid://bxnauddw6v7c3" path="res://assets/theme.tres" id="1_uylf7"]
 [ext_resource type="Script" path="res://scripts/Synth.gd" id="2_2s38u"]
 [ext_resource type="Texture2D" uid="uid://ci3efkeyhxmix" path="res://textures/synth.png" id="3_5wlxt"]
+[ext_resource type="Texture2D" uid="uid://b2c4cflcqitip" path="res://textures/pcb.png" id="3_jqyo2"]
 [ext_resource type="Script" path="res://scripts/Piano.gd" id="4_4m6bh"]
 [ext_resource type="Texture2D" uid="uid://c3ysyrcfg46wy" path="res://textures/synth-bottom.png" id="5_dfrx0"]
 [ext_resource type="Texture2D" uid="uid://dajolyy6jwhy0" path="res://textures/PianoKeys/white_keys1.png" id="5_klrjv"]
@@ -151,54 +152,6 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0)
 }
 
-[sub_resource type="Animation" id="Animation_ei36y"]
-resource_name = "open"
-length = 1.6
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(-79, -0.25, 0, 0.25, 0, -136, -0.25, 0, 0.25, 0, -123, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0.1, 0.6, 1.6)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(-53, -0.25, 0, 0.25, 0, -181, -0.25, 0, 0.25, 0, -904, -0.346053, 73.5, 0.25, 0),
-"times": PackedFloat32Array(0.1, 0.6, 1.6)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:scale:x")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0.1, 0.6)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:scale:y")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0.1, 0.6)
-}
-
 [sub_resource type="Animation" id="Animation_bvhgj"]
 resource_name = "close"
 length = 1.5
@@ -247,6 +200,54 @@ tracks/3/keys = {
 "times": PackedFloat32Array(1, 1.5)
 }
 
+[sub_resource type="Animation" id="Animation_ei36y"]
+resource_name = "open"
+length = 1.6
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-79, -0.25, 0, 0.25, 0, -136, -0.25, 0, 0.25, 0, -123, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.1, 0.6, 1.6)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-53, -0.25, 0, 0.25, 0, -181, -0.25, 0, 0.25, 0, -904, -0.346053, 73.5, 0.25, 0),
+"times": PackedFloat32Array(0.1, 0.6, 1.6)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.1, 0.6)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.1, 0.6)
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_optqw"]
 _data = {
 "RESET": SubResource("Animation_v8oqy"),
@@ -269,31 +270,6 @@ region = Rect2(0, 0, 26, 60)
 [sub_resource type="AtlasTexture" id="AtlasTexture_6vm1h"]
 atlas = ExtResource("73_7oqnp")
 region = Rect2(0, 0, 26, 60)
-
-[sub_resource type="Animation" id="Animation_twptu"]
-resource_name = "leave1"
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Screw:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(35, -0.25, 0, 0.25, 0, -165, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Screw:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(317, -0.25, 0, 0.25, 0, 317, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
 
 [sub_resource type="Animation" id="Animation_a7x4i"]
 length = 0.001
@@ -384,6 +360,31 @@ tracks/7/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(3, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_twptu"]
+resource_name = "leave1"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Screw:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(35, -0.25, 0, 0.25, 0, -165, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Screw:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(317, -0.25, 0, 0.25, 0, 317, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
 }
 
 [sub_resource type="Animation" id="Animation_624r8"]
@@ -755,12 +756,27 @@ animation_speed = 1.0
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(429, 308)
 
+[node name="PCB" type="Control" parent="."]
+modulate = Color(0.9, 0.9, 0.9, 1)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="PCB"]
+layout_mode = 0
+offset_left = -86.0
+offset_top = -52.0
+offset_right = 954.0
+offset_bottom = 668.0
+texture = ExtResource("3_jqyo2")
+
 [node name="Wave" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="BG" type="ColorRect" parent="Wave"]
+visible = false
 show_behind_parent = true
 layout_mode = 0
 offset_right = 590.0
@@ -786,6 +802,51 @@ visible = false
 points = PackedVector2Array(0, 0, 0, 152)
 width = 8.0
 default_color = Color(1, 0.258824, 0.258824, 0.54902)
+
+[node name="Speaker" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 789.0
+offset_top = 478.0
+offset_right = 829.0
+offset_bottom = 518.0
+script = ExtResource("28_ga5l0")
+
+[node name="Background" type="Sprite2D" parent="Speaker"]
+position = Vector2(-4, 23)
+texture = ExtResource("71_evfg5")
+
+[node name="Back" type="Sprite2D" parent="Speaker"]
+texture = ExtResource("29_wbf4v")
+
+[node name="Front" type="Sprite2D" parent="Speaker"]
+texture = ExtResource("30_s13xo")
+
+[node name="Volume" type="HSlider" parent="Speaker"]
+layout_mode = 0
+offset_left = -74.0
+offset_top = 116.0
+offset_right = 95.0
+offset_bottom = 148.0
+value = 75.0
+
+[node name="Label" type="Label" parent="Speaker/Volume"]
+layout_mode = 0
+offset_left = -42.0
+offset_right = -2.0
+offset_bottom = 26.0
+text = "VOL"
+
+[node name="Timer" type="Timer" parent="Speaker"]
+wait_time = 3.0
+autostart = true
+
+[node name="Label" type="Label" parent="Speaker"]
+layout_mode = 0
+offset_left = -562.0
+offset_top = -212.0
+offset_right = -308.0
+offset_bottom = -186.0
+text = "YOU FOUND THE SECRET :)"
 
 [node name="Frame" type="Control" parent="."]
 anchors_preset = 0
@@ -1475,52 +1536,6 @@ libraries = {
 "": SubResource("AnimationLibrary_722ww")
 }
 
-[node name="Speaker" type="Control" parent="."]
-show_behind_parent = true
-anchors_preset = 0
-offset_left = 787.0
-offset_top = 480.0
-offset_right = 827.0
-offset_bottom = 520.0
-script = ExtResource("28_ga5l0")
-
-[node name="Background" type="Sprite2D" parent="Speaker"]
-position = Vector2(-4, 23)
-texture = ExtResource("71_evfg5")
-
-[node name="Back" type="Sprite2D" parent="Speaker"]
-texture = ExtResource("29_wbf4v")
-
-[node name="Front" type="Sprite2D" parent="Speaker"]
-texture = ExtResource("30_s13xo")
-
-[node name="Volume" type="HSlider" parent="Speaker"]
-layout_mode = 0
-offset_left = -74.0
-offset_top = 116.0
-offset_right = 95.0
-offset_bottom = 148.0
-value = 75.0
-
-[node name="Label" type="Label" parent="Speaker/Volume"]
-layout_mode = 0
-offset_left = -42.0
-offset_right = -2.0
-offset_bottom = 26.0
-text = "VOL"
-
-[node name="Timer" type="Timer" parent="Speaker"]
-wait_time = 3.0
-autostart = true
-
-[node name="Label" type="Label" parent="Speaker"]
-layout_mode = 0
-offset_left = -562.0
-offset_top = -212.0
-offset_right = -308.0
-offset_bottom = -186.0
-text = "YOU FOUND THE SECRET :)"
-
 [node name="Piano" type="Control" parent="."]
 anchors_preset = 0
 offset_left = -67.0
@@ -1731,6 +1746,8 @@ stream = SubResource("AudioStreamGenerator_7lml7")
 [node name="5" type="AudioStreamPlayer" parent="AudioStreamPlayers"]
 stream = SubResource("AudioStreamGenerator_aya6c")
 
+[connection signal="value_changed" from="Speaker/Volume" to="Speaker" method="_on_volume_value_changed"]
+[connection signal="timeout" from="Speaker/Timer" to="Speaker" method="_on_timer_timeout"]
 [connection signal="pressed" from="Frame/Presets/SinButton" to="Frame/Presets" method="preset_sin"]
 [connection signal="pressed" from="Frame/Presets/SawButton" to="Frame/Presets" method="preset_saw"]
 [connection signal="pressed" from="Frame/Presets/LineButton" to="Frame/Presets" method="preset_lin"]
@@ -1765,8 +1782,6 @@ stream = SubResource("AudioStreamGenerator_aya6c")
 [connection signal="unscrewed" from="Frame/Screws/Screw2" to="Frame/Screws" method="_on_screw_2_unscrewed"]
 [connection signal="unscrewed" from="Frame/Screws/Screw3" to="Frame/Screws" method="_on_screw_3_unscrewed"]
 [connection signal="unscrewed" from="Frame/Screws/Screw4" to="Frame/Screws" method="_on_screw_4_unscrewed"]
-[connection signal="value_changed" from="Speaker/Volume" to="Speaker" method="_on_volume_value_changed"]
-[connection signal="timeout" from="Speaker/Timer" to="Speaker" method="_on_timer_timeout"]
 [connection signal="pressed" from="Piano/WhiteKeys/C" to="Piano" method="_on_c_button_down"]
 [connection signal="pressed" from="Piano/WhiteKeys/D" to="Piano" method="_on_d_button_down"]
 [connection signal="pressed" from="Piano/WhiteKeys/E" to="Piano" method="_on_e_button_down"]
