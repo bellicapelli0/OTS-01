@@ -43,10 +43,6 @@ func _ready():
 	$"Wave/0Line".points[1] = Vector2(width, height/2.0)
 	
 	
-	for player in $AudioStreamPlayers.get_children():
-		player.stream.mix_rate = sample_hz
-		player.stream.buffer_length = note_length
-	
 	
 func _process(delta):
 #region animation

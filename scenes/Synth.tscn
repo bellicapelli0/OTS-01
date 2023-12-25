@@ -1,10 +1,11 @@
-[gd_scene load_steps=188 format=3 uid="uid://cq0eo3pk8nqoc"]
+[gd_scene load_steps=189 format=3 uid="uid://cq0eo3pk8nqoc"]
 
 [ext_resource type="Theme" uid="uid://bxnauddw6v7c3" path="res://assets/theme.tres" id="1_uylf7"]
 [ext_resource type="Script" path="res://scripts/Synth.gd" id="2_2s38u"]
 [ext_resource type="Texture2D" uid="uid://ci3efkeyhxmix" path="res://textures/synth.png" id="3_5wlxt"]
 [ext_resource type="Texture2D" uid="uid://b2c4cflcqitip" path="res://textures/pcb.png" id="3_jqyo2"]
 [ext_resource type="Script" path="res://scripts/Piano.gd" id="4_4m6bh"]
+[ext_resource type="Script" path="res://scripts/MixRate.gd" id="4_4wlrx"]
 [ext_resource type="Texture2D" uid="uid://c3ysyrcfg46wy" path="res://textures/synth-bottom.png" id="5_dfrx0"]
 [ext_resource type="Texture2D" uid="uid://dajolyy6jwhy0" path="res://textures/PianoKeys/white_keys1.png" id="5_klrjv"]
 [ext_resource type="Texture2D" uid="uid://eww5lokq82mf" path="res://textures/PianoKeys/white_keys2.png" id="6_5h7l1"]
@@ -762,13 +763,31 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="PCB"]
+[node name="Texture" type="TextureRect" parent="PCB"]
 layout_mode = 0
 offset_left = -86.0
 offset_top = -52.0
 offset_right = 954.0
 offset_bottom = 668.0
 texture = ExtResource("3_jqyo2")
+
+[node name="MixRate" type="OptionButton" parent="PCB"]
+layout_mode = 0
+offset_left = 678.0
+offset_top = 276.0
+offset_right = 817.0
+offset_bottom = 310.0
+item_count = 4
+selected = 2
+popup/item_0/text = "16000 Hz"
+popup/item_0/id = 0
+popup/item_1/text = "22050 Hz"
+popup/item_1/id = 1
+popup/item_2/text = "32000 Hz"
+popup/item_2/id = 2
+popup/item_3/text = "44100 Hz"
+popup/item_3/id = 3
+script = ExtResource("4_4wlrx")
 
 [node name="Wave" type="Control" parent="."]
 anchors_preset = 0
@@ -822,11 +841,12 @@ texture = ExtResource("29_wbf4v")
 texture = ExtResource("30_s13xo")
 
 [node name="Volume" type="HSlider" parent="Speaker"]
+top_level = true
 layout_mode = 0
-offset_left = -74.0
-offset_top = 116.0
-offset_right = 95.0
-offset_bottom = 148.0
+offset_left = 718.0
+offset_top = 594.0
+offset_right = 887.0
+offset_bottom = 626.0
 value = 75.0
 
 [node name="Label" type="Label" parent="Speaker/Volume"]
@@ -1746,6 +1766,7 @@ stream = SubResource("AudioStreamGenerator_7lml7")
 [node name="5" type="AudioStreamPlayer" parent="AudioStreamPlayers"]
 stream = SubResource("AudioStreamGenerator_aya6c")
 
+[connection signal="item_selected" from="PCB/MixRate" to="PCB/MixRate" method="_on_item_selected"]
 [connection signal="value_changed" from="Speaker/Volume" to="Speaker" method="_on_volume_value_changed"]
 [connection signal="timeout" from="Speaker/Timer" to="Speaker" method="_on_timer_timeout"]
 [connection signal="pressed" from="Frame/Presets/SinButton" to="Frame/Presets" method="preset_sin"]
