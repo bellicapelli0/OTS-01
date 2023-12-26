@@ -34,8 +34,8 @@ func _on_button_pressed():
 	animating = true
 
 
-func _on_value_changed(value):
-	if value == 0.5:
+func _on_value_changed(val):
+	if val == 0.5:
 		$"../Button".disabled = true
 	else:
 		$"../Button".disabled = false

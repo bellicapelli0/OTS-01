@@ -10,7 +10,7 @@ var animating = false
 var desired_curve
 var percentage = 0.0
 var prev_percentage
-@export var animation_speed = 0.75
+var animation_speed = 0.75
 var _undo = false
 
 @export var sample_hz = 44100
@@ -42,7 +42,7 @@ func _ready():
 	$"Wave/0Line".points[0] = Vector2(0, height/2.0)
 	$"Wave/0Line".points[1] = Vector2(width, height/2.0)
 	
-	
+	$Frame.show()
 	
 func _process(delta):
 #region animation

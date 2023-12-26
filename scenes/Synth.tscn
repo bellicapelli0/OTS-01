@@ -1,4 +1,4 @@
-[gd_scene load_steps=189 format=3 uid="uid://cq0eo3pk8nqoc"]
+[gd_scene load_steps=190 format=3 uid="uid://cq0eo3pk8nqoc"]
 
 [ext_resource type="Theme" uid="uid://bxnauddw6v7c3" path="res://assets/theme.tres" id="1_uylf7"]
 [ext_resource type="Script" path="res://scripts/Synth.gd" id="2_2s38u"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b2c4cflcqitip" path="res://textures/pcb.png" id="3_jqyo2"]
 [ext_resource type="Script" path="res://scripts/Piano.gd" id="4_4m6bh"]
 [ext_resource type="Script" path="res://scripts/MixRate.gd" id="4_4wlrx"]
+[ext_resource type="Script" path="res://scripts/AnimationSpeed.gd" id="5_6244k"]
 [ext_resource type="Texture2D" uid="uid://c3ysyrcfg46wy" path="res://textures/synth-bottom.png" id="5_dfrx0"]
 [ext_resource type="Texture2D" uid="uid://dajolyy6jwhy0" path="res://textures/PianoKeys/white_keys1.png" id="5_klrjv"]
 [ext_resource type="Texture2D" uid="uid://eww5lokq82mf" path="res://textures/PianoKeys/white_keys2.png" id="6_5h7l1"]
@@ -64,7 +65,7 @@
 [ext_resource type="Texture2D" uid="uid://dnm18orx1h8y4" path="res://textures/Buttons/lpf-pressed.png" id="55_wwq56"]
 [ext_resource type="Texture2D" uid="uid://b1mttj3q3fr0c" path="res://textures/Buttons/hpf.png" id="56_dlxke"]
 [ext_resource type="Texture2D" uid="uid://den2ltre6nnqb" path="res://textures/Buttons/hpf-pressed.png" id="57_f1esm"]
-[ext_resource type="Script" path="res://scenes/Flip.gd" id="60_0d4dn"]
+[ext_resource type="Script" path="res://scripts/Flip.gd" id="60_0d4dn"]
 [ext_resource type="Texture2D" uid="uid://d3ynnq8ubk8as" path="res://textures/Buttons/flip_up_down.png" id="60_im55s"]
 [ext_resource type="Texture2D" uid="uid://dy57jvk65yl0y" path="res://textures/Buttons/flip_up_down_pressed.png" id="61_spkmi"]
 [ext_resource type="Texture2D" uid="uid://cyoykqex80r0s" path="res://textures/Buttons/flip_left_right.png" id="62_uuebv"]
@@ -752,7 +753,6 @@ theme = ExtResource("1_uylf7")
 script = ExtResource("2_2s38u")
 width = 590
 height = 200
-animation_speed = 1.0
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(429, 308)
@@ -773,10 +773,10 @@ texture = ExtResource("3_jqyo2")
 
 [node name="MixRate" type="OptionButton" parent="PCB"]
 layout_mode = 0
-offset_left = 678.0
-offset_top = 276.0
-offset_right = 817.0
-offset_bottom = 310.0
+offset_left = 692.0
+offset_top = 51.0
+offset_right = 831.0
+offset_bottom = 85.0
 item_count = 4
 selected = 2
 popup/item_0/text = "16000 Hz"
@@ -788,6 +788,40 @@ popup/item_2/id = 2
 popup/item_3/text = "44100 Hz"
 popup/item_3/id = 3
 script = ExtResource("4_4wlrx")
+
+[node name="Label" type="Label" parent="PCB/MixRate"]
+layout_mode = 0
+offset_left = -46.0
+offset_top = 3.0
+offset_right = -6.0
+offset_bottom = 29.0
+tooltip_text = "Mix Rate"
+mouse_filter = 1
+text = "Rat"
+
+[node name="AnimationSpeed" type="HBoxContainer" parent="PCB"]
+layout_mode = 0
+offset_left = 645.0
+offset_top = 13.0
+offset_right = 882.0
+offset_bottom = 45.0
+script = ExtResource("5_6244k")
+
+[node name="Label" type="Label" parent="PCB/AnimationSpeed"]
+layout_mode = 2
+size_flags_vertical = 1
+tooltip_text = "Animation Speed
+"
+mouse_filter = 1
+text = "Spe "
+
+[node name="Slider" type="HSlider" parent="PCB/AnimationSpeed"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.2
+max_value = 4.0
+step = 0.05
+value = 1.0
 
 [node name="Wave" type="Control" parent="."]
 anchors_preset = 0
@@ -825,12 +859,13 @@ default_color = Color(1, 0.258824, 0.258824, 0.54902)
 [node name="Speaker" type="Control" parent="."]
 anchors_preset = 0
 offset_left = 789.0
-offset_top = 478.0
+offset_top = 479.0
 offset_right = 829.0
-offset_bottom = 518.0
+offset_bottom = 519.0
 script = ExtResource("28_ga5l0")
 
 [node name="Background" type="Sprite2D" parent="Speaker"]
+visible = false
 position = Vector2(-4, 23)
 texture = ExtResource("71_evfg5")
 
@@ -860,20 +895,12 @@ text = "VOL"
 wait_time = 3.0
 autostart = true
 
-[node name="Label" type="Label" parent="Speaker"]
-layout_mode = 0
-offset_left = -562.0
-offset_top = -212.0
-offset_right = -308.0
-offset_bottom = -186.0
-text = "YOU FOUND THE SECRET :)"
-
 [node name="Frame" type="Control" parent="."]
 anchors_preset = 0
 offset_left = -79.0
 offset_top = -53.0
-offset_right = 921.0
-offset_bottom = 547.0
+offset_right = 945.0
+offset_bottom = 670.0
 
 [node name="Texture" type="TextureRect" parent="Frame"]
 layout_mode = 0
@@ -1167,7 +1194,8 @@ layout_mode = 2
 [node name="SampleAndHold" type="HSlider" parent="Frame/Sliders/S&H"]
 layout_mode = 2
 size_flags_horizontal = 3
-min_value = 20.0
+min_value = 10.0
+max_value = 50.0
 value = 50.0
 script = ExtResource("38_h6caw")
 
@@ -1767,6 +1795,7 @@ stream = SubResource("AudioStreamGenerator_7lml7")
 stream = SubResource("AudioStreamGenerator_aya6c")
 
 [connection signal="item_selected" from="PCB/MixRate" to="PCB/MixRate" method="_on_item_selected"]
+[connection signal="value_changed" from="PCB/AnimationSpeed/Slider" to="PCB/AnimationSpeed" method="_on_slider_value_changed"]
 [connection signal="value_changed" from="Speaker/Volume" to="Speaker" method="_on_volume_value_changed"]
 [connection signal="timeout" from="Speaker/Timer" to="Speaker" method="_on_timer_timeout"]
 [connection signal="pressed" from="Frame/Presets/SinButton" to="Frame/Presets" method="preset_sin"]

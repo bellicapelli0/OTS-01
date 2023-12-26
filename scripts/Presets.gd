@@ -60,7 +60,7 @@ func preset_global():
 		desired_curve.append(-data[int(n*i/Global.w)])
 	
 	var mmin = desired_curve.min()
-	var mmax = desired_curve.max()
+	#var mmax = desired_curve.max()
 	for x in Global.w:
 		desired_curve[x] = remap(desired_curve[x], mmin, 0, 0, Global.h/2)
 	send_preset(desired_curve)

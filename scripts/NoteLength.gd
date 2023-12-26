@@ -4,8 +4,7 @@ extends HSlider
 
 func _ready():
 	value = synth.note_length
-	_on_value_changed(value)
 
-func _on_value_changed(value):
+func _on_value_changed(val):
 	for player in synth.get_node("AudioStreamPlayers").get_children():
-		player.stream.buffer_length = value
+		player.stream.buffer_length = val
