@@ -1,4 +1,4 @@
-[gd_scene load_steps=190 format=3 uid="uid://cq0eo3pk8nqoc"]
+[gd_scene load_steps=195 format=3 uid="uid://cq0eo3pk8nqoc"]
 
 [ext_resource type="Theme" uid="uid://bxnauddw6v7c3" path="res://assets/theme.tres" id="1_uylf7"]
 [ext_resource type="Script" path="res://scripts/Synth.gd" id="2_2s38u"]
@@ -10,10 +10,15 @@
 [ext_resource type="Texture2D" uid="uid://c3ysyrcfg46wy" path="res://textures/synth-bottom.png" id="5_dfrx0"]
 [ext_resource type="Texture2D" uid="uid://dajolyy6jwhy0" path="res://textures/PianoKeys/white_keys1.png" id="5_klrjv"]
 [ext_resource type="Texture2D" uid="uid://eww5lokq82mf" path="res://textures/PianoKeys/white_keys2.png" id="6_5h7l1"]
+[ext_resource type="Script" path="res://scripts/CopyPaste.gd" id="6_81hqd"]
+[ext_resource type="Texture2D" uid="uid://cmtb45drure8u" path="res://textures/copy.png" id="7_6vdtn"]
 [ext_resource type="Texture2D" uid="uid://c6hrotfa1jtb" path="res://textures/PianoKeys/black_keys1.png" id="7_cf62q"]
+[ext_resource type="Texture2D" uid="uid://ci63dubf3t16e" path="res://textures/copy-pressed.png" id="8_2av54"]
 [ext_resource type="Texture2D" uid="uid://cc8p3oaveif2g" path="res://textures/PianoKeys/black_keys2.png" id="8_03ugj"]
 [ext_resource type="Script" path="res://scripts/Presets.gd" id="9_ctcp7"]
+[ext_resource type="Texture2D" uid="uid://bni188r53jyiv" path="res://textures/paste.png" id="9_fb56f"]
 [ext_resource type="Texture2D" uid="uid://c3shnbmthgqq2" path="res://textures/Buttons/sin.png" id="10_momov"]
+[ext_resource type="Texture2D" uid="uid://b3tf7bxhc5s12" path="res://textures/paste-pressed.png" id="10_s1mb4"]
 [ext_resource type="Texture2D" uid="uid://dw08y32fu7n7j" path="res://textures/Buttons/sin-pressed.png" id="11_qo4ax"]
 [ext_resource type="Texture2D" uid="uid://h6wj5vvcf7r6" path="res://textures/Buttons/saw.png" id="12_div7s"]
 [ext_resource type="Texture2D" uid="uid://bwjju4rsmoqgg" path="res://textures/Buttons/saw-pressed.png" id="13_6q866"]
@@ -773,10 +778,10 @@ texture = ExtResource("3_jqyo2")
 
 [node name="MixRate" type="OptionButton" parent="PCB"]
 layout_mode = 0
-offset_left = 692.0
-offset_top = 51.0
-offset_right = 831.0
-offset_bottom = 85.0
+offset_left = 701.0
+offset_top = 306.0
+offset_right = 840.0
+offset_bottom = 340.0
 item_count = 4
 selected = 2
 popup/item_0/text = "16000 Hz"
@@ -801,10 +806,10 @@ text = "Rat"
 
 [node name="AnimationSpeed" type="HBoxContainer" parent="PCB"]
 layout_mode = 0
-offset_left = 645.0
-offset_top = 13.0
-offset_right = 882.0
-offset_bottom = 45.0
+offset_left = 654.0
+offset_top = 263.0
+offset_right = 891.0
+offset_bottom = 295.0
 script = ExtResource("5_6244k")
 
 [node name="Label" type="Label" parent="PCB/AnimationSpeed"]
@@ -822,6 +827,32 @@ min_value = 0.2
 max_value = 4.0
 step = 0.05
 value = 1.0
+
+[node name="CopyPaste" type="HBoxContainer" parent="PCB"]
+layout_mode = 0
+offset_left = 652.0
+offset_top = 64.0
+offset_right = 844.0
+offset_bottom = 104.0
+script = ExtResource("6_81hqd")
+
+[node name="Copy" type="TextureButton" parent="PCB/CopyPaste"]
+layout_mode = 2
+texture_normal = ExtResource("7_6vdtn")
+texture_pressed = ExtResource("8_2av54")
+
+[node name="Paste" type="TextureButton" parent="PCB/CopyPaste"]
+layout_mode = 2
+size_flags_horizontal = 10
+texture_normal = ExtResource("9_fb56f")
+texture_pressed = ExtResource("10_s1mb4")
+
+[node name="Info" type="Label" parent="PCB"]
+layout_mode = 0
+offset_left = 651.0
+offset_top = 24.0
+offset_right = 769.0
+offset_bottom = 50.0
 
 [node name="Wave" type="Control" parent="."]
 anchors_preset = 0
@@ -896,6 +927,7 @@ wait_time = 3.0
 autostart = true
 
 [node name="Frame" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_left = -79.0
 offset_top = -53.0
@@ -1796,6 +1828,8 @@ stream = SubResource("AudioStreamGenerator_aya6c")
 
 [connection signal="item_selected" from="PCB/MixRate" to="PCB/MixRate" method="_on_item_selected"]
 [connection signal="value_changed" from="PCB/AnimationSpeed/Slider" to="PCB/AnimationSpeed" method="_on_slider_value_changed"]
+[connection signal="pressed" from="PCB/CopyPaste/Copy" to="PCB/CopyPaste" method="_on_copy_pressed"]
+[connection signal="pressed" from="PCB/CopyPaste/Paste" to="PCB/CopyPaste" method="_on_paste_pressed"]
 [connection signal="value_changed" from="Speaker/Volume" to="Speaker" method="_on_volume_value_changed"]
 [connection signal="timeout" from="Speaker/Timer" to="Speaker" method="_on_timer_timeout"]
 [connection signal="pressed" from="Frame/Presets/SinButton" to="Frame/Presets" method="preset_sin"]
