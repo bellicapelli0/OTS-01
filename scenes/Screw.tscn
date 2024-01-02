@@ -8,6 +8,7 @@ atlas = ExtResource("2_yhfae")
 region = Rect2(0, 0, 26, 60)
 
 [node name="Screw" type="TextureRect"]
+texture_filter = 1
 offset_right = 26.0
 offset_bottom = 64.0
 texture = SubResource("AtlasTexture_drm2w")
@@ -16,8 +17,9 @@ script = ExtResource("1_m16j4")
 
 [node name="TextureButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_top = 36.0
-offset_right = 26.0
-offset_bottom = 60.0
+offset_left = -3.0
+offset_top = 34.0
+offset_right = 29.0
+offset_bottom = 62.0
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

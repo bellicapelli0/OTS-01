@@ -13,20 +13,20 @@ func preset_saw():
 	var desired_curve = []
 	for i in Global.w:
 		desired_curve.append(Global.h*(float(i)/Global.w))
-	desired_curve[0] = Global.h
-	desired_curve[Global.w-1] = 0.0
+	desired_curve[0] = Global.h/2
+	desired_curve[Global.w-1] = Global.h/2
 	send_preset(desired_curve)
-	$"../../Speaker/Volume".value = min($"../../Speaker/Volume".value, 50)
+	#$"../../Speaker/Volume".value = min($"../../Speaker/Volume".value, 50)
 	
 
 func preset_sqr():
 	var desired_curve = []
 	for i in Global.w:
 		desired_curve.append(0 if i<Global.w/2 else Global.h)
-	desired_curve[0] = Global.h
-	desired_curve[Global.w-1] = 0
+	desired_curve[0] = Global.h/2
+	desired_curve[Global.w-1] = Global.h/2
 	send_preset(desired_curve)
-	$"../../Speaker/Volume".value = min($"../../Speaker/Volume".value, 50)
+	#$"../../Speaker/Volume".value = min($"../../Speaker/Volume".value, 50)
 
 func preset_sin():
 	var desired_curve = []

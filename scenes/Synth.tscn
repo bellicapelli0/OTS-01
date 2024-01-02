@@ -832,9 +832,9 @@ value = 1.0
 
 [node name="CopyPaste" type="HBoxContainer" parent="PCB"]
 layout_mode = 0
-offset_left = 652.0
-offset_top = 64.0
-offset_right = 844.0
+offset_left = 672.0
+offset_top = 67.0
+offset_right = 866.0
 offset_bottom = 104.0
 script = ExtResource("6_81hqd")
 
@@ -851,10 +851,22 @@ texture_pressed = ExtResource("10_s1mb4")
 
 [node name="Info" type="Label" parent="PCB"]
 layout_mode = 0
-offset_left = 651.0
+offset_left = 658.0
 offset_top = 24.0
-offset_right = 769.0
-offset_bottom = 50.0
+offset_right = 884.0
+offset_bottom = 58.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = ">"
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="PCB/Info"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -6.0
+offset_top = 1.0
+offset_right = 228.0
+offset_bottom = 36.0
+color = Color(0.121569, 0.14902, 0.113725, 1)
 
 [node name="Wave" type="Control" parent="."]
 anchors_preset = 0
@@ -1026,8 +1038,8 @@ metadata/_edit_group_ = true
 position = Vector2(0, -2)
 texture = ExtResource("21_5gu60")
 centered = false
-hframes = 5
-frame = 2
+hframes = 7
+frame = 3
 
 [node name="Minus" type="TextureButton" parent="Frame/Octave"]
 layout_mode = 0
