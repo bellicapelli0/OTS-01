@@ -1,4 +1,4 @@
-[gd_scene load_steps=197 format=3 uid="uid://cq0eo3pk8nqoc"]
+[gd_scene load_steps=198 format=3 uid="uid://cq0eo3pk8nqoc"]
 
 [ext_resource type="Theme" uid="uid://bxnauddw6v7c3" path="res://assets/theme.tres" id="1_uylf7"]
 [ext_resource type="Script" path="res://scripts/Synth.gd" id="2_2s38u"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://c3shnbmthgqq2" path="res://textures/Buttons/sin.png" id="10_momov"]
 [ext_resource type="Texture2D" uid="uid://b3tf7bxhc5s12" path="res://textures/paste-pressed.png" id="10_s1mb4"]
 [ext_resource type="Texture2D" uid="uid://dw08y32fu7n7j" path="res://textures/Buttons/sin-pressed.png" id="11_qo4ax"]
+[ext_resource type="Material" uid="uid://dledcmqr3sobd" path="res://assets/hue_shader.tres" id="12_1j4f8"]
 [ext_resource type="Texture2D" uid="uid://h6wj5vvcf7r6" path="res://textures/Buttons/saw.png" id="12_div7s"]
 [ext_resource type="Texture2D" uid="uid://bwjju4rsmoqgg" path="res://textures/Buttons/saw-pressed.png" id="13_6q866"]
 [ext_resource type="Texture2D" uid="uid://ben2lmuyicyoq" path="res://textures/Buttons/lin.png" id="14_vrnkv"]
@@ -868,6 +869,22 @@ offset_right = 228.0
 offset_bottom = 36.0
 color = Color(0.121569, 0.14902, 0.113725, 1)
 
+[node name="Hue" type="HBoxContainer" parent="PCB"]
+layout_mode = 0
+offset_left = 656.0
+offset_top = 211.0
+offset_right = 892.0
+offset_bottom = 251.0
+
+[node name="Label" type="Label" parent="PCB/Hue"]
+layout_mode = 2
+text = "Hue "
+
+[node name="HSlider" type="HSlider" parent="PCB/Hue"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 359.0
+
 [node name="Wave" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
@@ -888,6 +905,7 @@ texture = ExtResource("48_4py3e")
 texture_mode = 2
 
 [node name="Line2D" type="Line2D" parent="Wave"]
+material = ExtResource("12_1j4f8")
 position = Vector2(-174, 16)
 points = PackedVector2Array(176, 98)
 width = 3.0
@@ -941,6 +959,8 @@ wait_time = 3.0
 autostart = true
 
 [node name="Frame" type="Control" parent="."]
+visible = false
+material = ExtResource("12_1j4f8")
 anchors_preset = 0
 offset_left = -79.0
 offset_top = -53.0
@@ -948,6 +968,7 @@ offset_right = 945.0
 offset_bottom = 670.0
 
 [node name="Texture" type="TextureRect" parent="Frame"]
+use_parent_material = true
 layout_mode = 0
 offset_left = -7.0
 offset_top = 1.0
@@ -957,12 +978,14 @@ texture = ExtResource("3_5wlxt")
 
 [node name="Bottom" type="TextureRect" parent="Frame/Texture"]
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_right = 1040.0
 offset_bottom = 720.0
 texture = ExtResource("5_dfrx0")
 
 [node name="Presets" type="GridContainer" parent="Frame"]
+use_parent_material = true
 layout_direction = 3
 layout_mode = 0
 offset_left = 788.0
@@ -974,12 +997,14 @@ script = ExtResource("9_ctcp7")
 metadata/_edit_group_ = true
 
 [node name="LineButton" type="TextureButton" parent="Frame/Presets"]
+use_parent_material = true
 layout_mode = 2
 tooltip_text = "Line"
 texture_normal = ExtResource("14_vrnkv")
 texture_pressed = ExtResource("15_fs2y8")
 
 [node name="SawButton" type="TextureButton" parent="Frame/Presets"]
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 4
 tooltip_text = "Sawtooth"
@@ -987,6 +1012,7 @@ texture_normal = ExtResource("12_div7s")
 texture_pressed = ExtResource("13_6q866")
 
 [node name="SinButton" type="TextureButton" parent="Frame/Presets"]
+use_parent_material = true
 layout_mode = 2
 tooltip_text = "Sine"
 keep_pressed_outside = true
@@ -995,6 +1021,7 @@ texture_pressed = ExtResource("11_qo4ax")
 stretch_mode = 5
 
 [node name="WeirButton" type="TextureButton" parent="Frame/Presets"]
+use_parent_material = true
 layout_mode = 2
 tooltip_text = "Weierstrass"
 keep_pressed_outside = true
@@ -1003,6 +1030,7 @@ texture_pressed = ExtResource("26_liykc")
 stretch_mode = 5
 
 [node name="SqrButton" type="TextureButton" parent="Frame/Presets"]
+use_parent_material = true
 layout_mode = 2
 tooltip_text = "Square"
 keep_pressed_outside = true
@@ -1011,6 +1039,7 @@ texture_pressed = ExtResource("19_o4jso")
 stretch_mode = 5
 
 [node name="TriButton" type="TextureButton" parent="Frame/Presets"]
+use_parent_material = true
 layout_mode = 2
 tooltip_text = "Triangle"
 keep_pressed_outside = true
@@ -1019,6 +1048,7 @@ texture_pressed = ExtResource("17_8eahx")
 stretch_mode = 5
 
 [node name="GlobalButton" type="TextureButton" parent="Frame/Presets"]
+use_parent_material = true
 layout_mode = 2
 tooltip_text = "Global Warming"
 texture_normal = ExtResource("20_vm4db")
@@ -1026,6 +1056,7 @@ texture_pressed = ExtResource("21_m1u2q")
 script = ExtResource("20_e32en")
 
 [node name="Octave" type="Control" parent="Frame"]
+use_parent_material = true
 anchors_preset = 0
 offset_left = 566.0
 offset_top = 328.0
@@ -1035,6 +1066,7 @@ script = ExtResource("20_mltv8")
 metadata/_edit_group_ = true
 
 [node name="Indicator" type="Sprite2D" parent="Frame/Octave"]
+use_parent_material = true
 position = Vector2(0, -2)
 texture = ExtResource("21_5gu60")
 centered = false
@@ -1042,6 +1074,7 @@ hframes = 7
 frame = 3
 
 [node name="Minus" type="TextureButton" parent="Frame/Octave"]
+use_parent_material = true
 layout_mode = 0
 offset_top = 13.0
 offset_right = 32.0
@@ -1051,6 +1084,7 @@ texture_normal = ExtResource("22_lrmvv")
 texture_pressed = ExtResource("23_iqnjy")
 
 [node name="Plus" type="TextureButton" parent="Frame/Octave"]
+use_parent_material = true
 layout_mode = 0
 offset_left = 68.0
 offset_top = 13.0
@@ -1061,6 +1095,7 @@ texture_normal = ExtResource("24_ofmss")
 texture_pressed = ExtResource("25_7631a")
 
 [node name="Label" type="Label" parent="Frame/Octave"]
+use_parent_material = true
 layout_mode = 0
 offset_left = 32.0
 offset_top = 17.0
@@ -1071,6 +1106,7 @@ mouse_filter = 1
 text = "OCT"
 
 [node name="HFO" type="Control" parent="Frame"]
+use_parent_material = true
 anchors_preset = 0
 offset_left = 686.0
 offset_top = 215.0
@@ -1080,18 +1116,21 @@ script = ExtResource("31_wndd2")
 metadata/_edit_group_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Frame/HFO"]
+use_parent_material = true
 layout_mode = 0
 offset_top = -1.0
 offset_right = 108.0
 offset_bottom = 158.0
 
 [node name="Sliders" type="HBoxContainer" parent="Frame/HFO/VBoxContainer"]
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 20.0
 theme_override_constants/separation = 6
 
 [node name="Frequency" type="VSlider" parent="Frame/HFO/VBoxContainer/Sliders"]
+use_parent_material = true
 layout_mode = 2
 min_value = 1.0
 max_value = 60.0
@@ -1099,6 +1138,7 @@ value = 10.0
 rounded = true
 
 [node name="Depth" type="VSlider" parent="Frame/HFO/VBoxContainer/Sliders"]
+use_parent_material = true
 layout_mode = 2
 min_value = 0.05
 max_value = 0.2
@@ -1106,6 +1146,7 @@ step = 0.01
 value = 0.1
 
 [node name="Oscillator" type="VSlider" parent="Frame/HFO/VBoxContainer/Sliders"]
+use_parent_material = true
 layout_mode = 2
 min_value = 1.0
 max_value = 4.0
@@ -1114,11 +1155,13 @@ tick_count = 4
 ticks_on_borders = true
 
 [node name="Labels" type="HBoxContainer" parent="Frame/HFO/VBoxContainer"]
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 10
 theme_override_constants/separation = 6
 
 [node name="F" type="Label" parent="Frame/HFO/VBoxContainer/Labels"]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 6
 tooltip_text = "Frequency"
@@ -1127,6 +1170,7 @@ text = "F"
 horizontal_alignment = 1
 
 [node name="D" type="Label" parent="Frame/HFO/VBoxContainer/Labels"]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "Depth"
@@ -1135,6 +1179,7 @@ text = "D"
 horizontal_alignment = 1
 
 [node name="O" type="Label" parent="Frame/HFO/VBoxContainer/Labels"]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "Oscillator Type"
@@ -1143,6 +1188,7 @@ text = "O"
 horizontal_alignment = 1
 
 [node name="Symbols" type="Control" parent="Frame/HFO"]
+use_parent_material = true
 anchors_preset = 0
 offset_left = 121.0
 offset_top = 5.0
@@ -1150,12 +1196,14 @@ offset_right = 161.0
 offset_bottom = 53.0
 
 [node name="Sin" type="TextureRect" parent="Frame/HFO/Symbols"]
+use_parent_material = true
 layout_mode = 0
 offset_right = 38.0
 offset_bottom = 16.0
 texture = ExtResource("32_qmbc4")
 
 [node name="Sqr" type="TextureRect" parent="Frame/HFO/Symbols"]
+use_parent_material = true
 layout_mode = 0
 offset_top = 34.0
 offset_right = 38.0
@@ -1163,6 +1211,7 @@ offset_bottom = 50.0
 texture = ExtResource("33_71sia")
 
 [node name="Tri" type="TextureRect" parent="Frame/HFO/Symbols"]
+use_parent_material = true
 layout_mode = 0
 offset_top = 64.0
 offset_right = 38.0
@@ -1170,6 +1219,7 @@ offset_bottom = 80.0
 texture = ExtResource("34_qgvpk")
 
 [node name="Saw" type="TextureRect" parent="Frame/HFO/Symbols"]
+use_parent_material = true
 layout_mode = 0
 offset_top = 97.0
 offset_right = 38.0
@@ -1177,6 +1227,7 @@ offset_bottom = 113.0
 texture = ExtResource("35_lav07")
 
 [node name="Button" type="TextureButton" parent="Frame/HFO"]
+use_parent_material = true
 layout_mode = 0
 offset_left = 110.0
 offset_top = 131.0
@@ -1187,6 +1238,7 @@ texture_normal = ExtResource("36_u201u")
 texture_pressed = ExtResource("37_71yow")
 
 [node name="NoteLength" type="HSlider" parent="Frame"]
+use_parent_material = true
 layout_mode = 0
 offset_left = 867.0
 offset_top = 122.0
@@ -1199,6 +1251,7 @@ value = 0.1
 script = ExtResource("26_5543f")
 
 [node name="Label" type="Label" parent="Frame/NoteLength"]
+use_parent_material = true
 layout_mode = 0
 offset_left = -38.0
 offset_top = -1.0
@@ -1211,6 +1264,7 @@ text = "LEN"
 [node name="Amp" type="VSlider" parent="Frame"]
 modulate = Color(0.721569, 0.721569, 0.721569, 1)
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_left = 38.0
 offset_top = 72.0
@@ -1223,6 +1277,7 @@ value = 1.0
 script = ExtResource("27_2cy22")
 
 [node name="Label" type="Label" parent="Frame/Amp"]
+use_parent_material = true
 layout_mode = 0
 offset_left = -4.0
 offset_top = 161.0
@@ -1234,6 +1289,7 @@ text = "A"
 horizontal_alignment = 1
 
 [node name="Sliders" type="VBoxContainer" parent="Frame"]
+use_parent_material = true
 layout_mode = 0
 offset_left = 258.0
 offset_top = 266.0
@@ -1243,9 +1299,11 @@ theme_override_constants/separation = 6
 metadata/_edit_group_ = true
 
 [node name="S&H" type="HBoxContainer" parent="Frame/Sliders"]
+use_parent_material = true
 layout_mode = 2
 
 [node name="SampleAndHold" type="HSlider" parent="Frame/Sliders/S&H"]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = 10.0
@@ -1254,15 +1312,18 @@ value = 50.0
 script = ExtResource("38_h6caw")
 
 [node name="Button" type="TextureButton" parent="Frame/Sliders/S&H"]
+use_parent_material = true
 layout_mode = 2
 tooltip_text = "Sample & Hold"
 texture_normal = ExtResource("39_6lmuw")
 texture_pressed = ExtResource("40_p5sbl")
 
 [node name="Smooth" type="HBoxContainer" parent="Frame/Sliders"]
+use_parent_material = true
 layout_mode = 2
 
 [node name="Slider" type="HSlider" parent="Frame/Sliders/Smooth"]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = 3.0
@@ -1275,15 +1336,18 @@ ticks_on_borders = true
 script = ExtResource("41_6gjon")
 
 [node name="Button" type="TextureButton" parent="Frame/Sliders/Smooth"]
+use_parent_material = true
 layout_mode = 2
 tooltip_text = "Gaussian Smoothing"
 texture_normal = ExtResource("42_upg50")
 texture_pressed = ExtResource("43_flvd7")
 
 [node name="PWM" type="HBoxContainer" parent="Frame/Sliders"]
+use_parent_material = true
 layout_mode = 2
 
 [node name="Slider" type="HSlider" parent="Frame/Sliders/PWM"]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = 0.05
@@ -1295,6 +1359,7 @@ ticks_on_borders = true
 script = ExtResource("44_wi00u")
 
 [node name="Button" type="TextureButton" parent="Frame/Sliders/PWM"]
+use_parent_material = true
 layout_mode = 2
 tooltip_text = "Pulse Width Modulation"
 texture_normal = ExtResource("45_fd5a7")
@@ -1302,6 +1367,7 @@ texture_pressed = ExtResource("46_ojmxm")
 texture_disabled = ExtResource("47_irxhb")
 
 [node name="Filters" type="Control" parent="Frame"]
+use_parent_material = true
 anchors_preset = 0
 offset_left = 869.0
 offset_top = 213.0
@@ -1311,6 +1377,7 @@ script = ExtResource("54_dr268")
 metadata/_edit_group_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Frame/Filters"]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1321,9 +1388,11 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Buttons" type="HBoxContainer" parent="Frame/Filters/VBoxContainer"]
+use_parent_material = true
 layout_mode = 2
 
 [node name="LPF" type="TextureButton" parent="Frame/Filters/VBoxContainer/Buttons"]
+use_parent_material = true
 layout_mode = 2
 tooltip_text = "Low Pass Filter"
 toggle_mode = true
@@ -1332,6 +1401,7 @@ texture_pressed = ExtResource("55_wwq56")
 texture_disabled = ExtResource("55_wwq56")
 
 [node name="HPF" type="TextureButton" parent="Frame/Filters/VBoxContainer/Buttons"]
+use_parent_material = true
 layout_mode = 2
 tooltip_text = "High Pass Filter"
 toggle_mode = true
@@ -1340,10 +1410,12 @@ texture_pressed = ExtResource("57_f1esm")
 texture_disabled = ExtResource("57_f1esm")
 
 [node name="Sliders" type="HBoxContainer" parent="Frame/Filters/VBoxContainer"]
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Cutoff" type="VSlider" parent="Frame/Filters/VBoxContainer/Sliders"]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = 100.0
@@ -1352,6 +1424,7 @@ step = 10.0
 value = 2000.0
 
 [node name="Resonance" type="VSlider" parent="Frame/Filters/VBoxContainer/Sliders"]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = 0.2
@@ -1360,9 +1433,11 @@ step = 0.01
 value = 0.5
 
 [node name="Labels" type="HBoxContainer" parent="Frame/Filters/VBoxContainer"]
+use_parent_material = true
 layout_mode = 2
 
 [node name="C" type="Label" parent="Frame/Filters/VBoxContainer/Labels"]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "Cutoff Frequency"
@@ -1371,6 +1446,7 @@ text = "C"
 horizontal_alignment = 1
 
 [node name="R" type="Label" parent="Frame/Filters/VBoxContainer/Labels"]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "Resonance"
@@ -1379,6 +1455,7 @@ text = "R"
 horizontal_alignment = 1
 
 [node name="Effects" type="Control" parent="Frame"]
+use_parent_material = true
 anchors_preset = 0
 offset_left = 690.0
 offset_top = 47.0
@@ -1388,14 +1465,17 @@ script = ExtResource("65_b07jp")
 metadata/_edit_group_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Frame/Effects"]
+use_parent_material = true
 layout_mode = 0
 offset_right = 138.0
 offset_bottom = 151.0
 
 [node name="Delay" type="VBoxContainer" parent="Frame/Effects/HBoxContainer"]
+use_parent_material = true
 layout_mode = 2
 
 [node name="DelButton" type="TextureButton" parent="Frame/Effects/HBoxContainer/Delay"]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 0
 tooltip_text = "Delay"
@@ -1404,6 +1484,7 @@ texture_normal = ExtResource("65_jc7n3")
 texture_pressed = ExtResource("66_t3237")
 
 [node name="DelSlider" type="VSlider" parent="Frame/Effects/HBoxContainer/Delay"]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_vertical = 3
@@ -1413,10 +1494,12 @@ step = 0.5
 value = -12.0
 
 [node name="Reverb" type="VBoxContainer" parent="Frame/Effects/HBoxContainer"]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="RevButton" type="TextureButton" parent="Frame/Effects/HBoxContainer/Reverb"]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 4
 tooltip_text = "Reverb"
@@ -1425,11 +1508,13 @@ texture_normal = ExtResource("67_o53dn")
 texture_pressed = ExtResource("68_pegko")
 
 [node name="RevSlider" type="VSlider" parent="Frame/Effects/HBoxContainer/Reverb"]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_vertical = 3
 
 [node name="Chorus" type="Control" parent="Frame"]
+use_parent_material = true
 anchors_preset = 0
 offset_left = 824.0
 offset_top = 153.0
@@ -1438,6 +1523,7 @@ offset_bottom = 193.0
 script = ExtResource("70_l2uju")
 
 [node name="Voices" type="HSlider" parent="Frame/Chorus"]
+use_parent_material = true
 layout_mode = 2
 offset_left = 43.0
 offset_top = 8.0
@@ -1448,11 +1534,13 @@ tick_count = 4
 ticks_on_borders = true
 
 [node name="Light" type="Sprite2D" parent="Frame/Chorus"]
+use_parent_material = true
 position = Vector2(22, 32)
 texture = ExtResource("70_elpuh")
 vframes = 2
 
 [node name="Label" type="Label" parent="Frame/Chorus"]
+use_parent_material = true
 layout_mode = 0
 offset_left = 5.0
 offset_top = -4.0
@@ -1463,6 +1551,7 @@ mouse_filter = 1
 text = "CHO"
 
 [node name="Buttons" type="Control" parent="Frame"]
+use_parent_material = true
 anchors_preset = 0
 offset_left = 557.0
 offset_top = 268.0
@@ -1470,6 +1559,7 @@ offset_right = 597.0
 offset_bottom = 308.0
 
 [node name="Undo" type="TextureButton" parent="Frame/Buttons"]
+use_parent_material = true
 layout_mode = 0
 offset_left = 73.0
 offset_right = 113.0
@@ -1483,6 +1573,7 @@ texture_disabled = ExtResource("46_65e54")
 script = ExtResource("47_0o2xt")
 
 [node name="Flip" type="Control" parent="Frame/Buttons"]
+use_parent_material = true
 anchors_preset = 0
 offset_left = 6.0
 offset_top = 4.0
@@ -1491,6 +1582,7 @@ offset_bottom = 36.0
 script = ExtResource("60_0d4dn")
 
 [node name="UpDown" type="TextureButton" parent="Frame/Buttons/Flip"]
+use_parent_material = true
 layout_mode = 2
 offset_left = 8.0
 offset_top = -5.0
@@ -1501,6 +1593,7 @@ texture_normal = ExtResource("60_im55s")
 texture_pressed = ExtResource("61_spkmi")
 
 [node name="LeftRight" type="TextureButton" parent="Frame/Buttons/Flip"]
+use_parent_material = true
 layout_mode = 2
 offset_left = 31.0
 offset_top = 28.0
@@ -1513,6 +1606,7 @@ texture_normal = ExtResource("62_uuebv")
 texture_pressed = ExtResource("63_qnc6m")
 
 [node name="Stop" type="TextureButton" parent="Frame/Buttons"]
+use_parent_material = true
 layout_mode = 0
 offset_left = 39.0
 offset_top = 2.0
@@ -1527,11 +1621,13 @@ texture_disabled = ExtResource("66_8kkbm")
 script = ExtResource("67_khhhq")
 
 [node name="Separators" type="Control" parent="Frame"]
+use_parent_material = true
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="sep" type="TextureRect" parent="Frame/Separators"]
+use_parent_material = true
 layout_mode = 0
 offset_left = 248.0
 offset_top = 273.0
@@ -1541,6 +1637,7 @@ texture = ExtResource("66_lw8f7")
 expand_mode = 1
 
 [node name="sep2" type="TextureRect" parent="Frame/Separators"]
+use_parent_material = true
 layout_mode = 0
 offset_left = 556.0
 offset_top = 273.0
@@ -1550,6 +1647,7 @@ texture = ExtResource("66_lw8f7")
 expand_mode = 1
 
 [node name="sep3" type="TextureRect" parent="Frame/Separators"]
+use_parent_material = true
 layout_mode = 0
 offset_left = 676.0
 offset_top = 273.0
@@ -1559,6 +1657,7 @@ texture = ExtResource("66_lw8f7")
 expand_mode = 1
 
 [node name="sep4" type="TextureRect" parent="Frame/Separators"]
+use_parent_material = true
 layout_mode = 0
 offset_left = 857.0
 offset_top = 208.0
@@ -1568,6 +1667,7 @@ texture = ExtResource("66_lw8f7")
 expand_mode = 1
 
 [node name="sep5" type="TextureRect" parent="Frame/Separators"]
+use_parent_material = true
 layout_mode = 0
 offset_left = 680.0
 offset_top = 208.0
@@ -1578,6 +1678,7 @@ texture = ExtResource("66_lw8f7")
 expand_mode = 1
 
 [node name="sep6" type="TextureRect" parent="Frame/Separators"]
+use_parent_material = true
 layout_mode = 0
 offset_left = 820.0
 offset_top = 47.0
