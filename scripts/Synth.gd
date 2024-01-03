@@ -125,8 +125,8 @@ func get_player():
 	return $AudioStreamPlayers.get_children()[player_index]
 
 func start_animation(curve, backwards=false):
-	if get_wave() == curve:
-		return
+	#if get_wave() == curve:
+		#return
 		
 	if not backwards:
 		undo.save_curve(get_wave())

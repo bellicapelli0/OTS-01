@@ -11,9 +11,7 @@ func _ready():
 	_on_item_selected(selected)
 
 
-
-
 func _on_item_selected(index):
-	for player in $"../../AudioStreamPlayers".get_children():
+	for player in $"../../../AudioStreamPlayers".get_children():
 		player.stream.mix_rate = values[index]
 

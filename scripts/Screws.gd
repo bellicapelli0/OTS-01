@@ -25,3 +25,11 @@ func _unscrewed():
 	if unscrewed_n == 4:
 		$"../AnimationPlayer".play("open")
 		$"../../OpenClose".show()
+
+func _process(_delta):
+	if Input.is_action_just_pressed("open"):
+		_unscrewed()
+		_unscrewed()
+		_unscrewed()
+		_unscrewed()
+		

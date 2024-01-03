@@ -1,7 +1,7 @@
 extends HBoxContainer
 
 @onready var synth : Synth = get_tree().get_root().get_node("Synth")
-@onready var info = $"../Info"
+@onready var info = $"../../Info"
 
 func _on_copy_pressed():
 	var wave = synth.get_wave()

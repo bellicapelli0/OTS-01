@@ -9,4 +9,4 @@ func _on_slider_value_changed(value):
 	if value == $Slider.max_value:
 		value =  $Slider.max_value * 20
 	synth.animation_speed = value
-	$"../../Frame/AnimationPlayer".speed_scale = remap(value, 0.75, $Slider.max_value, 1, 4)
+	$"../../../Frame/AnimationPlayer".speed_scale = remap(value, 0.75, $Slider.max_value, 1, 4)
