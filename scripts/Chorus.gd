@@ -3,7 +3,7 @@ extends Control
 var cho : AudioEffectChorus
 
 var bus_i = 0
-var cho_i = 4
+var cho_i = 3
 
 
 func _ready():

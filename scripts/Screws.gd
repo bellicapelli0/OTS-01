@@ -32,4 +32,5 @@ func _process(_delta):
 		_unscrewed()
 		_unscrewed()
 		_unscrewed()
+		hide()
 		

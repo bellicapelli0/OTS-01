@@ -6,7 +6,7 @@ var rev : AudioEffectReverb
 
 var bus_i = 0
 var del_i = 2
-var rev_i = 3
+var rev_i = 4
 
 
 func _ready():
