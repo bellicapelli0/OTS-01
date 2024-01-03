@@ -767,7 +767,7 @@ width = 590
 height = 200
 
 [node name="Camera" type="Camera2D" parent="."]
-position = Vector2(429, 308)
+position = Vector2(429, 312)
 
 [node name="PCB" type="Control" parent="."]
 modulate = Color(0.9, 0.9, 0.9, 1)
@@ -1007,7 +1007,6 @@ wait_time = 3.0
 autostart = true
 
 [node name="Frame" type="Control" parent="."]
-visible = false
 material = ExtResource("12_1j4f8")
 anchors_preset = 0
 offset_left = -79.0

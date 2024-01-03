@@ -31,8 +31,10 @@ func _ready():
 	line.clear_points()
 	line.position = Vector2(0, 0)
 	
+	var weir = $Frame/Presets.weir
+	
 	for x in width:
-		line.add_point(Vector2(x, (height/2.0)-(height/2.0)*sin(float(x)*TAU/width)))
+		line.add_point(Vector2(x, weir[x]))
 		
 	$Wave/BG.size = Vector2(width+padding*2, height+padding*2)
 	$Wave/BG.position = Vector2(-padding, -padding)
