@@ -1,3 +1,5 @@
+# [Play Online on Itch.io](https://bellicapelli.itch.io/ots-01)
+
 OTS-01 is a simple virtual synth with an interactive sound wave visualizer.
 
 ## Features:
@@ -8,5 +10,6 @@ OTS-01 is a simple virtual synth with an interactive sound wave visualizer.
 - Amplitude control
 - HFO with 4 oscillator types
 - Sample and Hold
+- And much more!
 
-Submission for the [Synth Jam](https://itch.io/jam/synth-jam)
+Submission for shiftBacktick's [Synth Jam](https://itch.io/jam/synth-jam)
