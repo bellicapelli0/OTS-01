@@ -4,4 +4,4 @@
 
 [resource]
 shader = ExtResource("1_werjy")
-shader_parameter/hue = 0.781
+shader_parameter/hue = 0.5

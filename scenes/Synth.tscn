@@ -1,4 +1,4 @@
-[gd_scene load_steps=198 format=3 uid="uid://cq0eo3pk8nqoc"]
+[gd_scene load_steps=200 format=3 uid="uid://cq0eo3pk8nqoc"]
 
 [ext_resource type="Theme" uid="uid://bxnauddw6v7c3" path="res://assets/theme.tres" id="1_uylf7"]
 [ext_resource type="Script" path="res://scripts/Synth.gd" id="2_2s38u"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://bni188r53jyiv" path="res://textures/paste.png" id="9_fb56f"]
 [ext_resource type="Texture2D" uid="uid://c3shnbmthgqq2" path="res://textures/Buttons/sin.png" id="10_momov"]
 [ext_resource type="Texture2D" uid="uid://b3tf7bxhc5s12" path="res://textures/paste-pressed.png" id="10_s1mb4"]
+[ext_resource type="Script" path="res://scripts/Hue.gd" id="11_kw86s"]
 [ext_resource type="Texture2D" uid="uid://dw08y32fu7n7j" path="res://textures/Buttons/sin-pressed.png" id="11_qo4ax"]
 [ext_resource type="Material" uid="uid://dledcmqr3sobd" path="res://assets/hue_material.tres" id="12_1j4f8"]
 [ext_resource type="Texture2D" uid="uid://h6wj5vvcf7r6" path="res://textures/Buttons/saw.png" id="12_div7s"]
@@ -27,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://dyhgaepbbprxm" path="res://textures/Buttons/lin-pressed.png" id="15_fs2y8"]
 [ext_resource type="Texture2D" uid="uid://cbt5an1xjeqyd" path="res://textures/Buttons/tri.png" id="16_jwdwn"]
 [ext_resource type="Texture2D" uid="uid://2udao23o64n4" path="res://textures/Buttons/tri-pressed.png" id="17_8eahx"]
+[ext_resource type="Texture2D" uid="uid://b5rvlyetmwkox" path="res://textures/VolumeBack.png" id="18_2cho2"]
 [ext_resource type="Texture2D" uid="uid://bmkhejw6gj2fm" path="res://textures/Buttons/sqr.png" id="18_54wux"]
 [ext_resource type="Texture2D" uid="uid://ey0oox64snwv" path="res://textures/Buttons/sqr-pressed.png" id="19_o4jso"]
 [ext_resource type="Script" path="res://scripts/GlobalData.gd" id="20_e32en"]
@@ -875,6 +877,7 @@ offset_left = 656.0
 offset_top = 211.0
 offset_right = 892.0
 offset_bottom = 251.0
+script = ExtResource("11_kw86s")
 
 [node name="Label" type="Label" parent="PCB/Hue"]
 layout_mode = 2
@@ -939,8 +942,18 @@ texture = ExtResource("29_wbf4v")
 [node name="Front" type="Sprite2D" parent="Speaker"]
 texture = ExtResource("30_s13xo")
 
+[node name="VolumeBack" type="TextureRect" parent="Speaker"]
+material = ExtResource("12_1j4f8")
+layout_mode = 0
+offset_left = -129.0
+offset_top = 101.0
+offset_right = 113.0
+offset_bottom = 163.0
+texture = ExtResource("18_2cho2")
+
 [node name="Volume" type="HSlider" parent="Speaker"]
 top_level = true
+material = ExtResource("12_1j4f8")
 layout_mode = 0
 offset_left = 718.0
 offset_top = 594.0
@@ -960,7 +973,6 @@ wait_time = 3.0
 autostart = true
 
 [node name="Frame" type="Control" parent="."]
-visible = false
 material = ExtResource("12_1j4f8")
 anchors_preset = 0
 offset_left = -79.0
@@ -1954,6 +1966,7 @@ stream = SubResource("AudioStreamGenerator_aya6c")
 [connection signal="value_changed" from="PCB/AnimationSpeed/Slider" to="PCB/AnimationSpeed" method="_on_slider_value_changed"]
 [connection signal="pressed" from="PCB/CopyPaste/Copy" to="PCB/CopyPaste" method="_on_copy_pressed"]
 [connection signal="pressed" from="PCB/CopyPaste/Paste" to="PCB/CopyPaste" method="_on_paste_pressed"]
+[connection signal="value_changed" from="PCB/Hue/HSlider" to="PCB/Hue" method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="Speaker/Volume" to="Speaker" method="_on_volume_value_changed"]
 [connection signal="timeout" from="Speaker/Timer" to="Speaker" method="_on_timer_timeout"]
 [connection signal="pressed" from="Frame/Presets/LineButton" to="Frame/Presets" method="preset_lin"]
