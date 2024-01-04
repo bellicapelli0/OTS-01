@@ -1,0 +1,2059 @@
+[gd_scene load_steps=202 format=3 uid="uid://cq0eo3pk8nqoc"]
+
+[ext_resource type="Theme" uid="uid://bxnauddw6v7c3" path="res://assets/theme.tres" id="1_uylf7"]
+[ext_resource type="Script" path="res://scripts/Synth.gd" id="2_2s38u"]
+[ext_resource type="Texture2D" uid="uid://ci3efkeyhxmix" path="res://textures/synth.png" id="3_5wlxt"]
+[ext_resource type="Texture2D" uid="uid://b2c4cflcqitip" path="res://textures/pcb.png" id="3_jqyo2"]
+[ext_resource type="Script" path="res://scripts/Piano.gd" id="4_4m6bh"]
+[ext_resource type="Script" path="res://scripts/MixRate.gd" id="4_4wlrx"]
+[ext_resource type="Script" path="res://scripts/AnimationSpeed.gd" id="5_6244k"]
+[ext_resource type="Texture2D" uid="uid://c3ysyrcfg46wy" path="res://textures/synth-bottom.png" id="5_dfrx0"]
+[ext_resource type="Texture2D" uid="uid://dajolyy6jwhy0" path="res://textures/PianoKeys/white_keys1.png" id="5_klrjv"]
+[ext_resource type="Texture2D" uid="uid://eww5lokq82mf" path="res://textures/PianoKeys/white_keys2.png" id="6_5h7l1"]
+[ext_resource type="Script" path="res://scripts/CopyPaste.gd" id="6_81hqd"]
+[ext_resource type="Texture2D" uid="uid://cmtb45drure8u" path="res://textures/copy.png" id="7_6vdtn"]
+[ext_resource type="Texture2D" uid="uid://c6hrotfa1jtb" path="res://textures/PianoKeys/black_keys1.png" id="7_cf62q"]
+[ext_resource type="Texture2D" uid="uid://ci63dubf3t16e" path="res://textures/copy-pressed.png" id="8_2av54"]
+[ext_resource type="Texture2D" uid="uid://cc8p3oaveif2g" path="res://textures/PianoKeys/black_keys2.png" id="8_03ugj"]
+[ext_resource type="Script" path="res://scripts/Presets.gd" id="9_ctcp7"]
+[ext_resource type="Texture2D" uid="uid://bni188r53jyiv" path="res://textures/paste.png" id="9_fb56f"]
+[ext_resource type="Texture2D" uid="uid://c3shnbmthgqq2" path="res://textures/Buttons/sin.png" id="10_momov"]
+[ext_resource type="Texture2D" uid="uid://b3tf7bxhc5s12" path="res://textures/paste-pressed.png" id="10_s1mb4"]
+[ext_resource type="Script" path="res://scripts/Hue.gd" id="11_kw86s"]
+[ext_resource type="Texture2D" uid="uid://dw08y32fu7n7j" path="res://textures/Buttons/sin-pressed.png" id="11_qo4ax"]
+[ext_resource type="Material" uid="uid://dledcmqr3sobd" path="res://assets/hue_material.tres" id="12_1j4f8"]
+[ext_resource type="Texture2D" uid="uid://h6wj5vvcf7r6" path="res://textures/Buttons/saw.png" id="12_div7s"]
+[ext_resource type="Texture2D" uid="uid://cxisnew66xirr" path="res://textures/gay.png" id="12_fnlhx"]
+[ext_resource type="Texture2D" uid="uid://cstpep52ak1vk" path="res://textures/gay-pressed.png" id="13_1esoh"]
+[ext_resource type="Texture2D" uid="uid://bwjju4rsmoqgg" path="res://textures/Buttons/saw-pressed.png" id="13_6q866"]
+[ext_resource type="Texture2D" uid="uid://ben2lmuyicyoq" path="res://textures/Buttons/lin.png" id="14_vrnkv"]
+[ext_resource type="Texture2D" uid="uid://dyhgaepbbprxm" path="res://textures/Buttons/lin-pressed.png" id="15_fs2y8"]
+[ext_resource type="Texture2D" uid="uid://cbt5an1xjeqyd" path="res://textures/Buttons/tri.png" id="16_jwdwn"]
+[ext_resource type="Texture2D" uid="uid://2udao23o64n4" path="res://textures/Buttons/tri-pressed.png" id="17_8eahx"]
+[ext_resource type="Texture2D" uid="uid://b5rvlyetmwkox" path="res://textures/VolumeBack.png" id="18_2cho2"]
+[ext_resource type="Texture2D" uid="uid://bmkhejw6gj2fm" path="res://textures/Buttons/sqr.png" id="18_54wux"]
+[ext_resource type="Texture2D" uid="uid://ey0oox64snwv" path="res://textures/Buttons/sqr-pressed.png" id="19_o4jso"]
+[ext_resource type="Script" path="res://scripts/GlobalData.gd" id="20_e32en"]
+[ext_resource type="Script" path="res://scripts/Octave.gd" id="20_mltv8"]
+[ext_resource type="Texture2D" uid="uid://65qpsi25h4rl" path="res://textures/Buttons/global.png" id="20_vm4db"]
+[ext_resource type="Texture2D" uid="uid://ctmv0nbc3do4h" path="res://textures/Buttons/octave-indicator.png" id="21_5gu60"]
+[ext_resource type="Texture2D" uid="uid://d3513vq6prmmd" path="res://textures/Buttons/global-pressed.png" id="21_m1u2q"]
+[ext_resource type="Texture2D" uid="uid://b1f16vxc188b6" path="res://textures/Buttons/Minus.png" id="22_lrmvv"]
+[ext_resource type="Texture2D" uid="uid://bfe4xunx4o8xg" path="res://textures/Buttons/minus-pressed.png" id="23_iqnjy"]
+[ext_resource type="Texture2D" uid="uid://d1dwjxfn1vqvi" path="res://textures/Buttons/plus.png" id="24_ofmss"]
+[ext_resource type="Texture2D" uid="uid://d2s1h44lwjjqf" path="res://textures/Buttons/plus-pressed.png" id="25_7631a"]
+[ext_resource type="Texture2D" uid="uid://ri00fcj2v84c" path="res://textures/weir.png" id="25_gy1di"]
+[ext_resource type="Script" path="res://scripts/NoteLength.gd" id="26_5543f"]
+[ext_resource type="Texture2D" uid="uid://35rheq17dvj3" path="res://textures/weir-pressed.png" id="26_liykc"]
+[ext_resource type="Script" path="res://scripts/Amp.gd" id="27_2cy22"]
+[ext_resource type="Script" path="res://scripts/Speaker.gd" id="28_ga5l0"]
+[ext_resource type="Texture2D" uid="uid://c3c0bsfbiws86" path="res://textures/speaker1.png" id="29_wbf4v"]
+[ext_resource type="Texture2D" uid="uid://cje5g6qmk8k1g" path="res://textures/speaker2.png" id="30_s13xo"]
+[ext_resource type="Script" path="res://scripts/HFO.gd" id="31_wndd2"]
+[ext_resource type="Texture2D" uid="uid://3o5qf7v7r0y6" path="res://textures/symbols/sin.png" id="32_qmbc4"]
+[ext_resource type="Texture2D" uid="uid://8dn31qmudraq" path="res://textures/symbols/sqr.png" id="33_71sia"]
+[ext_resource type="Texture2D" uid="uid://dl30cgutfbb3" path="res://textures/symbols/tri.png" id="34_qgvpk"]
+[ext_resource type="Texture2D" uid="uid://cahn7rv4kinoa" path="res://textures/symbols/saw.png" id="35_lav07"]
+[ext_resource type="Texture2D" uid="uid://m41s0n0ir53p" path="res://textures/Buttons/hfo.png" id="36_u201u"]
+[ext_resource type="Texture2D" uid="uid://hso635cpn6ci" path="res://textures/Buttons/hfo-pressed.png" id="37_71yow"]
+[ext_resource type="Script" path="res://scripts/SampleAndHold.gd" id="38_h6caw"]
+[ext_resource type="Texture2D" uid="uid://b8w718a84keo5" path="res://textures/Buttons/s&h.png" id="39_6lmuw"]
+[ext_resource type="Texture2D" uid="uid://bjfkucmiphuw5" path="res://textures/Buttons/s&h-pressed.png" id="40_p5sbl"]
+[ext_resource type="Script" path="res://scripts/Smoothness.gd" id="41_6gjon"]
+[ext_resource type="Texture2D" uid="uid://c47byt6b2vcbt" path="res://textures/Buttons/smooth.png" id="42_upg50"]
+[ext_resource type="Texture2D" uid="uid://bj2fmsstk7kuh" path="res://textures/Buttons/smooth-pressed.png" id="43_flvd7"]
+[ext_resource type="Script" path="res://scripts/PWM.gd" id="44_wi00u"]
+[ext_resource type="Texture2D" uid="uid://d3sw1beko8guh" path="res://textures/Buttons/undo.png" id="45_crfk2"]
+[ext_resource type="Texture2D" uid="uid://bi0m62ww3bny8" path="res://textures/Buttons/pwm.png" id="45_fd5a7"]
+[ext_resource type="Texture2D" uid="uid://duschen5sloy2" path="res://textures/Buttons/undo-disabled.png" id="46_65e54"]
+[ext_resource type="Texture2D" uid="uid://c6ksaqeumk04p" path="res://textures/Buttons/pwm-pressed.png" id="46_ojmxm"]
+[ext_resource type="Script" path="res://scripts/Undo.gd" id="47_0o2xt"]
+[ext_resource type="Texture2D" uid="uid://b2qfb7vohlkgh" path="res://textures/Buttons/pwm-disabled.png" id="47_irxhb"]
+[ext_resource type="Texture2D" uid="uid://cf8ey23ljk6qa" path="res://textures/Buttons/line-texture.png" id="48_4py3e"]
+[ext_resource type="Script" path="res://scripts/AudioStreamPlayers.gd" id="49_ru7c7"]
+[ext_resource type="Texture2D" uid="uid://dk3g784odiufs" path="res://textures/Buttons/undo-pressed.png" id="52_2plo3"]
+[ext_resource type="Script" path="res://scripts/Filters.gd" id="54_dr268"]
+[ext_resource type="Texture2D" uid="uid://boivxpngk3rwf" path="res://textures/Buttons/lpf.png" id="54_ryq0r"]
+[ext_resource type="Texture2D" uid="uid://dnm18orx1h8y4" path="res://textures/Buttons/lpf-pressed.png" id="55_wwq56"]
+[ext_resource type="Texture2D" uid="uid://b1mttj3q3fr0c" path="res://textures/Buttons/hpf.png" id="56_dlxke"]
+[ext_resource type="Texture2D" uid="uid://den2ltre6nnqb" path="res://textures/Buttons/hpf-pressed.png" id="57_f1esm"]
+[ext_resource type="Script" path="res://scripts/Flip.gd" id="60_0d4dn"]
+[ext_resource type="Texture2D" uid="uid://d3ynnq8ubk8as" path="res://textures/Buttons/flip_up_down.png" id="60_im55s"]
+[ext_resource type="Texture2D" uid="uid://dy57jvk65yl0y" path="res://textures/Buttons/flip_up_down_pressed.png" id="61_spkmi"]
+[ext_resource type="Texture2D" uid="uid://cyoykqex80r0s" path="res://textures/Buttons/flip_left_right.png" id="62_uuebv"]
+[ext_resource type="Texture2D" uid="uid://bswg55yomn5l8" path="res://textures/Buttons/flip_left_right_pressed.png" id="63_qnc6m"]
+[ext_resource type="Texture2D" uid="uid://cj4md165pwpro" path="res://textures/Buttons/stop.png" id="64_p813c"]
+[ext_resource type="Texture2D" uid="uid://5ttsm8yyqu5c" path="res://textures/Buttons/stop-pressed.png" id="65_53wr2"]
+[ext_resource type="Script" path="res://scripts/Effects.gd" id="65_b07jp"]
+[ext_resource type="Texture2D" uid="uid://35dgi88sklnx" path="res://textures/Buttons/delay.png" id="65_jc7n3"]
+[ext_resource type="Texture2D" uid="uid://73mbm0ggiygv" path="res://textures/Buttons/stop-disabled.png" id="66_8kkbm"]
+[ext_resource type="Texture2D" uid="uid://djh5t4sy3k8wm" path="res://textures/separator.png" id="66_lw8f7"]
+[ext_resource type="Texture2D" uid="uid://cotw4nn3qo7x1" path="res://textures/Buttons/delay-pressed.png" id="66_t3237"]
+[ext_resource type="Script" path="res://scripts/Stop.gd" id="67_khhhq"]
+[ext_resource type="Texture2D" uid="uid://dwl31nmhnyqns" path="res://textures/Buttons/reverb.png" id="67_o53dn"]
+[ext_resource type="Texture2D" uid="uid://cymohplohbuhg" path="res://textures/Buttons/reverb-pressed.png" id="68_pegko"]
+[ext_resource type="Texture2D" uid="uid://cka6weophqn11" path="res://textures/light.png" id="70_elpuh"]
+[ext_resource type="Script" path="res://scripts/Chorus.gd" id="70_l2uju"]
+[ext_resource type="Script" path="res://scripts/Screws.gd" id="71_8yo83"]
+[ext_resource type="PackedScene" uid="uid://cg8cdsy3b7em4" path="res://scenes/Screw.tscn" id="71_a50pt"]
+[ext_resource type="Texture2D" uid="uid://s6r6vo7li6f2" path="res://textures/speaker_background.png" id="71_evfg5"]
+[ext_resource type="Texture2D" uid="uid://c12chxqi26s82" path="res://textures/screw.png" id="73_7oqnp"]
+[ext_resource type="Texture2D" uid="uid://0i4b65t2tdd1" path="res://textures/open.png" id="83_p2srs"]
+[ext_resource type="Texture2D" uid="uid://cgoii2bnbthd2" path="res://textures/close.png" id="84_wn21w"]
+[ext_resource type="Texture2D" uid="uid://h01biiwspslp" path="res://textures/hidden.png" id="85_a1vpl"]
+[ext_resource type="Script" path="res://scripts/OpenClose.gd" id="86_ginjs"]
+
+[sub_resource type="Gradient" id="Gradient_n2oxx"]
+offsets = PackedFloat32Array(0, 0.226667, 0.806667, 1)
+colors = PackedColorArray(0.831373, 0.0235294, 0.0235294, 1, 0.968627, 0.027451, 0.027451, 1, 0.968627, 0.027451, 0.027451, 1, 0.831373, 0.0235294, 0.0235294, 1)
+
+[sub_resource type="InputEventAction" id="InputEventAction_s46nu"]
+action = &"Undo"
+
+[sub_resource type="Shortcut" id="Shortcut_ytye8"]
+events = [SubResource("InputEventAction_s46nu")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_y7ujp"]
+action = &"Stop"
+
+[sub_resource type="Shortcut" id="Shortcut_u7dkg"]
+events = [SubResource("InputEventAction_y7ujp")]
+
+[sub_resource type="Animation" id="Animation_v8oqy"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-79, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-53, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_bvhgj"]
+resource_name = "close"
+length = 1.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-123, -0.25, 0, 0.25, 0, -136, -0.25, 0, 0.25, 0, -79, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 1.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-904, -0.346053, 73.5, 0.25, 0, -181, -0.25, 0, 0.25, 0, -53, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 1.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1.1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1, 1.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1.1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1, 1.5)
+}
+
+[sub_resource type="Animation" id="Animation_ei36y"]
+resource_name = "open"
+length = 1.6
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-79, -0.25, 0, 0.25, 0, -136, -0.25, 0, 0.25, 0, -123, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.1, 0.6, 1.6)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-53, -0.25, 0, 0.25, 0, -181, -0.25, 0, 0.25, 0, -904, -0.346053, 73.5, 0.25, 0),
+"times": PackedFloat32Array(0.1, 0.6, 1.6)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.1, 0.6)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.1, 0.6)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_optqw"]
+_data = {
+"RESET": SubResource("Animation_v8oqy"),
+"close": SubResource("Animation_bvhgj"),
+"open": SubResource("Animation_ei36y")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxca1"]
+atlas = ExtResource("73_7oqnp")
+region = Rect2(0, 0, 26, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_st35w"]
+atlas = ExtResource("73_7oqnp")
+region = Rect2(0, 0, 26, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7ppn"]
+atlas = ExtResource("73_7oqnp")
+region = Rect2(0, 0, 26, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vm1h"]
+atlas = ExtResource("73_7oqnp")
+region = Rect2(0, 0, 26, 60)
+
+[sub_resource type="Animation" id="Animation_a7x4i"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Screw:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(35, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Screw:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(317, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Screw2:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(963, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Screw2:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(317, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Screw3:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(963, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Screw3:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Screw4:position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(35, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Screw4:position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_twptu"]
+resource_name = "leave1"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Screw:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(35, -0.25, 0, 0.25, 0, -165, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Screw:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(317, -0.25, 0, 0.25, 0, 317, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_624r8"]
+resource_name = "leave2"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Screw2:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(963, -0.25, 0, 0.25, 0, 1163, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Screw2:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(317, -0.25, 0, 0.25, 0, 317, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_te81f"]
+resource_name = "leave3"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Screw3:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(963, -0.25, 0, 0.25, 0, 1163, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Screw3:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_ek2x3"]
+resource_name = "leave4"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Screw4:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(35, -0.25, 0, 0.25, 0, -165, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Screw4:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_722ww"]
+_data = {
+"RESET": SubResource("Animation_a7x4i"),
+"leave1": SubResource("Animation_twptu"),
+"leave2": SubResource("Animation_624r8"),
+"leave3": SubResource("Animation_te81f"),
+"leave4": SubResource("Animation_ek2x3")
+}
+
+[sub_resource type="InputEventAction" id="InputEventAction_3oa2r"]
+action = &"C"
+
+[sub_resource type="Shortcut" id="Shortcut_ljuqf"]
+events = [SubResource("InputEventAction_3oa2r")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0n41"]
+atlas = ExtResource("5_klrjv")
+region = Rect2(0, 0, 640, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1tlw"]
+atlas = SubResource("AtlasTexture_h0n41")
+region = Rect2(0, 0, 64, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqpkt"]
+atlas = SubResource("AtlasTexture_o1tlw")
+region = Rect2(0, 0, 64, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i35d7"]
+atlas = ExtResource("6_5h7l1")
+region = Rect2(0, 0, 64, 256)
+
+[sub_resource type="InputEventAction" id="InputEventAction_rk7g2"]
+action = &"D"
+
+[sub_resource type="Shortcut" id="Shortcut_rqoe5"]
+events = [SubResource("InputEventAction_rk7g2")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxwoj"]
+atlas = ExtResource("5_klrjv")
+region = Rect2(0, 0, 640, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4o3v"]
+atlas = SubResource("AtlasTexture_kxwoj")
+region = Rect2(64, 0, 64, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smrue"]
+atlas = ExtResource("6_5h7l1")
+region = Rect2(64, 0, 64, 256)
+
+[sub_resource type="InputEventAction" id="InputEventAction_iyka6"]
+action = &"E"
+
+[sub_resource type="Shortcut" id="Shortcut_o04f5"]
+events = [SubResource("InputEventAction_iyka6")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfscu"]
+atlas = ExtResource("5_klrjv")
+region = Rect2(128, 0, 64, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3gdd"]
+atlas = ExtResource("6_5h7l1")
+region = Rect2(128, 0, 64, 256)
+
+[sub_resource type="InputEventAction" id="InputEventAction_7s4d7"]
+action = &"F"
+
+[sub_resource type="Shortcut" id="Shortcut_1v67f"]
+events = [SubResource("InputEventAction_7s4d7")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aytut"]
+atlas = ExtResource("5_klrjv")
+region = Rect2(192, 0, 64, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_posrl"]
+atlas = ExtResource("6_5h7l1")
+region = Rect2(192, 0, 64, 256)
+
+[sub_resource type="InputEventAction" id="InputEventAction_ws1ij"]
+action = &"G"
+
+[sub_resource type="Shortcut" id="Shortcut_xq78v"]
+events = [SubResource("InputEventAction_ws1ij")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_husw8"]
+atlas = ExtResource("5_klrjv")
+region = Rect2(256, 0, 64, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g63qy"]
+atlas = ExtResource("6_5h7l1")
+region = Rect2(256, 0, 64, 256)
+
+[sub_resource type="InputEventAction" id="InputEventAction_fshdh"]
+action = &"A"
+
+[sub_resource type="Shortcut" id="Shortcut_cmhdo"]
+events = [SubResource("InputEventAction_fshdh")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmgxk"]
+atlas = ExtResource("5_klrjv")
+region = Rect2(320, 0, 64, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1k3v"]
+atlas = ExtResource("6_5h7l1")
+region = Rect2(320, 0, 64, 256)
+
+[sub_resource type="InputEventAction" id="InputEventAction_ivnds"]
+action = &"B"
+
+[sub_resource type="Shortcut" id="Shortcut_x4l82"]
+events = [SubResource("InputEventAction_ivnds")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxdxf"]
+atlas = ExtResource("5_klrjv")
+region = Rect2(384, 0, 64, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d76se"]
+atlas = ExtResource("6_5h7l1")
+region = Rect2(384, 0, 64, 256)
+
+[sub_resource type="InputEventAction" id="InputEventAction_ddvrk"]
+action = &"C-UP"
+
+[sub_resource type="Shortcut" id="Shortcut_81nii"]
+events = [SubResource("InputEventAction_ddvrk")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wsui"]
+atlas = ExtResource("5_klrjv")
+region = Rect2(448, 0, 64, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jh68b"]
+atlas = ExtResource("6_5h7l1")
+region = Rect2(448, 0, 64, 256)
+
+[sub_resource type="InputEventAction" id="InputEventAction_vptr2"]
+action = &"D-UP"
+
+[sub_resource type="Shortcut" id="Shortcut_ggqjh"]
+events = [SubResource("InputEventAction_vptr2")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fn81d"]
+atlas = ExtResource("5_klrjv")
+region = Rect2(512, 0, 64, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dm188"]
+atlas = ExtResource("6_5h7l1")
+region = Rect2(512, 0, 64, 256)
+
+[sub_resource type="InputEventAction" id="InputEventAction_8nsxv"]
+action = &"E-UP"
+
+[sub_resource type="Shortcut" id="Shortcut_wwdvg"]
+events = [SubResource("InputEventAction_8nsxv")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5rdh"]
+atlas = ExtResource("5_klrjv")
+region = Rect2(576, 0, 64, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnfjr"]
+atlas = ExtResource("6_5h7l1")
+region = Rect2(576, 0, 64, 256)
+
+[sub_resource type="InputEventAction" id="InputEventAction_6rnbh"]
+action = &"C#"
+
+[sub_resource type="Shortcut" id="Shortcut_tpnd3"]
+events = [SubResource("InputEventAction_6rnbh")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j881x"]
+atlas = ExtResource("7_cf62q")
+region = Rect2(32, 0, 64, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4atv"]
+atlas = ExtResource("8_03ugj")
+region = Rect2(32, 0, 64, 160)
+
+[sub_resource type="InputEventAction" id="InputEventAction_rxvk4"]
+action = &"D#"
+
+[sub_resource type="Shortcut" id="Shortcut_n0pqy"]
+events = [SubResource("InputEventAction_rxvk4")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbb2i"]
+atlas = ExtResource("7_cf62q")
+region = Rect2(96, 0, 64, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnhck"]
+atlas = ExtResource("8_03ugj")
+region = Rect2(96, 0, 64, 160)
+
+[sub_resource type="InputEventAction" id="InputEventAction_e3ckh"]
+action = &"F#"
+
+[sub_resource type="Shortcut" id="Shortcut_mvik3"]
+events = [SubResource("InputEventAction_e3ckh")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnui1"]
+atlas = ExtResource("7_cf62q")
+region = Rect2(224, 0, 64, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2i32"]
+atlas = ExtResource("8_03ugj")
+region = Rect2(224, 0, 64, 160)
+
+[sub_resource type="InputEventAction" id="InputEventAction_psiyg"]
+action = &"G#"
+
+[sub_resource type="Shortcut" id="Shortcut_q1cpp"]
+events = [SubResource("InputEventAction_psiyg")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwu8m"]
+atlas = ExtResource("7_cf62q")
+region = Rect2(288, 0, 64, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7many"]
+atlas = ExtResource("8_03ugj")
+region = Rect2(288, 0, 64, 160)
+
+[sub_resource type="InputEventAction" id="InputEventAction_4ipsd"]
+action = &"A#"
+
+[sub_resource type="Shortcut" id="Shortcut_oao6r"]
+events = [SubResource("InputEventAction_4ipsd")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfwqa"]
+atlas = ExtResource("7_cf62q")
+region = Rect2(352, 0, 64, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogl6s"]
+atlas = ExtResource("8_03ugj")
+region = Rect2(352, 0, 64, 160)
+
+[sub_resource type="InputEventAction" id="InputEventAction_whm16"]
+action = &"C-UP#"
+
+[sub_resource type="Shortcut" id="Shortcut_0c7dc"]
+events = [SubResource("InputEventAction_whm16")]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lqveb"]
+load_path = "res://.godot/imported/black_keys1.png-66b4626cab7e63a0c4a3cb9d2428ce99.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xuce7"]
+atlas = SubResource("CompressedTexture2D_lqveb")
+region = Rect2(480, 0, 64, 160)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ol8fi"]
+load_path = "res://.godot/imported/black_keys2.png-b6f6101affdb649b760b9a57e9dafd40.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfjys"]
+atlas = SubResource("CompressedTexture2D_ol8fi")
+region = Rect2(480, 0, 64, 160)
+
+[sub_resource type="InputEventAction" id="InputEventAction_21cmi"]
+action = &"D-UP#"
+
+[sub_resource type="Shortcut" id="Shortcut_acpdg"]
+events = [SubResource("InputEventAction_21cmi")]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3qasp"]
+load_path = "res://.godot/imported/black_keys1.png-66b4626cab7e63a0c4a3cb9d2428ce99.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rifto"]
+atlas = SubResource("CompressedTexture2D_3qasp")
+region = Rect2(544, 0, 64, 160)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4txbg"]
+load_path = "res://.godot/imported/black_keys2.png-b6f6101affdb649b760b9a57e9dafd40.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11x6k"]
+atlas = SubResource("CompressedTexture2D_4txbg")
+region = Rect2(544, 0, 64, 160)
+
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_k1b1u"]
+
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_65epj"]
+
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_3adlp"]
+
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_7lml7"]
+
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_aya6c"]
+
+[node name="Synth" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_uylf7")
+script = ExtResource("2_2s38u")
+width = 590
+height = 200
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(429, 312)
+
+[node name="PCB" type="Control" parent="."]
+modulate = Color(0.9, 0.9, 0.9, 1)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Texture" type="TextureRect" parent="PCB"]
+layout_mode = 0
+offset_left = -86.0
+offset_top = -52.0
+offset_right = 954.0
+offset_bottom = 668.0
+texture = ExtResource("3_jqyo2")
+
+[node name="Control" type="Control" parent="PCB"]
+material = ExtResource("12_1j4f8")
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MixRate" type="OptionButton" parent="PCB/Control"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 720.0
+offset_top = 304.0
+offset_right = 859.0
+offset_bottom = 338.0
+item_count = 4
+selected = 2
+popup/item_0/text = "16000 Hz"
+popup/item_0/id = 0
+popup/item_1/text = "22050 Hz"
+popup/item_1/id = 1
+popup/item_2/text = "32000 Hz"
+popup/item_2/id = 2
+popup/item_3/text = "44100 Hz"
+popup/item_3/id = 3
+script = ExtResource("4_4wlrx")
+
+[node name="Label" type="Label" parent="PCB/Control/MixRate"]
+use_parent_material = true
+layout_mode = 0
+offset_left = -46.0
+offset_top = 3.0
+offset_right = -6.0
+offset_bottom = 29.0
+tooltip_text = "Mix Rate"
+mouse_filter = 1
+text = "Rat"
+
+[node name="AnimationSpeed" type="HBoxContainer" parent="PCB/Control"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 291.0
+offset_top = 266.0
+offset_right = 547.0
+offset_bottom = 298.0
+script = ExtResource("5_6244k")
+
+[node name="Label" type="Label" parent="PCB/Control/AnimationSpeed"]
+use_parent_material = true
+layout_mode = 2
+size_flags_vertical = 1
+tooltip_text = "Animation Speed
+"
+mouse_filter = 1
+text = "Spe "
+
+[node name="Slider" type="HSlider" parent="PCB/Control/AnimationSpeed"]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.2
+max_value = 4.0
+step = 0.05
+value = 1.0
+
+[node name="CopyPaste" type="HBoxContainer" parent="PCB/Control"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 672.0
+offset_top = 67.0
+offset_right = 866.0
+offset_bottom = 104.0
+script = ExtResource("6_81hqd")
+
+[node name="Copy" type="TextureButton" parent="PCB/Control/CopyPaste"]
+use_parent_material = true
+layout_mode = 2
+texture_normal = ExtResource("7_6vdtn")
+texture_pressed = ExtResource("8_2av54")
+
+[node name="Paste" type="TextureButton" parent="PCB/Control/CopyPaste"]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 10
+texture_normal = ExtResource("9_fb56f")
+texture_pressed = ExtResource("10_s1mb4")
+
+[node name="Hue" type="HBoxContainer" parent="PCB/Control"]
+use_parent_material = true
+layout_mode = 2
+offset_left = 243.0
+offset_top = 309.0
+offset_right = 617.0
+offset_bottom = 349.0
+script = ExtResource("11_kw86s")
+
+[node name="Label" type="Label" parent="PCB/Control/Hue"]
+use_parent_material = true
+layout_mode = 2
+text = "Hue "
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="PCB/Control/Hue"]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.0
+value = 0.01
+
+[node name="VSeparator" type="VSeparator" parent="PCB/Control/Hue"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="Gay" type="TextureButton" parent="PCB/Control/Hue"]
+use_parent_material = true
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("12_fnlhx")
+texture_pressed = ExtResource("13_1esoh")
+
+[node name="Info" type="Label" parent="PCB"]
+layout_mode = 0
+offset_left = 658.0
+offset_top = 24.0
+offset_right = 884.0
+offset_bottom = 58.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = ">"
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="PCB/Info"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -6.0
+offset_top = 1.0
+offset_right = 228.0
+offset_bottom = 36.0
+color = Color(0.121569, 0.14902, 0.113725, 1)
+
+[node name="Wave" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BG" type="ColorRect" parent="Wave"]
+visible = false
+show_behind_parent = true
+layout_mode = 0
+offset_right = 590.0
+offset_bottom = 200.0
+color = Color(0.121569, 0.14902, 0.113725, 1)
+
+[node name="0Line" type="Line2D" parent="Wave"]
+points = PackedVector2Array(273, 50, 157, 45)
+width = 2.0
+texture = ExtResource("48_4py3e")
+texture_mode = 2
+
+[node name="Line2D" type="Line2D" parent="Wave"]
+material = ExtResource("12_1j4f8")
+position = Vector2(-174, 16)
+points = PackedVector2Array(176, 98)
+width = 3.0
+default_color = Color(0.968627, 0.027451, 0.027451, 1)
+gradient = SubResource("Gradient_n2oxx")
+joint_mode = 2
+
+[node name="AnimationProgress" type="Line2D" parent="Wave"]
+visible = false
+material = ExtResource("12_1j4f8")
+points = PackedVector2Array(0, 0, 0, 152)
+width = 8.0
+default_color = Color(1, 0.258824, 0.258824, 0.54902)
+
+[node name="Speaker" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 789.0
+offset_top = 479.0
+offset_right = 829.0
+offset_bottom = 519.0
+script = ExtResource("28_ga5l0")
+
+[node name="Background" type="Sprite2D" parent="Speaker"]
+visible = false
+position = Vector2(-4, 23)
+texture = ExtResource("71_evfg5")
+
+[node name="Back" type="Sprite2D" parent="Speaker"]
+texture = ExtResource("29_wbf4v")
+
+[node name="Front" type="Sprite2D" parent="Speaker"]
+texture = ExtResource("30_s13xo")
+
+[node name="VolumeBack" type="TextureRect" parent="Speaker"]
+material = ExtResource("12_1j4f8")
+layout_mode = 0
+offset_left = -129.0
+offset_top = 101.0
+offset_right = 113.0
+offset_bottom = 163.0
+texture = ExtResource("18_2cho2")
+
+[node name="Volume" type="HSlider" parent="Speaker"]
+top_level = true
+material = ExtResource("12_1j4f8")
+layout_mode = 0
+offset_left = 718.0
+offset_top = 594.0
+offset_right = 887.0
+offset_bottom = 626.0
+value = 75.0
+
+[node name="Label" type="Label" parent="Speaker/Volume"]
+layout_mode = 0
+offset_left = -42.0
+offset_right = -2.0
+offset_bottom = 26.0
+text = "VOL"
+
+[node name="Timer" type="Timer" parent="Speaker"]
+wait_time = 3.0
+autostart = true
+
+[node name="Frame" type="Control" parent="."]
+material = ExtResource("12_1j4f8")
+anchors_preset = 0
+offset_left = -79.0
+offset_top = -53.0
+offset_right = 945.0
+offset_bottom = 670.0
+
+[node name="Texture" type="TextureRect" parent="Frame"]
+use_parent_material = true
+layout_mode = 0
+offset_left = -7.0
+offset_top = 1.0
+offset_right = 1033.0
+offset_bottom = 721.0
+texture = ExtResource("3_5wlxt")
+
+[node name="Bottom" type="TextureRect" parent="Frame/Texture"]
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_right = 1040.0
+offset_bottom = 720.0
+texture = ExtResource("5_dfrx0")
+
+[node name="Presets" type="GridContainer" parent="Frame"]
+use_parent_material = true
+layout_direction = 3
+layout_mode = 0
+offset_left = 788.0
+offset_top = 272.0
+offset_right = 988.0
+offset_bottom = 376.0
+columns = 3
+script = ExtResource("9_ctcp7")
+metadata/_edit_group_ = true
+
+[node name="LineButton" type="TextureButton" parent="Frame/Presets"]
+use_parent_material = true
+layout_mode = 2
+tooltip_text = "Line"
+texture_normal = ExtResource("14_vrnkv")
+texture_pressed = ExtResource("15_fs2y8")
+
+[node name="SawButton" type="TextureButton" parent="Frame/Presets"]
+use_parent_material = true
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "Sawtooth"
+texture_normal = ExtResource("12_div7s")
+texture_pressed = ExtResource("13_6q866")
+
+[node name="SinButton" type="TextureButton" parent="Frame/Presets"]
+use_parent_material = true
+layout_mode = 2
+tooltip_text = "Sine"
+keep_pressed_outside = true
+texture_normal = ExtResource("10_momov")
+texture_pressed = ExtResource("11_qo4ax")
+stretch_mode = 5
+
+[node name="WeirButton" type="TextureButton" parent="Frame/Presets"]
+use_parent_material = true
+layout_mode = 2
+tooltip_text = "Weierstrass"
+keep_pressed_outside = true
+texture_normal = ExtResource("25_gy1di")
+texture_pressed = ExtResource("26_liykc")
+stretch_mode = 5
+
+[node name="SqrButton" type="TextureButton" parent="Frame/Presets"]
+use_parent_material = true
+layout_mode = 2
+tooltip_text = "Square"
+keep_pressed_outside = true
+texture_normal = ExtResource("18_54wux")
+texture_pressed = ExtResource("19_o4jso")
+stretch_mode = 5
+
+[node name="TriButton" type="TextureButton" parent="Frame/Presets"]
+use_parent_material = true
+layout_mode = 2
+tooltip_text = "Triangle"
+keep_pressed_outside = true
+texture_normal = ExtResource("16_jwdwn")
+texture_pressed = ExtResource("17_8eahx")
+stretch_mode = 5
+
+[node name="GlobalButton" type="TextureButton" parent="Frame/Presets"]
+use_parent_material = true
+layout_mode = 2
+tooltip_text = "Global Warming"
+texture_normal = ExtResource("20_vm4db")
+texture_pressed = ExtResource("21_m1u2q")
+script = ExtResource("20_e32en")
+
+[node name="Octave" type="Control" parent="Frame"]
+use_parent_material = true
+anchors_preset = 0
+offset_left = 566.0
+offset_top = 328.0
+offset_right = 606.0
+offset_bottom = 368.0
+script = ExtResource("20_mltv8")
+metadata/_edit_group_ = true
+
+[node name="Indicator" type="Sprite2D" parent="Frame/Octave"]
+use_parent_material = true
+position = Vector2(0, -2)
+texture = ExtResource("21_5gu60")
+centered = false
+hframes = 7
+frame = 3
+
+[node name="Minus" type="TextureButton" parent="Frame/Octave"]
+use_parent_material = true
+layout_mode = 0
+offset_top = 13.0
+offset_right = 32.0
+offset_bottom = 45.0
+tooltip_text = "Octave -"
+texture_normal = ExtResource("22_lrmvv")
+texture_pressed = ExtResource("23_iqnjy")
+
+[node name="Plus" type="TextureButton" parent="Frame/Octave"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 68.0
+offset_top = 13.0
+offset_right = 100.0
+offset_bottom = 45.0
+tooltip_text = "Octave +"
+texture_normal = ExtResource("24_ofmss")
+texture_pressed = ExtResource("25_7631a")
+
+[node name="Label" type="Label" parent="Frame/Octave"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 32.0
+offset_top = 17.0
+offset_right = 68.0
+offset_bottom = 43.0
+tooltip_text = "Octave"
+mouse_filter = 1
+text = "OCT"
+
+[node name="HFO" type="Control" parent="Frame"]
+use_parent_material = true
+anchors_preset = 0
+offset_left = 686.0
+offset_top = 215.0
+offset_right = 726.0
+offset_bottom = 255.0
+script = ExtResource("31_wndd2")
+metadata/_edit_group_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Frame/HFO"]
+use_parent_material = true
+layout_mode = 0
+offset_top = -1.0
+offset_right = 108.0
+offset_bottom = 158.0
+
+[node name="Sliders" type="HBoxContainer" parent="Frame/HFO/VBoxContainer"]
+use_parent_material = true
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 20.0
+theme_override_constants/separation = 6
+
+[node name="Frequency" type="VSlider" parent="Frame/HFO/VBoxContainer/Sliders"]
+use_parent_material = true
+layout_mode = 2
+min_value = 1.0
+max_value = 60.0
+value = 10.0
+rounded = true
+
+[node name="Depth" type="VSlider" parent="Frame/HFO/VBoxContainer/Sliders"]
+use_parent_material = true
+layout_mode = 2
+min_value = 0.05
+max_value = 0.2
+step = 0.01
+value = 0.1
+
+[node name="Oscillator" type="VSlider" parent="Frame/HFO/VBoxContainer/Sliders"]
+use_parent_material = true
+layout_mode = 2
+min_value = 1.0
+max_value = 4.0
+value = 4.0
+tick_count = 4
+ticks_on_borders = true
+
+[node name="Labels" type="HBoxContainer" parent="Frame/HFO/VBoxContainer"]
+use_parent_material = true
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/separation = 6
+
+[node name="F" type="Label" parent="Frame/HFO/VBoxContainer/Labels"]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 6
+tooltip_text = "Frequency"
+mouse_filter = 1
+text = "F"
+horizontal_alignment = 1
+
+[node name="D" type="Label" parent="Frame/HFO/VBoxContainer/Labels"]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Depth"
+mouse_filter = 0
+text = "D"
+horizontal_alignment = 1
+
+[node name="O" type="Label" parent="Frame/HFO/VBoxContainer/Labels"]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Oscillator Type"
+mouse_filter = 0
+text = "O"
+horizontal_alignment = 1
+
+[node name="Symbols" type="Control" parent="Frame/HFO"]
+use_parent_material = true
+anchors_preset = 0
+offset_left = 121.0
+offset_top = 5.0
+offset_right = 161.0
+offset_bottom = 53.0
+
+[node name="Sin" type="TextureRect" parent="Frame/HFO/Symbols"]
+use_parent_material = true
+layout_mode = 0
+offset_right = 38.0
+offset_bottom = 16.0
+texture = ExtResource("32_qmbc4")
+
+[node name="Sqr" type="TextureRect" parent="Frame/HFO/Symbols"]
+use_parent_material = true
+layout_mode = 0
+offset_top = 34.0
+offset_right = 38.0
+offset_bottom = 50.0
+texture = ExtResource("33_71sia")
+
+[node name="Tri" type="TextureRect" parent="Frame/HFO/Symbols"]
+use_parent_material = true
+layout_mode = 0
+offset_top = 64.0
+offset_right = 38.0
+offset_bottom = 80.0
+texture = ExtResource("34_qgvpk")
+
+[node name="Saw" type="TextureRect" parent="Frame/HFO/Symbols"]
+use_parent_material = true
+layout_mode = 0
+offset_top = 97.0
+offset_right = 38.0
+offset_bottom = 113.0
+texture = ExtResource("35_lav07")
+
+[node name="Button" type="TextureButton" parent="Frame/HFO"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 110.0
+offset_top = 131.0
+offset_right = 168.0
+offset_bottom = 161.0
+tooltip_text = "High Frequency Oscillator"
+texture_normal = ExtResource("36_u201u")
+texture_pressed = ExtResource("37_71yow")
+
+[node name="NoteLength" type="HSlider" parent="Frame"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 867.0
+offset_top = 122.0
+offset_right = 984.0
+offset_bottom = 154.0
+min_value = 0.1
+max_value = 1.2
+step = 0.05
+value = 0.1
+script = ExtResource("26_5543f")
+
+[node name="Label" type="Label" parent="Frame/NoteLength"]
+use_parent_material = true
+layout_mode = 0
+offset_left = -38.0
+offset_top = -1.0
+offset_right = -2.0
+offset_bottom = 25.0
+tooltip_text = "Note Length"
+mouse_filter = 1
+text = "LEN"
+
+[node name="Amp" type="VSlider" parent="Frame"]
+modulate = Color(0.721569, 0.721569, 0.721569, 1)
+z_index = 1
+use_parent_material = true
+layout_mode = 0
+offset_left = 38.0
+offset_top = 72.0
+offset_right = 70.0
+offset_bottom = 233.0
+min_value = 0.51
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource("27_2cy22")
+
+[node name="Label" type="Label" parent="Frame/Amp"]
+use_parent_material = true
+layout_mode = 0
+offset_left = -4.0
+offset_top = 161.0
+offset_right = 36.0
+offset_bottom = 187.0
+tooltip_text = "Amplitude"
+mouse_filter = 1
+text = "A"
+horizontal_alignment = 1
+
+[node name="Sliders" type="VBoxContainer" parent="Frame"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 258.0
+offset_top = 266.0
+offset_right = 549.0
+offset_bottom = 378.0
+theme_override_constants/separation = 6
+metadata/_edit_group_ = true
+
+[node name="S&H" type="HBoxContainer" parent="Frame/Sliders"]
+use_parent_material = true
+layout_mode = 2
+
+[node name="SampleAndHold" type="HSlider" parent="Frame/Sliders/S&H"]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 10.0
+max_value = 50.0
+value = 50.0
+script = ExtResource("38_h6caw")
+
+[node name="Button" type="TextureButton" parent="Frame/Sliders/S&H"]
+use_parent_material = true
+layout_mode = 2
+tooltip_text = "Sample & Hold"
+texture_normal = ExtResource("39_6lmuw")
+texture_pressed = ExtResource("40_p5sbl")
+
+[node name="Smooth" type="HBoxContainer" parent="Frame/Sliders"]
+use_parent_material = true
+layout_mode = 2
+
+[node name="Slider" type="HSlider" parent="Frame/Sliders/Smooth"]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 3.0
+max_value = 43.0
+step = 8.0
+value = 3.0
+rounded = true
+tick_count = 6
+ticks_on_borders = true
+script = ExtResource("41_6gjon")
+
+[node name="Button" type="TextureButton" parent="Frame/Sliders/Smooth"]
+use_parent_material = true
+layout_mode = 2
+tooltip_text = "Gaussian Smoothing"
+texture_normal = ExtResource("42_upg50")
+texture_pressed = ExtResource("43_flvd7")
+
+[node name="PWM" type="HBoxContainer" parent="Frame/Sliders"]
+use_parent_material = true
+layout_mode = 2
+
+[node name="Slider" type="HSlider" parent="Frame/Sliders/PWM"]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.05
+max_value = 0.95
+step = 0.01
+value = 0.3
+tick_count = 3
+ticks_on_borders = true
+script = ExtResource("44_wi00u")
+
+[node name="Button" type="TextureButton" parent="Frame/Sliders/PWM"]
+use_parent_material = true
+layout_mode = 2
+tooltip_text = "Pulse Width Modulation"
+texture_normal = ExtResource("45_fd5a7")
+texture_pressed = ExtResource("46_ojmxm")
+texture_disabled = ExtResource("47_irxhb")
+
+[node name="Filters" type="Control" parent="Frame"]
+use_parent_material = true
+anchors_preset = 0
+offset_left = 869.0
+offset_top = 213.0
+offset_right = 992.0
+offset_bottom = 376.0
+script = ExtResource("54_dr268")
+metadata/_edit_group_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Frame/Filters"]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -9.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Buttons" type="HBoxContainer" parent="Frame/Filters/VBoxContainer"]
+use_parent_material = true
+layout_mode = 2
+
+[node name="LPF" type="TextureButton" parent="Frame/Filters/VBoxContainer/Buttons"]
+use_parent_material = true
+layout_mode = 2
+tooltip_text = "Low Pass Filter"
+toggle_mode = true
+texture_normal = ExtResource("54_ryq0r")
+texture_pressed = ExtResource("55_wwq56")
+texture_disabled = ExtResource("55_wwq56")
+
+[node name="HPF" type="TextureButton" parent="Frame/Filters/VBoxContainer/Buttons"]
+use_parent_material = true
+layout_mode = 2
+tooltip_text = "High Pass Filter"
+toggle_mode = true
+texture_normal = ExtResource("56_dlxke")
+texture_pressed = ExtResource("57_f1esm")
+texture_disabled = ExtResource("57_f1esm")
+
+[node name="Sliders" type="HBoxContainer" parent="Frame/Filters/VBoxContainer"]
+use_parent_material = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Cutoff" type="VSlider" parent="Frame/Filters/VBoxContainer/Sliders"]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 100.0
+max_value = 10000.0
+step = 10.0
+value = 2000.0
+
+[node name="Resonance" type="VSlider" parent="Frame/Filters/VBoxContainer/Sliders"]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.2
+max_value = 5.0
+step = 0.01
+value = 0.5
+
+[node name="Labels" type="HBoxContainer" parent="Frame/Filters/VBoxContainer"]
+use_parent_material = true
+layout_mode = 2
+
+[node name="C" type="Label" parent="Frame/Filters/VBoxContainer/Labels"]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Cutoff Frequency"
+mouse_filter = 1
+text = "C"
+horizontal_alignment = 1
+
+[node name="R" type="Label" parent="Frame/Filters/VBoxContainer/Labels"]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Resonance"
+mouse_filter = 1
+text = "R"
+horizontal_alignment = 1
+
+[node name="Effects" type="Control" parent="Frame"]
+use_parent_material = true
+anchors_preset = 0
+offset_left = 690.0
+offset_top = 47.0
+offset_right = 730.0
+offset_bottom = 87.0
+script = ExtResource("65_b07jp")
+metadata/_edit_group_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Frame/Effects"]
+use_parent_material = true
+layout_mode = 0
+offset_right = 138.0
+offset_bottom = 151.0
+
+[node name="Delay" type="VBoxContainer" parent="Frame/Effects/HBoxContainer"]
+use_parent_material = true
+layout_mode = 2
+
+[node name="DelButton" type="TextureButton" parent="Frame/Effects/HBoxContainer/Delay"]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 0
+tooltip_text = "Delay"
+toggle_mode = true
+texture_normal = ExtResource("65_jc7n3")
+texture_pressed = ExtResource("66_t3237")
+
+[node name="DelSlider" type="VSlider" parent="Frame/Effects/HBoxContainer/Delay"]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 3
+min_value = -40.0
+max_value = -6.0
+step = 0.5
+value = -12.0
+
+[node name="Reverb" type="VBoxContainer" parent="Frame/Effects/HBoxContainer"]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RevButton" type="TextureButton" parent="Frame/Effects/HBoxContainer/Reverb"]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+tooltip_text = "Reverb"
+toggle_mode = true
+texture_normal = ExtResource("67_o53dn")
+texture_pressed = ExtResource("68_pegko")
+
+[node name="RevSlider" type="VSlider" parent="Frame/Effects/HBoxContainer/Reverb"]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 3
+
+[node name="Chorus" type="Control" parent="Frame"]
+use_parent_material = true
+anchors_preset = 0
+offset_left = 824.0
+offset_top = 153.0
+offset_right = 864.0
+offset_bottom = 193.0
+script = ExtResource("70_l2uju")
+
+[node name="Voices" type="HSlider" parent="Frame/Chorus"]
+use_parent_material = true
+layout_mode = 2
+offset_left = 43.0
+offset_top = 8.0
+offset_right = 160.0
+offset_bottom = 40.0
+max_value = 3.0
+tick_count = 4
+ticks_on_borders = true
+
+[node name="Light" type="Sprite2D" parent="Frame/Chorus"]
+use_parent_material = true
+position = Vector2(22, 32)
+texture = ExtResource("70_elpuh")
+vframes = 2
+
+[node name="Label" type="Label" parent="Frame/Chorus"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 5.0
+offset_top = -4.0
+offset_right = 45.0
+offset_bottom = 22.0
+tooltip_text = "Chorus"
+mouse_filter = 1
+text = "CHO"
+
+[node name="Buttons" type="Control" parent="Frame"]
+use_parent_material = true
+anchors_preset = 0
+offset_left = 557.0
+offset_top = 268.0
+offset_right = 597.0
+offset_bottom = 308.0
+
+[node name="Undo" type="TextureButton" parent="Frame/Buttons"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 73.0
+offset_right = 113.0
+offset_bottom = 42.0
+tooltip_text = "Undo"
+shortcut = SubResource("Shortcut_ytye8")
+shortcut_in_tooltip = false
+texture_normal = ExtResource("45_crfk2")
+texture_pressed = ExtResource("52_2plo3")
+texture_disabled = ExtResource("46_65e54")
+script = ExtResource("47_0o2xt")
+
+[node name="Flip" type="Control" parent="Frame/Buttons"]
+use_parent_material = true
+anchors_preset = 0
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 63.0
+offset_bottom = 36.0
+script = ExtResource("60_0d4dn")
+
+[node name="UpDown" type="TextureButton" parent="Frame/Buttons/Flip"]
+use_parent_material = true
+layout_mode = 2
+offset_left = 8.0
+offset_top = -5.0
+offset_right = 26.0
+offset_bottom = 27.0
+tooltip_text = "Flip Vertical"
+texture_normal = ExtResource("60_im55s")
+texture_pressed = ExtResource("61_spkmi")
+
+[node name="LeftRight" type="TextureButton" parent="Frame/Buttons/Flip"]
+use_parent_material = true
+layout_mode = 2
+offset_left = 31.0
+offset_top = 28.0
+offset_right = 59.0
+offset_bottom = 52.0
+size_flags_horizontal = 10
+size_flags_vertical = 4
+tooltip_text = "Flip Horizontal"
+texture_normal = ExtResource("62_uuebv")
+texture_pressed = ExtResource("63_qnc6m")
+
+[node name="Stop" type="TextureButton" parent="Frame/Buttons"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 39.0
+offset_top = 2.0
+offset_right = 63.0
+offset_bottom = 30.0
+tooltip_text = "Stop"
+shortcut = SubResource("Shortcut_u7dkg")
+shortcut_in_tooltip = false
+texture_normal = ExtResource("64_p813c")
+texture_pressed = ExtResource("65_53wr2")
+texture_disabled = ExtResource("66_8kkbm")
+script = ExtResource("67_khhhq")
+
+[node name="Separators" type="Control" parent="Frame"]
+use_parent_material = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="sep" type="TextureRect" parent="Frame/Separators"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 248.0
+offset_top = 273.0
+offset_right = 252.0
+offset_bottom = 373.0
+texture = ExtResource("66_lw8f7")
+expand_mode = 1
+
+[node name="sep2" type="TextureRect" parent="Frame/Separators"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 556.0
+offset_top = 273.0
+offset_right = 560.0
+offset_bottom = 373.0
+texture = ExtResource("66_lw8f7")
+expand_mode = 1
+
+[node name="sep3" type="TextureRect" parent="Frame/Separators"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 676.0
+offset_top = 273.0
+offset_right = 680.0
+offset_bottom = 373.0
+texture = ExtResource("66_lw8f7")
+expand_mode = 1
+
+[node name="sep4" type="TextureRect" parent="Frame/Separators"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 857.0
+offset_top = 208.0
+offset_right = 861.0
+offset_bottom = 373.0
+texture = ExtResource("66_lw8f7")
+expand_mode = 1
+
+[node name="sep5" type="TextureRect" parent="Frame/Separators"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 680.0
+offset_top = 208.0
+offset_right = 684.0
+offset_bottom = 518.0
+rotation = -1.57079
+texture = ExtResource("66_lw8f7")
+expand_mode = 1
+
+[node name="sep6" type="TextureRect" parent="Frame/Separators"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 820.0
+offset_top = 47.0
+offset_right = 824.0
+offset_bottom = 205.0
+texture = ExtResource("66_lw8f7")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Frame"]
+libraries = {
+"": SubResource("AnimationLibrary_optqw")
+}
+
+[node name="Screws" type="Control" parent="Frame"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("71_8yo83")
+
+[node name="Screw" parent="Frame/Screws" instance=ExtResource("71_a50pt")]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 317.0
+offset_right = 61.0
+offset_bottom = 377.0
+texture = SubResource("AtlasTexture_kxca1")
+screw_name = "1"
+
+[node name="Screw2" parent="Frame/Screws" instance=ExtResource("71_a50pt")]
+layout_mode = 0
+offset_left = 963.0
+offset_top = 317.0
+offset_right = 989.0
+offset_bottom = 381.0
+texture = SubResource("AtlasTexture_st35w")
+screw_name = "2"
+
+[node name="Screw3" parent="Frame/Screws" instance=ExtResource("71_a50pt")]
+layout_mode = 0
+offset_left = 963.0
+offset_top = 3.0
+offset_right = 989.0
+offset_bottom = 67.0
+texture = SubResource("AtlasTexture_n7ppn")
+screw_name = "3"
+
+[node name="Screw4" parent="Frame/Screws" instance=ExtResource("71_a50pt")]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 3.0
+offset_right = 61.0
+offset_bottom = 67.0
+texture = SubResource("AtlasTexture_6vm1h")
+screw_name = "4"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Frame/Screws"]
+libraries = {
+"": SubResource("AnimationLibrary_722ww")
+}
+
+[node name="Piano" type="Control" parent="."]
+anchors_preset = 0
+offset_left = -67.0
+offset_top = 346.0
+offset_right = -27.0
+offset_bottom = 386.0
+script = ExtResource("4_4m6bh")
+metadata/_edit_group_ = true
+
+[node name="WhiteKeys" type="HBoxContainer" parent="Piano"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 38.0
+offset_right = 694.0
+offset_bottom = 294.0
+
+[node name="C" type="TextureButton" parent="Piano/WhiteKeys"]
+layout_mode = 2
+mouse_filter = 1
+action_mode = 0
+shortcut = SubResource("Shortcut_ljuqf")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_qqpkt")
+texture_pressed = SubResource("AtlasTexture_i35d7")
+
+[node name="D" type="TextureButton" parent="Piano/WhiteKeys"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_rqoe5")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_i4o3v")
+texture_pressed = SubResource("AtlasTexture_smrue")
+
+[node name="E" type="TextureButton" parent="Piano/WhiteKeys"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_o04f5")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_wfscu")
+texture_pressed = SubResource("AtlasTexture_o3gdd")
+
+[node name="F" type="TextureButton" parent="Piano/WhiteKeys"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_1v67f")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_aytut")
+texture_pressed = SubResource("AtlasTexture_posrl")
+
+[node name="G" type="TextureButton" parent="Piano/WhiteKeys"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_xq78v")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_husw8")
+texture_pressed = SubResource("AtlasTexture_g63qy")
+
+[node name="A" type="TextureButton" parent="Piano/WhiteKeys"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_cmhdo")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_gmgxk")
+texture_pressed = SubResource("AtlasTexture_l1k3v")
+
+[node name="B" type="TextureButton" parent="Piano/WhiteKeys"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_x4l82")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_hxdxf")
+texture_pressed = SubResource("AtlasTexture_d76se")
+
+[node name="C-UP" type="TextureButton" parent="Piano/WhiteKeys"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_81nii")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_8wsui")
+texture_pressed = SubResource("AtlasTexture_jh68b")
+
+[node name="D-UP" type="TextureButton" parent="Piano/WhiteKeys"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_ggqjh")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_fn81d")
+texture_pressed = SubResource("AtlasTexture_dm188")
+
+[node name="E-UP" type="TextureButton" parent="Piano/WhiteKeys"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_wwdvg")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_l5rdh")
+texture_pressed = SubResource("AtlasTexture_gnfjr")
+
+[node name="BlackKeys1" type="HBoxContainer" parent="Piano"]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 38.0
+offset_right = 199.0
+offset_bottom = 198.0
+
+[node name="C#" type="TextureButton" parent="Piano/BlackKeys1"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_tpnd3")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_j881x")
+texture_pressed = SubResource("AtlasTexture_g4atv")
+
+[node name="D#" type="TextureButton" parent="Piano/BlackKeys1"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_n0pqy")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_lbb2i")
+texture_pressed = SubResource("AtlasTexture_gnhck")
+
+[node name="BlackKeys2" type="HBoxContainer" parent="Piano"]
+layout_mode = 2
+offset_left = 267.0
+offset_top = 38.0
+offset_right = 463.0
+offset_bottom = 198.0
+
+[node name="F#" type="TextureButton" parent="Piano/BlackKeys2"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_mvik3")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_bnui1")
+texture_pressed = SubResource("AtlasTexture_a2i32")
+
+[node name="G#" type="TextureButton" parent="Piano/BlackKeys2"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_q1cpp")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_hwu8m")
+texture_pressed = SubResource("AtlasTexture_7many")
+
+[node name="A#" type="TextureButton" parent="Piano/BlackKeys2"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_oao6r")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_dfwqa")
+texture_pressed = SubResource("AtlasTexture_ogl6s")
+
+[node name="BlackKeys3" type="HBoxContainer" parent="Piano"]
+layout_mode = 2
+offset_left = 531.0
+offset_top = 38.0
+offset_right = 661.0
+offset_bottom = 198.0
+
+[node name="C-UP#" type="TextureButton" parent="Piano/BlackKeys3"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_0c7dc")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_xuce7")
+texture_pressed = SubResource("AtlasTexture_kfjys")
+
+[node name="D-UP#" type="TextureButton" parent="Piano/BlackKeys3"]
+layout_mode = 2
+action_mode = 0
+shortcut = SubResource("Shortcut_acpdg")
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_rifto")
+texture_pressed = SubResource("AtlasTexture_11x6k")
+
+[node name="OpenClose" type="TextureButton" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.784314)
+z_index = 2
+layout_mode = 0
+offset_left = -104.0
+offset_top = 637.0
+offset_right = -42.0
+offset_bottom = 661.0
+disabled = true
+toggle_mode = true
+texture_normal = ExtResource("83_p2srs")
+texture_pressed = ExtResource("84_wn21w")
+texture_disabled = ExtResource("85_a1vpl")
+script = ExtResource("86_ginjs")
+
+[node name="AudioStreamPlayers" type="Node" parent="."]
+script = ExtResource("49_ru7c7")
+
+[node name="1" type="AudioStreamPlayer" parent="AudioStreamPlayers"]
+stream = SubResource("AudioStreamGenerator_k1b1u")
+volume_db = -10.0
+
+[node name="2" type="AudioStreamPlayer" parent="AudioStreamPlayers"]
+stream = SubResource("AudioStreamGenerator_65epj")
+volume_db = -10.0
+
+[node name="3" type="AudioStreamPlayer" parent="AudioStreamPlayers"]
+stream = SubResource("AudioStreamGenerator_3adlp")
+
+[node name="4" type="AudioStreamPlayer" parent="AudioStreamPlayers"]
+stream = SubResource("AudioStreamGenerator_7lml7")
+
+[node name="5" type="AudioStreamPlayer" parent="AudioStreamPlayers"]
+stream = SubResource("AudioStreamGenerator_aya6c")
+
+[connection signal="item_selected" from="PCB/Control/MixRate" to="PCB/Control/MixRate" method="_on_item_selected"]
+[connection signal="value_changed" from="PCB/Control/AnimationSpeed/Slider" to="PCB/Control/AnimationSpeed" method="_on_slider_value_changed"]
+[connection signal="pressed" from="PCB/Control/CopyPaste/Copy" to="PCB/Control/CopyPaste" method="_on_copy_pressed"]
+[connection signal="pressed" from="PCB/Control/CopyPaste/Paste" to="PCB/Control/CopyPaste" method="_on_paste_pressed"]
+[connection signal="value_changed" from="PCB/Control/Hue/HSlider" to="PCB/Control/Hue" method="_on_h_slider_value_changed"]
+[connection signal="toggled" from="PCB/Control/Hue/Gay" to="PCB/Control/Hue" method="_on_gay_toggled"]
+[connection signal="value_changed" from="Speaker/Volume" to="Speaker" method="_on_volume_value_changed"]
+[connection signal="timeout" from="Speaker/Timer" to="Speaker" method="_on_timer_timeout"]
+[connection signal="pressed" from="Frame/Presets/LineButton" to="Frame/Presets" method="preset_lin"]
+[connection signal="pressed" from="Frame/Presets/SawButton" to="Frame/Presets" method="preset_saw"]
+[connection signal="pressed" from="Frame/Presets/SinButton" to="Frame/Presets" method="preset_sin"]
+[connection signal="pressed" from="Frame/Presets/WeirButton" to="Frame/Presets" method="preset_weierstrass"]
+[connection signal="pressed" from="Frame/Presets/SqrButton" to="Frame/Presets" method="preset_sqr"]
+[connection signal="pressed" from="Frame/Presets/TriButton" to="Frame/Presets" method="preset_tri"]
+[connection signal="pressed" from="Frame/Presets/GlobalButton" to="Frame/Presets" method="preset_global"]
+[connection signal="pressed" from="Frame/Octave/Minus" to="Frame/Octave" method="_on_minus_pressed"]
+[connection signal="pressed" from="Frame/Octave/Plus" to="Frame/Octave" method="_on_plus_pressed"]
+[connection signal="pressed" from="Frame/HFO/Button" to="Frame/HFO" method="_on_button_pressed"]
+[connection signal="value_changed" from="Frame/NoteLength" to="Frame/NoteLength" method="_on_value_changed"]
+[connection signal="drag_ended" from="Frame/Amp" to="Frame/Amp" method="_on_drag_ended"]
+[connection signal="pressed" from="Frame/Sliders/S&H/Button" to="Frame/Sliders/S&H/SampleAndHold" method="_on_button_pressed"]
+[connection signal="pressed" from="Frame/Sliders/Smooth/Button" to="Frame/Sliders/Smooth/Slider" method="_on_button_pressed"]
+[connection signal="drag_started" from="Frame/Sliders/PWM/Slider" to="Frame/Sliders/PWM/Slider" method="_on_drag_started"]
+[connection signal="value_changed" from="Frame/Sliders/PWM/Slider" to="Frame/Sliders/PWM/Slider" method="_on_value_changed"]
+[connection signal="pressed" from="Frame/Sliders/PWM/Button" to="Frame/Sliders/PWM/Slider" method="_on_button_pressed"]
+[connection signal="pressed" from="Frame/Filters/VBoxContainer/Buttons/LPF" to="Frame/Filters" method="_on_lpf_pressed"]
+[connection signal="pressed" from="Frame/Filters/VBoxContainer/Buttons/HPF" to="Frame/Filters" method="_on_hpf_pressed"]
+[connection signal="value_changed" from="Frame/Filters/VBoxContainer/Sliders/Cutoff" to="Frame/Filters" method="_on_cutoff_value_changed"]
+[connection signal="value_changed" from="Frame/Filters/VBoxContainer/Sliders/Resonance" to="Frame/Filters" method="_on_resonance_value_changed"]
+[connection signal="pressed" from="Frame/Effects/HBoxContainer/Delay/DelButton" to="Frame/Effects" method="_on_del_button_pressed"]
+[connection signal="value_changed" from="Frame/Effects/HBoxContainer/Delay/DelSlider" to="Frame/Effects" method="_on_del_slider_value_changed"]
+[connection signal="pressed" from="Frame/Effects/HBoxContainer/Reverb/RevButton" to="Frame/Effects" method="_on_rev_button_pressed"]
+[connection signal="value_changed" from="Frame/Effects/HBoxContainer/Reverb/RevSlider" to="Frame/Effects" method="_on_rev_slider_value_changed"]
+[connection signal="value_changed" from="Frame/Chorus/Voices" to="Frame/Chorus" method="_on_voices_value_changed"]
+[connection signal="pressed" from="Frame/Buttons/Undo" to="Frame/Buttons/Undo" method="_on_pressed"]
+[connection signal="pressed" from="Frame/Buttons/Flip/UpDown" to="Frame/Buttons/Flip" method="_on_up_down_pressed"]
+[connection signal="pressed" from="Frame/Buttons/Flip/LeftRight" to="Frame/Buttons/Flip" method="_on_left_right_pressed"]
+[connection signal="pressed" from="Frame/Buttons/Stop" to="Frame/Buttons/Stop" method="_on_pressed"]
+[connection signal="animation_finished" from="Frame/AnimationPlayer" to="OpenClose" method="_on_animation_player_animation_finished"]
+[connection signal="unscrewed" from="Frame/Screws/Screw" to="Frame/Screws" method="_on_screw1_unscrewed"]
+[connection signal="unscrewed" from="Frame/Screws/Screw2" to="Frame/Screws" method="_on_screw_2_unscrewed"]
+[connection signal="unscrewed" from="Frame/Screws/Screw3" to="Frame/Screws" method="_on_screw_3_unscrewed"]
+[connection signal="unscrewed" from="Frame/Screws/Screw4" to="Frame/Screws" method="_on_screw_4_unscrewed"]
+[connection signal="pressed" from="Piano/WhiteKeys/C" to="Piano" method="_on_c_button_down"]
+[connection signal="pressed" from="Piano/WhiteKeys/D" to="Piano" method="_on_d_button_down"]
+[connection signal="pressed" from="Piano/WhiteKeys/E" to="Piano" method="_on_e_button_down"]
+[connection signal="pressed" from="Piano/WhiteKeys/F" to="Piano" method="_on_f_button_down"]
+[connection signal="pressed" from="Piano/WhiteKeys/G" to="Piano" method="_on_g_button_down"]
+[connection signal="pressed" from="Piano/WhiteKeys/A" to="Piano" method="_on_a_button_down"]
+[connection signal="pressed" from="Piano/WhiteKeys/B" to="Piano" method="_on_b_button_down"]
+[connection signal="pressed" from="Piano/WhiteKeys/C-UP" to="Piano" method="_on_cup_button_down"]
+[connection signal="pressed" from="Piano/WhiteKeys/D-UP" to="Piano" method="_on_dup_button_down"]
+[connection signal="pressed" from="Piano/WhiteKeys/E-UP" to="Piano" method="_on_eup_button_down"]
+[connection signal="pressed" from="Piano/BlackKeys1/C#" to="Piano" method="_on_c_sharp_button_down"]
+[connection signal="pressed" from="Piano/BlackKeys1/D#" to="Piano" method="_on_d_sharp_button_down"]
+[connection signal="pressed" from="Piano/BlackKeys2/F#" to="Piano" method="_on_f_sharp_button_down"]
+[connection signal="pressed" from="Piano/BlackKeys2/G#" to="Piano" method="_on_g_sharp_button_down"]
+[connection signal="pressed" from="Piano/BlackKeys2/A#" to="Piano" method="_on_a_sharp_button_down"]
+[connection signal="pressed" from="Piano/BlackKeys3/C-UP#" to="Piano" method="_on_cup_sharp_button_down"]
+[connection signal="pressed" from="Piano/BlackKeys3/D-UP#" to="Piano" method="_on_dup_sharp_button_down"]
+[connection signal="button_down" from="OpenClose" to="OpenClose" method="_on_button_down"]
