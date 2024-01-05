@@ -1357,7 +1357,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 min_value = 10.0
 max_value = 50.0
-value = 50.0
+value = 49.0
 script = ExtResource("38_h6caw")
 
 [node name="Button" type="TextureButton" parent="Frame/Sliders/S&H"]
@@ -1973,6 +1973,8 @@ offset_right = -42.0
 offset_bottom = 661.0
 disabled = true
 toggle_mode = true
+shortcut_feedback = false
+shortcut_in_tooltip = false
 texture_normal = ExtResource("83_p2srs")
 texture_pressed = ExtResource("84_wn21w")
 texture_disabled = ExtResource("85_a1vpl")
@@ -1997,6 +1999,10 @@ stream = SubResource("AudioStreamGenerator_7lml7")
 
 [node name="5" type="AudioStreamPlayer" parent="AudioStreamPlayers"]
 stream = SubResource("AudioStreamGenerator_aya6c")
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
 
 [connection signal="item_selected" from="PCB/Control/MixRate" to="PCB/Control/MixRate" method="_on_item_selected"]
 [connection signal="value_changed" from="PCB/Control/AnimationSpeed/Slider" to="PCB/Control/AnimationSpeed" method="_on_slider_value_changed"]

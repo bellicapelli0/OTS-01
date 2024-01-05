@@ -31,10 +31,10 @@ func _ready():
 	line.clear_points()
 	line.position = Vector2(0, 0)
 	
-	var weir = $Frame/Presets.weir
+	
 	
 	for x in width:
-		line.add_point(Vector2(x, weir[x]))
+		line.add_point(Vector2(x, Global.h + 20))
 		
 	$Wave/BG.size = Vector2(width+padding*2, height+padding*2)
 	$Wave/BG.position = Vector2(-padding, -padding)
@@ -45,6 +45,9 @@ func _ready():
 	$"Wave/0Line".points[1] = Vector2(width, height/2.0)
 	
 	$Frame.show()
+	$StartTimer.start()
+	await $StartTimer.timeout
+	$Frame/Presets.preset_weierstrass()
 	
 func _process(delta):
 #region animation

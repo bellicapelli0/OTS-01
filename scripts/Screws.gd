@@ -27,7 +27,7 @@ func _unscrewed():
 		$"../../OpenClose".show()
 
 func _process(_delta):
-	if Input.is_action_just_pressed("open"):
+	if Input.is_action_just_pressed("Open"):
 		_unscrewed()
 		_unscrewed()
 		_unscrewed()
