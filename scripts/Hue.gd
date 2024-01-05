@@ -2,7 +2,7 @@ extends HBoxContainer
 
 @onready var shader : ShaderMaterial = $"../../../Frame".material
 var _animating = false
-var _anim_speed = 0.1
+var _anim_speed = 0.15
 
 func _ready():
 	shader.set_shader_parameter("hue", 0.0)
