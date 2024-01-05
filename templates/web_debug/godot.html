@@ -5,13 +5,77 @@
     <meta name="viewport" content="width=device-width, user-scalable=no" />
     <title>$GODOT_PROJECT_NAME</title>
     <style>
+      @font-face {
+        font-family: "m5x7";
+        src: url("./m5x7.ttf");
+      }
       body {
+        font-family: "m5x7";
         touch-action: none;
         margin: 0;
         border: 0 none;
         padding: 0;
         text-align: center;
         background-color: #e4a672;
+      }
+
+      #embed-bg,
+      #embed-fg {
+        background-image: url(./embed-bg.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-attachment: fixed;
+        background-position: center;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        pointer-events: none;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #embed-bg {
+        background-image: url(./embed-bg.png);
+      }
+      #embed-fg {
+        background-image: url(./embed-fg.png);
+      }
+
+      #text-frame {
+        aspect-ratio: 1160/730;
+        flex-grow: 1;
+        max-height: 100%;
+        max-width: 100%;
+        position: relative;
+        font-size: 3vmin;
+      }
+
+      #ots-screen {
+        position: absolute;
+        /* background: #0000ff80; */
+        color: #f70707;
+        left: 12.672%;
+        top: 6.712%;
+        width: 51.552%;
+        height: 28.493%;
+        /* padding: 1%; */
+        overflow: hidden;
+      }
+
+      #bootup-text {
+        margin: 0 2%;
+        min-height: 100%;
+        position: absolute;
+        bottom: 0;
+      }
+
+      #bootup-text > div {
+        width: 100%;
+        text-align: left;
       }
 
       #canvas {
@@ -125,29 +189,64 @@
         visibility: visible;
       }
     </style>
-    $GODOT_HEAD_INCLUDE
+    <link rel="embed-bg" href="index.embed-bg.png" />
+    < $GODOT_HEAD_INCLUDE
   </head>
   <body>
+    <div id="embed-bg">
+      <div id="text-frame">
+        <div id="ots-screen">
+          <div id="status">
+            <div id="status-progress" style="display: none" oncontextmenu="event.preventDefault();">
+              <div id="status-progress-inner"></div>
+            </div>
+            <div id="status-indeterminate" style="display: none" oncontextmenu="event.preventDefault();">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div id="status-notice" class="godot" style="display: none"></div>
+          </div>
+          <div id="bootup-text">
+            <div>Welcome to OTS-01</div>
+            <div>Version: 0.0.1a-24.00f(nightly)</div>
+            <div>Starting udev: [ OK ]</div>
+            <div>Setting hostname belli: [ OK ]</div>
+            <div>Setting up Logical Volume Management: No volume groups found</div>
+            <div>[ OK ]</div>
+            <div>Locating Speakers</div>
+            <div>[ There They Are ]</div>
+            <div>[ OK ]</div>
+            <div>Reticulating Splines</div>
+            <div>[ OK ]</div>
+            <div>Node graph out of date, rebuilding...</div>
+            <div>[ OK ]</div>
+            <div>Deleting Herobrine</div>
+            <div>[ ERROR ]</div>
+            <div>Calculating Weierstraas Derivative</div>
+            <div>[ FAILED ]</div>
+            <div>Tightening Screws...</div>
+            <div>[ 1 ]</div>
+            <div>[ 2 ]</div>
+            <div>[ 3 ]</div>
+            <div>[ 4 ]</div>
+            <div>[ OK ]</div>
+            <div>Booting...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="embed-fg"></div>
     <canvas id="canvas">
       HTML5 canvas appears to be unsupported in the current browser.<br />
       Please try updating or use a different browser.
     </canvas>
-    <div id="status">
-      <div id="status-progress" style="display: none" oncontextmenu="event.preventDefault();">
-        <div id="status-progress-inner"></div>
-      </div>
-      <div id="status-indeterminate" style="display: none" oncontextmenu="event.preventDefault();">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-      <div id="status-notice" class="godot" style="display: none"></div>
-    </div>
 
     <script src="$GODOT_URL"></script>
     <script>
@@ -156,48 +255,53 @@
 
       (function () {
         const INDETERMINATE_STATUS_STEP_MS = 100;
-        const statusProgress = document.getElementById("status-progress");
-        const statusProgressInner = document.getElementById("status-progress-inner");
-        const statusIndeterminate = document.getElementById("status-indeterminate");
+        // const statusProgress = document.getElementById("status-progress");
+        // const statusProgressInner = document.getElementById("status-progress-inner");
+        // const statusIndeterminate = document.getElementById("status-indeterminate");
         const statusNotice = document.getElementById("status-notice");
+
+        const bootupText = document.getElementById("bootup-text");
+        for (const child of bootupText.children) {
+          child.style.display = "none";
+        }
 
         let initializing = true;
         let statusMode = "hidden";
 
-        let animationCallbacks = [];
-        function animate(time) {
-          animationCallbacks.forEach((callback) => callback(time));
-          requestAnimationFrame(animate);
-        }
-        requestAnimationFrame(animate);
+        // let animationCallbacks = [];
+        // function animate(time) {
+        //   animationCallbacks.forEach((callback) => callback(time));
+        //   requestAnimationFrame(animate);
+        // }
+        // requestAnimationFrame(animate);
 
-        function animateStatusIndeterminate(ms) {
-          const i = Math.floor((ms / INDETERMINATE_STATUS_STEP_MS) % 8);
-          if (statusIndeterminate.children[i].style.borderTopColor === "") {
-            Array.prototype.slice.call(statusIndeterminate.children).forEach((child) => {
-              child.style.borderTopColor = "";
-            });
-            statusIndeterminate.children[i].style.borderTopColor = "#dfdfdf";
-          }
-        }
+        // function animateStatusIndeterminate(ms) {
+        //   const i = Math.floor((ms / INDETERMINATE_STATUS_STEP_MS) % 8);
+        //   if (statusIndeterminate.children[i].style.borderTopColor === "") {
+        //     Array.prototype.slice.call(statusIndeterminate.children).forEach((child) => {
+        //       child.style.borderTopColor = "";
+        //     });
+        //     statusIndeterminate.children[i].style.borderTopColor = "#dfdfdf";
+        //   }
+        // }
 
         function setStatusMode(mode) {
           if (statusMode === mode || !initializing) {
             return;
           }
-          [statusProgress, statusIndeterminate, statusNotice].forEach((elem) => {
+          [/* statusProgress, statusIndeterminate, */ statusNotice].forEach((elem) => {
             elem.style.display = "none";
           });
-          animationCallbacks = animationCallbacks.filter(function (value) {
-            return value !== animateStatusIndeterminate;
-          });
+          // animationCallbacks = animationCallbacks.filter(function (value) {
+          //   return value !== animateStatusIndeterminate;
+          // });
           switch (mode) {
             case "progress":
-              statusProgress.style.display = "block";
+              // statusProgress.style.display = "block";
               break;
             case "indeterminate":
-              statusIndeterminate.style.display = "block";
-              animationCallbacks.push(animateStatusIndeterminate);
+              // statusIndeterminate.style.display = "block";
+              // animationCallbacks.push(animateStatusIndeterminate);
               break;
             case "notice":
               statusNotice.style.display = "block";
@@ -234,16 +338,19 @@
           const missingMsg = "Error\nThe following features required to run Godot projects on the Web are missing:\n";
           displayFailureNotice(missingMsg + missing.join("\n"));
         } else {
-          // if (Engine.isWebGLAvailable()) {
-          //   var gl = canvas.getContext("webgl");
-          //   gl.clearColor(0.89, 0.65, 0.45, 1);
-          // }
           setStatusMode("indeterminate");
           engine
             .startGame({
               onProgress: function (current, total) {
                 if (total > 0) {
-                  statusProgressInner.style.width = `${(current / total) * 100}%`;
+                  // statusProgressInner.style.width = `${(current / total) * 100}%`;
+
+                  const upTo = (current / total) * bootupText.children.length;
+                  for (let i = 0; i < Math.round(upTo); i++) {
+                    const child = bootupText.children[i];
+                    child.style.display = "block";
+                  }
+
                   setStatusMode("progress");
                   if (current === total) {
                     // wait for progress bar animation
