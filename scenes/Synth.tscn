@@ -1,4 +1,4 @@
-[gd_scene load_steps=205 format=3 uid="uid://cq0eo3pk8nqoc"]
+[gd_scene load_steps=206 format=3 uid="uid://cq0eo3pk8nqoc"]
 
 [ext_resource type="Theme" uid="uid://bxnauddw6v7c3" path="res://assets/theme.tres" id="1_uylf7"]
 [ext_resource type="Script" path="res://scripts/Synth.gd" id="2_2s38u"]
@@ -47,6 +47,7 @@
 [ext_resource type="Texture2D" uid="uid://d2s1h44lwjjqf" path="res://textures/Buttons/plus-pressed.png" id="25_7631a"]
 [ext_resource type="Texture2D" uid="uid://ri00fcj2v84c" path="res://textures/weir.png" id="25_gy1di"]
 [ext_resource type="Script" path="res://scripts/NoteLength.gd" id="26_5543f"]
+[ext_resource type="Texture2D" uid="uid://boxn6ctlc43x8" path="res://textures/synth-back.png" id="26_l5jtl"]
 [ext_resource type="Texture2D" uid="uid://35rheq17dvj3" path="res://textures/weir-pressed.png" id="26_liykc"]
 [ext_resource type="Script" path="res://scripts/Amp.gd" id="27_2cy22"]
 [ext_resource type="Script" path="res://scripts/Speaker.gd" id="28_ga5l0"]
@@ -973,10 +974,6 @@ layout_mode = 2
 size_flags_vertical = 8
 text = "Ptc"
 
-[node name="Timer" type="Timer" parent="PCB/Control/Pitch"]
-wait_time = 0.1
-one_shot = true
-
 [node name="Wave" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
@@ -1087,6 +1084,14 @@ layout_mode = 0
 offset_right = 1040.0
 offset_bottom = 720.0
 texture = ExtResource("5_dfrx0")
+
+[node name="TextureRect" type="TextureRect" parent="Frame/Texture"]
+z_index = -1
+use_parent_material = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("26_l5jtl")
 
 [node name="Presets" type="GridContainer" parent="Frame"]
 use_parent_material = true
@@ -1796,6 +1801,7 @@ expand_mode = 1
 libraries = {
 "": SubResource("AnimationLibrary_optqw")
 }
+speed_scale = 1.3
 
 [node name="Screws" type="Control" parent="Frame"]
 anchors_preset = 0

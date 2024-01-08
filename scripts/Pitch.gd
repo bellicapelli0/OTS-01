@@ -6,10 +6,10 @@ extends VBoxContainer
 
 
 func _process(delta):
-	$Slider.value = lerp($Slider.value, mid, speed*delta)
 	for player in players.get_children():
 		player.pitch_scale = $Slider.value
+	if not Input.is_action_pressed("LMB"):
+		$Slider.value = lerp($Slider.value, mid, speed*delta)
+	
 
 
-func _on_slider_value_changed(value):
-	$Timer.start()

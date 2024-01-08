@@ -32,6 +32,6 @@ func _process(delta):
 	var vol_y = remap(volume, noise_min, noise_max, size.y-pad, pad)
 	
 
-	line.position.y = move_toward(line.position.y , vol_y, speed*$"..".selected+1.1)
+	line.position.y = move_toward(line.position.y , vol_y, (speed*$"..".selected+1.1)*$"../../Pitch/Slider".value)
 	line.position.y = clamp(line.position.y, pad, size.y-pad)
 	
