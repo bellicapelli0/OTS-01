@@ -1,11 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cg8cdsy3b7em4"]
+[gd_scene load_steps=4 format=3 uid="uid://cg8cdsy3b7em4"]
 
-[ext_resource type="Shader" uid="uid://b5l7gfsh5phat" path="res://assets/screw_shader.tres" id="1_jn4ti"]
 [ext_resource type="Script" path="res://scripts/Screw.gd" id="1_m16j4"]
 [ext_resource type="Texture2D" uid="uid://c12chxqi26s82" path="res://textures/screw.png" id="2_yhfae"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uda5v"]
-shader = ExtResource("1_jn4ti")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_drm2w"]
 atlas = ExtResource("2_yhfae")
@@ -13,7 +9,6 @@ region = Rect2(0, 0, 26, 60)
 
 [node name="Screw" type="TextureRect"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_uda5v")
 offset_right = 26.0
 offset_bottom = 64.0
 texture = SubResource("AtlasTexture_drm2w")

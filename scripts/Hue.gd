@@ -1,6 +1,6 @@
 extends HBoxContainer
 
-@onready var shader : ShaderMaterial = $"../../../Frame".material
+@onready var shader : ShaderMaterial = $"..".material
 var _animating = false
 var _anim_speed = 0.15
 

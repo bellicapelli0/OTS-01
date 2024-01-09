@@ -1,4 +1,4 @@
-[gd_scene load_steps=209 format=3 uid="uid://cq0eo3pk8nqoc"]
+[gd_scene load_steps=211 format=3 uid="uid://cq0eo3pk8nqoc"]
 
 [ext_resource type="Theme" uid="uid://bxnauddw6v7c3" path="res://assets/theme.tres" id="1_uylf7"]
 [ext_resource type="Script" path="res://scripts/Synth.gd" id="2_2s38u"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://cxisnew66xirr" path="res://textures/gay.png" id="12_fnlhx"]
 [ext_resource type="Texture2D" uid="uid://cstpep52ak1vk" path="res://textures/gay-pressed.png" id="13_1esoh"]
 [ext_resource type="Texture2D" uid="uid://bwjju4rsmoqgg" path="res://textures/Buttons/saw-pressed.png" id="13_6q866"]
+[ext_resource type="Script" path="res://scripts/Saturation.gd" id="14_kve1w"]
 [ext_resource type="Texture2D" uid="uid://ben2lmuyicyoq" path="res://textures/Buttons/lin.png" id="14_vrnkv"]
 [ext_resource type="Script" path="res://scripts/VolumeIndicator.gd" id="15_ejyq1"]
 [ext_resource type="Texture2D" uid="uid://dyhgaepbbprxm" path="res://textures/Buttons/lin-pressed.png" id="15_fs2y8"]
@@ -35,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://2udao23o64n4" path="res://textures/Buttons/tri-pressed.png" id="17_8eahx"]
 [ext_resource type="Texture2D" uid="uid://b5rvlyetmwkox" path="res://textures/VolumeBack.png" id="18_2cho2"]
 [ext_resource type="Texture2D" uid="uid://bmkhejw6gj2fm" path="res://textures/Buttons/sqr.png" id="18_54wux"]
+[ext_resource type="Texture2D" uid="uid://hbqifechbi2b" path="res://textures/wheel.png" id="19_lt7e5"]
 [ext_resource type="Texture2D" uid="uid://ey0oox64snwv" path="res://textures/Buttons/sqr-pressed.png" id="19_o4jso"]
 [ext_resource type="Script" path="res://scripts/GlobalData.gd" id="20_e32en"]
 [ext_resource type="Script" path="res://scripts/Octave.gd" id="20_mltv8"]
@@ -108,7 +110,7 @@
 [ext_resource type="Script" path="res://scripts/OpenClose.gd" id="86_ginjs"]
 [ext_resource type="Texture2D" uid="uid://dtuk8yvj87tmc" path="res://textures/fullscreen.png" id="106_ncmy7"]
 [ext_resource type="Texture2D" uid="uid://xmf3wdwrvl45" path="res://textures/unfullscreen.png" id="107_xb88q"]
-[ext_resource type="Script" path="res://scenes/Fullscreen.gd" id="108_meetc"]
+[ext_resource type="Script" path="res://scripts/Fullscreen.gd" id="108_meetc"]
 
 [sub_resource type="Gradient" id="Gradient_n2oxx"]
 offsets = PackedFloat32Array(0, 0.226667, 0.806667, 1)
@@ -881,14 +883,28 @@ material = ExtResource("12_1j4f8")
 width = 4.0
 default_color = Color(0.811765, 0, 0, 1)
 
-[node name="AnimationSpeed" type="HBoxContainer" parent="PCB/ShaderController"]
+[node name="AnimationSpeed" type="VBoxContainer" parent="PCB/ShaderController"]
 use_parent_material = true
 layout_mode = 0
-offset_left = 297.0
-offset_top = 311.0
-offset_right = 603.0
-offset_bottom = 343.0
+offset_left = 847.0
+offset_top = 110.0
+offset_right = 883.0
+offset_bottom = 289.0
 script = ExtResource("5_6244k")
+
+[node name="Slider" type="VSlider" parent="PCB/ShaderController/AnimationSpeed"]
+use_parent_material = true
+layout_mode = 2
+size_flags_vertical = 3
+min_value = 0.2
+max_value = 5.0
+step = 0.05
+value = 1.0
+
+[node name="VSeparator" type="HSeparator" parent="PCB/ShaderController/AnimationSpeed"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
 
 [node name="Label" type="Label" parent="PCB/ShaderController/AnimationSpeed"]
 use_parent_material = true
@@ -899,24 +915,42 @@ tooltip_text = "Animation Speed
 mouse_filter = 1
 text = "Spe"
 
-[node name="VSeparator2" type="VSeparator" parent="PCB/ShaderController/AnimationSpeed"]
+[node name="Saturation" type="HBoxContainer" parent="PCB/ShaderController"]
+use_parent_material = true
+layout_mode = 2
+offset_left = 298.0
+offset_top = 260.0
+offset_right = 507.0
+offset_bottom = 292.0
+script = ExtResource("14_kve1w")
+
+[node name="Label" type="Label" parent="PCB/ShaderController/Saturation"]
+use_parent_material = true
+layout_mode = 2
+tooltip_text = "Saturation"
+mouse_filter = 1
+text = "Sat"
+vertical_alignment = 1
+
+[node name="Sep" type="VSeparator" parent="PCB/ShaderController/Saturation"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
-[node name="Slider" type="HSlider" parent="PCB/ShaderController/AnimationSpeed"]
+[node name="Slider" type="HSlider" parent="PCB/ShaderController/Saturation"]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
-min_value = 0.2
-max_value = 5.0
-step = 0.05
+size_flags_vertical = 8
+max_value = 1.0
+step = 0.0
 value = 1.0
 
-[node name="VSeparator" type="VSeparator" parent="PCB/ShaderController/AnimationSpeed"]
+[node name="Sep2" type="VSeparator" parent="PCB/ShaderController/Saturation"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
-[node name="Gay" type="TextureButton" parent="PCB/ShaderController/AnimationSpeed"]
+[node name="Gay" type="TextureButton" parent="PCB/ShaderController/Saturation"]
+visible = false
 use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 4
@@ -927,10 +961,10 @@ texture_pressed = ExtResource("13_1esoh")
 [node name="Hue" type="HBoxContainer" parent="PCB/ShaderController"]
 use_parent_material = true
 layout_mode = 2
-offset_left = 298.0
-offset_top = 260.0
-offset_right = 585.0
-offset_bottom = 292.0
+offset_left = 299.0
+offset_top = 312.0
+offset_right = 605.0
+offset_bottom = 344.0
 script = ExtResource("11_kw86s")
 
 [node name="Label" type="Label" parent="PCB/ShaderController/Hue"]
@@ -939,7 +973,7 @@ layout_mode = 2
 text = "Hue"
 vertical_alignment = 1
 
-[node name="VSeparator2" type="VSeparator" parent="PCB/ShaderController/Hue"]
+[node name="Sep" type="VSeparator" parent="PCB/ShaderController/Hue"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
@@ -952,16 +986,33 @@ max_value = 1.0
 step = 0.0
 value = 0.01
 
-[node name="Pitch" type="VBoxContainer" parent="PCB/ShaderController"]
+[node name="Sep2" type="VSeparator" parent="PCB/ShaderController/Hue"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="Gay" type="TextureButton" parent="PCB/ShaderController/Hue"]
+use_parent_material = true
+layout_mode = 2
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource("12_fnlhx")
+texture_pressed = ExtResource("13_1esoh")
+
+[node name="Pitch" type="Control" parent="PCB/ShaderController"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("16_lisvp")
+
+[node name="SliderContainer" type="VBoxContainer" parent="PCB/ShaderController/Pitch"]
 use_parent_material = true
 layout_mode = 0
 offset_left = 655.0
 offset_top = 109.0
 offset_right = 687.0
 offset_bottom = 290.0
-script = ExtResource("16_lisvp")
 
-[node name="Slider" type="VSlider" parent="PCB/ShaderController/Pitch"]
+[node name="Slider" type="VSlider" parent="PCB/ShaderController/Pitch/SliderContainer"]
 use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -972,12 +1023,27 @@ value = 1.0
 scrollable = false
 tick_count = 3
 
-[node name="Label" type="Label" parent="PCB/ShaderController/Pitch"]
+[node name="Label" type="Label" parent="PCB/ShaderController/Pitch/SliderContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 tooltip_text = "Pitch"
 mouse_filter = 1
 text = "Ptc"
+
+[node name="Wheel1" type="TextureRect" parent="PCB/ShaderController/Pitch"]
+layout_mode = 2
+offset_left = 655.0
+offset_top = 195.0
+offset_right = 687.0
+offset_bottom = 261.0
+texture = ExtResource("19_lt7e5")
+
+[node name="Wheel2" type="TextureRect" parent="PCB/ShaderController/Pitch"]
+offset_left = 655.0
+offset_top = 105.0
+offset_right = 687.0
+offset_bottom = 170.0
+texture = ExtResource("19_lt7e5")
 
 [node name="Wave" type="Control" parent="."]
 anchors_preset = 0
@@ -2086,9 +2152,11 @@ one_shot = true
 [connection signal="pressed" from="PCB/ShaderController/CopyPaste/Paste" to="PCB/ShaderController/CopyPaste" method="_on_paste_pressed"]
 [connection signal="item_selected" from="PCB/ShaderController/MixRate" to="PCB/ShaderController/MixRate" method="_on_item_selected"]
 [connection signal="value_changed" from="PCB/ShaderController/AnimationSpeed/Slider" to="PCB/ShaderController/AnimationSpeed" method="_on_slider_value_changed"]
-[connection signal="toggled" from="PCB/ShaderController/AnimationSpeed/Gay" to="PCB/ShaderController/Hue" method="_on_gay_toggled"]
+[connection signal="value_changed" from="PCB/ShaderController/Saturation/Slider" to="PCB/ShaderController/Saturation" method="_on_slider_value_changed"]
+[connection signal="toggled" from="PCB/ShaderController/Saturation/Gay" to="PCB/ShaderController/Saturation" method="_on_gay_toggled"]
 [connection signal="value_changed" from="PCB/ShaderController/Hue/HSlider" to="PCB/ShaderController/Hue" method="_on_h_slider_value_changed"]
-[connection signal="value_changed" from="PCB/ShaderController/Pitch/Slider" to="PCB/ShaderController/Pitch" method="_on_slider_value_changed"]
+[connection signal="toggled" from="PCB/ShaderController/Hue/Gay" to="PCB/ShaderController/Hue" method="_on_gay_toggled"]
+[connection signal="value_changed" from="PCB/ShaderController/Pitch/SliderContainer/Slider" to="PCB/ShaderController/Pitch/SliderContainer" method="_on_slider_value_changed"]
 [connection signal="value_changed" from="Speaker/Volume" to="Speaker" method="_on_volume_value_changed"]
 [connection signal="timeout" from="Speaker/Timer" to="Speaker" method="_on_timer_timeout"]
 [connection signal="pressed" from="Frame/Presets/LineButton" to="Frame/Presets" method="preset_lin"]
