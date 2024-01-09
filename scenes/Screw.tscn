@@ -6,6 +6,8 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uda5v"]
 shader = ExtResource("1_jn4ti")
+shader_parameter/animationSpeed = 0.4
+shader_parameter/bandThickness = 0.1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_drm2w"]
 atlas = ExtResource("2_yhfae")
