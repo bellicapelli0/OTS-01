@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=23 format=3 uid="uid://b5l7gfsh5phat"]
+[gd_resource type="VisualShader" load_steps=25 format=3 uid="uid://b5l7gfsh5phat"]
 
 [ext_resource type="Texture2D" uid="uid://tokcbonrqnmx" path="res://textures/screw-shine.png" id="1_rbh25"]
 
@@ -66,8 +66,16 @@ function = 31
 [sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_ntqle"]
 function = 31
 
-[sub_resource type="VisualShaderNodeColorOp" id="VisualShaderNodeColorOp_ab2ba"]
-operator = 3
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_j16bx"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_12j3r"]
+parameter_name = "intensity"
+hint = 1
+default_value_enabled = true
+default_value = 0.1
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_5k1hs"]
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_1qqoa"]
 input_name = "color"
@@ -83,6 +91,7 @@ texture_type = 1
 code = "shader_type canvas_item;
 render_mode blend_mix;
 
+uniform float intensity : hint_range(0, 1) = 0.10000000149012;
 uniform float animationSpeed : hint_range(0, 1) = 0.40000000596046;
 uniform sampler2D tex_frg_9 : source_color;
 uniform float bandThickness : hint_range(0, 1) = 0.10000000149012;
@@ -92,6 +101,10 @@ uniform float bandThickness : hint_range(0, 1) = 0.10000000149012;
 void fragment() {
 // Input:4
 	vec4 n_out4p0 = COLOR;
+
+
+// FloatParameter:31
+	float n_out31p0 = intensity;
 
 
 // FloatParameter:2
@@ -175,24 +188,28 @@ void fragment() {
 	float n_out28p0 = 1.0 - n_out27p0;
 
 
-// ColorOp:29
-	vec3 n_out29p0 = max(vec3(n_out4p0.xyz), vec3(n_out28p0));
+// FloatOp:30
+	float n_out30p0 = n_out31p0 * n_out28p0;
+
+
+// FloatOp:32
+	float n_out32p0 = n_out4p0.x + n_out30p0;
 
 
 // Output:0
-	COLOR.rgb = n_out29p0;
+	COLOR.rgb = vec3(n_out32p0);
 
 
 }
 "
-graph_offset = Vector2(-350.329, -77.1313)
+graph_offset = Vector2(-568.193, -321.138)
 mode = 1
 flags/light_only = false
-nodes/fragment/0/position = Vector2(1940, 220)
+nodes/fragment/0/position = Vector2(2120, 140)
 nodes/fragment/2/node = SubResource("VisualShaderNodeFloatParameter_b237i")
 nodes/fragment/2/position = Vector2(-420, 0)
 nodes/fragment/4/node = SubResource("VisualShaderNodeInput_1qqoa")
-nodes/fragment/4/position = Vector2(1280, 100)
+nodes/fragment/4/position = Vector2(1460, -180)
 nodes/fragment/5/node = SubResource("VisualShaderNodeInput_em220")
 nodes/fragment/5/position = Vector2(-460, 280)
 nodes/fragment/9/node = SubResource("VisualShaderNodeTexture_cpqhu")
@@ -229,6 +246,10 @@ nodes/fragment/27/node = SubResource("VisualShaderNodeFloatOp_n7vjp")
 nodes/fragment/27/position = Vector2(1340, 180)
 nodes/fragment/28/node = SubResource("VisualShaderNodeFloatFunc_ntqle")
 nodes/fragment/28/position = Vector2(1520, 200)
-nodes/fragment/29/node = SubResource("VisualShaderNodeColorOp_ab2ba")
-nodes/fragment/29/position = Vector2(1740, 140)
-nodes/fragment/connections = PackedInt32Array(12, 0, 9, 0, 10, 0, 13, 0, 13, 0, 12, 0, 5, 0, 15, 1, 2, 0, 15, 0, 15, 0, 16, 0, 9, 0, 19, 0, 16, 0, 20, 0, 19, 0, 14, 1, 20, 0, 14, 0, 14, 0, 18, 0, 17, 0, 23, 1, 19, 0, 23, 0, 25, 0, 24, 0, 20, 0, 25, 0, 23, 0, 25, 1, 18, 0, 27, 0, 26, 0, 27, 1, 24, 0, 26, 0, 27, 0, 28, 0, 4, 0, 29, 0, 28, 0, 29, 1, 29, 0, 0, 0)
+nodes/fragment/30/node = SubResource("VisualShaderNodeFloatOp_j16bx")
+nodes/fragment/30/position = Vector2(1720, 100)
+nodes/fragment/31/node = SubResource("VisualShaderNodeFloatParameter_12j3r")
+nodes/fragment/31/position = Vector2(-420, -280)
+nodes/fragment/32/node = SubResource("VisualShaderNodeFloatOp_5k1hs")
+nodes/fragment/32/position = Vector2(1920, 100)
+nodes/fragment/connections = PackedInt32Array(12, 0, 9, 0, 10, 0, 13, 0, 13, 0, 12, 0, 5, 0, 15, 1, 2, 0, 15, 0, 15, 0, 16, 0, 9, 0, 19, 0, 16, 0, 20, 0, 19, 0, 14, 1, 20, 0, 14, 0, 14, 0, 18, 0, 17, 0, 23, 1, 19, 0, 23, 0, 25, 0, 24, 0, 20, 0, 25, 0, 23, 0, 25, 1, 18, 0, 27, 0, 26, 0, 27, 1, 24, 0, 26, 0, 27, 0, 28, 0, 31, 0, 30, 0, 28, 0, 30, 1, 30, 0, 32, 1, 4, 0, 32, 0, 32, 0, 0, 0)
