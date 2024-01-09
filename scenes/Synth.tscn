@@ -1,4 +1,4 @@
-[gd_scene load_steps=206 format=3 uid="uid://cq0eo3pk8nqoc"]
+[gd_scene load_steps=209 format=3 uid="uid://cq0eo3pk8nqoc"]
 
 [ext_resource type="Theme" uid="uid://bxnauddw6v7c3" path="res://assets/theme.tres" id="1_uylf7"]
 [ext_resource type="Script" path="res://scripts/Synth.gd" id="2_2s38u"]
@@ -28,7 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://cstpep52ak1vk" path="res://textures/gay-pressed.png" id="13_1esoh"]
 [ext_resource type="Texture2D" uid="uid://bwjju4rsmoqgg" path="res://textures/Buttons/saw-pressed.png" id="13_6q866"]
 [ext_resource type="Texture2D" uid="uid://ben2lmuyicyoq" path="res://textures/Buttons/lin.png" id="14_vrnkv"]
-[ext_resource type="Script" path="res://scenes/VolumeIndicator.gd" id="15_ejyq1"]
+[ext_resource type="Script" path="res://scripts/VolumeIndicator.gd" id="15_ejyq1"]
 [ext_resource type="Texture2D" uid="uid://dyhgaepbbprxm" path="res://textures/Buttons/lin-pressed.png" id="15_fs2y8"]
 [ext_resource type="Texture2D" uid="uid://cbt5an1xjeqyd" path="res://textures/Buttons/tri.png" id="16_jwdwn"]
 [ext_resource type="Script" path="res://scripts/Pitch.gd" id="16_lisvp"]
@@ -106,6 +106,9 @@
 [ext_resource type="Texture2D" uid="uid://cgoii2bnbthd2" path="res://textures/close.png" id="84_wn21w"]
 [ext_resource type="Texture2D" uid="uid://h01biiwspslp" path="res://textures/hidden.png" id="85_a1vpl"]
 [ext_resource type="Script" path="res://scripts/OpenClose.gd" id="86_ginjs"]
+[ext_resource type="Texture2D" uid="uid://dtuk8yvj87tmc" path="res://textures/fullscreen.png" id="106_ncmy7"]
+[ext_resource type="Texture2D" uid="uid://xmf3wdwrvl45" path="res://textures/unfullscreen.png" id="107_xb88q"]
+[ext_resource type="Script" path="res://scenes/Fullscreen.gd" id="108_meetc"]
 
 [sub_resource type="Gradient" id="Gradient_n2oxx"]
 offsets = PackedFloat32Array(0, 0.226667, 0.806667, 1)
@@ -972,6 +975,8 @@ tick_count = 3
 [node name="Label" type="Label" parent="PCB/Control/Pitch"]
 layout_mode = 2
 size_flags_vertical = 8
+tooltip_text = "Pitch"
+mouse_filter = 1
 text = "Ptc"
 
 [node name="Wave" type="Control" parent="."]
@@ -1601,7 +1606,7 @@ size_flags_vertical = 3
 min_value = -40.0
 max_value = -6.0
 step = 0.5
-value = -12.0
+value = -40.0
 
 [node name="Reverb" type="VBoxContainer" parent="Frame/Effects/HBoxContainer"]
 use_parent_material = true
@@ -2027,7 +2032,6 @@ texture_pressed = SubResource("AtlasTexture_11x6k")
 [node name="OpenClose" type="TextureButton" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0.784314)
-z_index = 2
 layout_mode = 0
 offset_left = -136.0
 offset_top = 639.0
@@ -2041,6 +2045,18 @@ texture_normal = ExtResource("83_p2srs")
 texture_pressed = ExtResource("84_wn21w")
 texture_disabled = ExtResource("85_a1vpl")
 script = ExtResource("86_ginjs")
+
+[node name="Fullscreen" type="TextureButton" parent="."]
+modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 0
+offset_left = 945.0
+offset_top = 613.0
+offset_right = 1009.0
+offset_bottom = 677.0
+toggle_mode = true
+texture_normal = ExtResource("106_ncmy7")
+texture_pressed = ExtResource("107_xb88q")
+script = ExtResource("108_meetc")
 
 [node name="AudioStreamPlayers" type="Node" parent="."]
 script = ExtResource("49_ru7c7")
@@ -2128,3 +2144,4 @@ one_shot = true
 [connection signal="pressed" from="Piano/BlackKeys3/C-UP#" to="Piano" method="_on_cup_sharp_button_down"]
 [connection signal="pressed" from="Piano/BlackKeys3/D-UP#" to="Piano" method="_on_dup_sharp_button_down"]
 [connection signal="button_down" from="OpenClose" to="OpenClose" method="_on_button_down"]
+[connection signal="pressed" from="Fullscreen" to="Fullscreen" method="_on_pressed"]
