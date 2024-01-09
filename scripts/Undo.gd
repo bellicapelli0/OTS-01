@@ -17,6 +17,10 @@ func save_curve(curve):
 	if len(saved_curves) > max_saved_curves:
 		saved_curves.pop_front()
 
+func clear_curves():
+	saved_curves = []
+	disable()
+	
 func _on_pressed():
 	synth.start_animation(saved_curves.pop_back(), true)
 	if len(saved_curves) == 0:

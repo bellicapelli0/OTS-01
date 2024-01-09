@@ -1,7 +1,7 @@
 extends Control
 
 @onready var synth : Synth = get_tree().get_root().get_node("Synth")
-var unscrew_chance = 0.15
+var unscrew_chance = 0.05
 
 func play_note(idx):
 	idx += Global.octave * 12

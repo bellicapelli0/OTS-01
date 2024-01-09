@@ -48,6 +48,7 @@ func _ready():
 	$StartTimer.start()
 	await $StartTimer.timeout
 	$Frame/Presets.preset_weierstrass()
+	undo.clear_curves()
 	
 func _process(delta):
 #region animation
@@ -55,8 +56,10 @@ func _process(delta):
 		prev_percentage = percentage
 		if _undo:
 			percentage-=delta*animation_speed
-			for i in range(int(percentage*width),int(prev_percentage*width)):
-				if i< 0:
+			var m = clamp(int(prev_percentage*width), -INF, width-1)
+			for i in range(m, int(percentage*width), -1):
+				print(i)
+				if i < 0:
 					_undo = false
 					animating = false
 					$Wave/AnimationProgress.hide()
@@ -74,6 +77,7 @@ func _process(delta):
 				
 				line.points[i].y = desired_curve[i]
 				$Wave/AnimationProgress.position.x = i
+		
 #endregion
 		
 #region mouse control

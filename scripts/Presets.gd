@@ -18,7 +18,7 @@ func preset_saw():
 	desired_curve[Global.w-1] = Global.h/2
 	send_preset(desired_curve)
 	#$"../../Speaker/Volume".value = min($"../../Speaker/Volume".value, 50)
-	
+
 
 func preset_sqr():
 	var desired_curve = []

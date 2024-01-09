@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b0g4jukq2ynnf"]
+
+[ext_resource type="Shader" uid="uid://b5l7gfsh5phat" path="res://assets/screw_shader.tres" id="1_6q1o7"]
+
+[resource]
+shader = ExtResource("1_6q1o7")
+shader_parameter/intensity = 0.1
+shader_parameter/animationSpeed = 0.105
+shader_parameter/bandThickness = 0.1

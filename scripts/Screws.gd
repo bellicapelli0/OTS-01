@@ -9,6 +9,9 @@ func _ready():
 	screws.append($Screw2)
 	screws.append($Screw3)
 	screws.append($Screw4)
+	
+	for i in 6:
+		_on_timer_timeout()
 
 func _on_screw1_unscrewed():
 	screws.erase($Screw)
@@ -49,3 +52,15 @@ func unscrew_random():
 		return
 	var screw = screws.pick_random()
 	screw._on_texture_button_pressed()
+	
+	
+var t_rand_range = 0.65
+var t_rand_base = 0.0
+
+func _on_timer_timeout():
+	if len(screws) == 0:
+		$Timer.queue_free()
+		return
+	var screw = screws.pick_random()
+	var animation_speed = randf() * t_rand_range + t_rand_base
+	screw.material.set_shader_parameter("animationSpeed", animation_speed)
