@@ -796,14 +796,14 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("5_le7e3")
 
-[node name="Control" type="Control" parent="PCB"]
+[node name="ShaderController" type="Control" parent="PCB"]
 modulate = Color(0.9, 0.9, 0.9, 1)
 material = ExtResource("12_1j4f8")
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Info" type="Label" parent="PCB/Control"]
+[node name="Info" type="Label" parent="PCB/ShaderController"]
 layout_mode = 0
 offset_left = 653.0
 offset_top = 22.0
@@ -814,7 +814,7 @@ text = " >"
 vertical_alignment = 1
 clip_text = true
 
-[node name="ColorRect" type="ColorRect" parent="PCB/Control/Info"]
+[node name="ColorRect" type="ColorRect" parent="PCB/ShaderController/Info"]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -825,7 +825,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.121569, 0.14902, 0.113725, 1)
 
-[node name="CopyPaste" type="HBoxContainer" parent="PCB/Control"]
+[node name="CopyPaste" type="HBoxContainer" parent="PCB/ShaderController"]
 use_parent_material = true
 layout_mode = 2
 offset_left = 656.0
@@ -834,21 +834,21 @@ offset_right = 887.0
 offset_bottom = 91.0
 script = ExtResource("6_81hqd")
 
-[node name="Copy" type="TextureButton" parent="PCB/Control/CopyPaste"]
+[node name="Copy" type="TextureButton" parent="PCB/ShaderController/CopyPaste"]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 6
 texture_normal = ExtResource("7_6vdtn")
 texture_pressed = ExtResource("8_2av54")
 
-[node name="Paste" type="TextureButton" parent="PCB/Control/CopyPaste"]
+[node name="Paste" type="TextureButton" parent="PCB/ShaderController/CopyPaste"]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 6
 texture_normal = ExtResource("9_fb56f")
 texture_pressed = ExtResource("10_s1mb4")
 
-[node name="MixRate" type="OptionButton" parent="PCB/Control"]
+[node name="MixRate" type="OptionButton" parent="PCB/ShaderController"]
 use_parent_material = true
 layout_mode = 0
 offset_left = 643.0
@@ -867,7 +867,7 @@ popup/item_3/text = "44100 Hz"
 popup/item_3/id = 3
 script = ExtResource("4_4wlrx")
 
-[node name="VolumeIndicator" type="ColorRect" parent="PCB/Control/MixRate"]
+[node name="VolumeIndicator" type="ColorRect" parent="PCB/ShaderController/MixRate"]
 layout_mode = 0
 offset_left = 169.0
 offset_top = 1.0
@@ -876,12 +876,12 @@ offset_bottom = 34.0
 color = Color(0.121569, 0.14902, 0.113725, 1)
 script = ExtResource("15_ejyq1")
 
-[node name="Line2D" type="Line2D" parent="PCB/Control/MixRate/VolumeIndicator"]
+[node name="Line2D" type="Line2D" parent="PCB/ShaderController/MixRate/VolumeIndicator"]
 material = ExtResource("12_1j4f8")
 width = 4.0
 default_color = Color(0.811765, 0, 0, 1)
 
-[node name="AnimationSpeed" type="HBoxContainer" parent="PCB/Control"]
+[node name="AnimationSpeed" type="HBoxContainer" parent="PCB/ShaderController"]
 use_parent_material = true
 layout_mode = 0
 offset_left = 297.0
@@ -890,7 +890,7 @@ offset_right = 603.0
 offset_bottom = 343.0
 script = ExtResource("5_6244k")
 
-[node name="Label" type="Label" parent="PCB/Control/AnimationSpeed"]
+[node name="Label" type="Label" parent="PCB/ShaderController/AnimationSpeed"]
 use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 1
@@ -899,11 +899,11 @@ tooltip_text = "Animation Speed
 mouse_filter = 1
 text = "Spe"
 
-[node name="VSeparator2" type="VSeparator" parent="PCB/Control/AnimationSpeed"]
+[node name="VSeparator2" type="VSeparator" parent="PCB/ShaderController/AnimationSpeed"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
-[node name="Slider" type="HSlider" parent="PCB/Control/AnimationSpeed"]
+[node name="Slider" type="HSlider" parent="PCB/ShaderController/AnimationSpeed"]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -912,11 +912,11 @@ max_value = 5.0
 step = 0.05
 value = 1.0
 
-[node name="VSeparator" type="VSeparator" parent="PCB/Control/AnimationSpeed"]
+[node name="VSeparator" type="VSeparator" parent="PCB/ShaderController/AnimationSpeed"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
-[node name="Gay" type="TextureButton" parent="PCB/Control/AnimationSpeed"]
+[node name="Gay" type="TextureButton" parent="PCB/ShaderController/AnimationSpeed"]
 use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 4
@@ -924,7 +924,7 @@ toggle_mode = true
 texture_normal = ExtResource("12_fnlhx")
 texture_pressed = ExtResource("13_1esoh")
 
-[node name="Hue" type="HBoxContainer" parent="PCB/Control"]
+[node name="Hue" type="HBoxContainer" parent="PCB/ShaderController"]
 use_parent_material = true
 layout_mode = 2
 offset_left = 298.0
@@ -933,17 +933,17 @@ offset_right = 585.0
 offset_bottom = 292.0
 script = ExtResource("11_kw86s")
 
-[node name="Label" type="Label" parent="PCB/Control/Hue"]
+[node name="Label" type="Label" parent="PCB/ShaderController/Hue"]
 use_parent_material = true
 layout_mode = 2
 text = "Hue"
 vertical_alignment = 1
 
-[node name="VSeparator2" type="VSeparator" parent="PCB/Control/Hue"]
+[node name="VSeparator2" type="VSeparator" parent="PCB/ShaderController/Hue"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
-[node name="HSlider" type="HSlider" parent="PCB/Control/Hue"]
+[node name="HSlider" type="HSlider" parent="PCB/ShaderController/Hue"]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -952,7 +952,7 @@ max_value = 1.0
 step = 0.0
 value = 0.01
 
-[node name="Pitch" type="VBoxContainer" parent="PCB/Control"]
+[node name="Pitch" type="VBoxContainer" parent="PCB/ShaderController"]
 use_parent_material = true
 layout_mode = 0
 offset_left = 655.0
@@ -961,7 +961,7 @@ offset_right = 687.0
 offset_bottom = 290.0
 script = ExtResource("16_lisvp")
 
-[node name="Slider" type="VSlider" parent="PCB/Control/Pitch"]
+[node name="Slider" type="VSlider" parent="PCB/ShaderController/Pitch"]
 use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -972,7 +972,7 @@ value = 1.0
 scrollable = false
 tick_count = 3
 
-[node name="Label" type="Label" parent="PCB/Control/Pitch"]
+[node name="Label" type="Label" parent="PCB/ShaderController/Pitch"]
 layout_mode = 2
 size_flags_vertical = 8
 tooltip_text = "Pitch"
@@ -2082,13 +2082,13 @@ stream = SubResource("AudioStreamGenerator_aya6c")
 wait_time = 0.2
 one_shot = true
 
-[connection signal="pressed" from="PCB/Control/CopyPaste/Copy" to="PCB/Control/CopyPaste" method="_on_copy_pressed"]
-[connection signal="pressed" from="PCB/Control/CopyPaste/Paste" to="PCB/Control/CopyPaste" method="_on_paste_pressed"]
-[connection signal="item_selected" from="PCB/Control/MixRate" to="PCB/Control/MixRate" method="_on_item_selected"]
-[connection signal="value_changed" from="PCB/Control/AnimationSpeed/Slider" to="PCB/Control/AnimationSpeed" method="_on_slider_value_changed"]
-[connection signal="toggled" from="PCB/Control/AnimationSpeed/Gay" to="PCB/Control/Hue" method="_on_gay_toggled"]
-[connection signal="value_changed" from="PCB/Control/Hue/HSlider" to="PCB/Control/Hue" method="_on_h_slider_value_changed"]
-[connection signal="value_changed" from="PCB/Control/Pitch/Slider" to="PCB/Control/Pitch" method="_on_slider_value_changed"]
+[connection signal="pressed" from="PCB/ShaderController/CopyPaste/Copy" to="PCB/ShaderController/CopyPaste" method="_on_copy_pressed"]
+[connection signal="pressed" from="PCB/ShaderController/CopyPaste/Paste" to="PCB/ShaderController/CopyPaste" method="_on_paste_pressed"]
+[connection signal="item_selected" from="PCB/ShaderController/MixRate" to="PCB/ShaderController/MixRate" method="_on_item_selected"]
+[connection signal="value_changed" from="PCB/ShaderController/AnimationSpeed/Slider" to="PCB/ShaderController/AnimationSpeed" method="_on_slider_value_changed"]
+[connection signal="toggled" from="PCB/ShaderController/AnimationSpeed/Gay" to="PCB/ShaderController/Hue" method="_on_gay_toggled"]
+[connection signal="value_changed" from="PCB/ShaderController/Hue/HSlider" to="PCB/ShaderController/Hue" method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="PCB/ShaderController/Pitch/Slider" to="PCB/ShaderController/Pitch" method="_on_slider_value_changed"]
 [connection signal="value_changed" from="Speaker/Volume" to="Speaker" method="_on_volume_value_changed"]
 [connection signal="timeout" from="Speaker/Timer" to="Speaker" method="_on_timer_timeout"]
 [connection signal="pressed" from="Frame/Presets/LineButton" to="Frame/Presets" method="preset_lin"]
