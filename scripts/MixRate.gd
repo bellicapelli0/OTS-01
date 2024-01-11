@@ -1,5 +1,7 @@
 extends OptionButton
 
+@onready var audio_stream_players = $"../../../AudioStreamPlayers"
+
 var values = {
 	0: 16000,
 	1: 22050,
@@ -12,6 +14,6 @@ func _ready():
 
 
 func _on_item_selected(index):
-	for player in $"../../../AudioStreamPlayers".get_children():
+	for player in audio_stream_players.get_children():
 		player.stream.mix_rate = values[index]
 

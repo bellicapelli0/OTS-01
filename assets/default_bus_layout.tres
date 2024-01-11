@@ -18,7 +18,9 @@ resource_name = "Chorus"
 
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_td2eu"]
 resource_name = "Reverb"
-room_size = 0.6
+room_size = 0.5
+damping = 0.3
+spread = 0.5
 
 [sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_72myc"]
 resource_name = "SpectrumAnalyzer"

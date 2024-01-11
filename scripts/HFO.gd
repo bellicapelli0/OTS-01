@@ -1,13 +1,18 @@
 extends Control
 
 @onready var synth : Synth = get_tree().get_root().get_node("Synth")
+@onready var frq_slider : Slider= $VBoxContainer/Sliders/Frequency
+@onready var dpt_slider : Slider= $VBoxContainer/Sliders/Depth
+@onready var osc_slider : Slider= $VBoxContainer/Sliders/Oscillator
+
 
 func _on_button_pressed():
-	var frequency = $VBoxContainer/Sliders/Frequency.value
+	var frequency = frq_slider.value
 	var length = Global.w / frequency
-	var depth = $VBoxContainer/Sliders/Depth.value
-	var oscillator = $VBoxContainer/Sliders/Oscillator.value
+	var depth = dpt_slider.value
+	var oscillator = osc_slider.value
 	var curve = []
+	
 	if oscillator == 4:
 		curve = _sin(length, depth)
 	if oscillator == 3:
@@ -19,18 +24,16 @@ func _on_button_pressed():
 	
 	var desired_curve = synth.get_wave()
 
-	
 	for i in frequency:
 		for j in length:
 			desired_curve[length*i + j] += curve[j]
 	
-	var mmin = desired_curve.min()
-	var mmax = desired_curve.max()
-	if mmin < 0 or mmax > Global.h:
-		for x in Global.w:
-			desired_curve[x] = remap(desired_curve[x], mmin, mmax, max(0, mmin), min(Global.h, mmax))
+	desired_curve = Global.remap_to_limits(desired_curve)
 	
 	synth.start_animation(desired_curve)
+
+###
+# Presets
 
 func _sin(length, depth):
 	var curve = []

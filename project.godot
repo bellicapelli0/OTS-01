@@ -18,6 +18,8 @@ config/icon="res://icon.png"
 [audio]
 
 buses/default_bus_layout="res://assets/default_bus_layout.tres"
+driver/output_latency=55
+driver/output_latency.web=75
 
 [autoload]
 

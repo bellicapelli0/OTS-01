@@ -2,9 +2,9 @@ extends Control
 
 @onready var players = $"../../../AudioStreamPlayers"
 @onready var slider = $Slider
+@onready var anim_speed = $"../AnimationSpeed/Slider"
 @onready var mid = slider.min_value + (slider.max_value-slider.min_value)/2.0
 @onready var speed = 2
-@onready var synth : Synth = get_tree().get_root().get_node("Synth")
 @onready var up_wheel = $Up
 @onready var down_wheel = $Down
 
@@ -25,6 +25,6 @@ func _process(delta):
 
 
 	if not Input.is_action_pressed("LMB"): 
-		slider.value = lerp(slider.value, mid, speed*delta*synth.animation_speed)
+		slider.value = lerp(slider.value, mid, speed*delta*anim_speed.value)
 
 

@@ -7,39 +7,37 @@ var bus_i = 0
 var lpf_i = 0
 var hpf_i = 1
 
+@onready var cut_slider : Slider = $VBoxContainer/Sliders/Cutoff
+@onready var rev_slider : Slider = $VBoxContainer/Sliders/Resonance
+@onready var lpf_button : TextureButton = $VBoxContainer/Buttons/LPF
+@onready var hpf_button : TextureButton = $VBoxContainer/Buttons/HPF
 
 func _ready():
 	lpf = AudioServer.get_bus_effect(bus_i, lpf_i)
 	hpf = AudioServer.get_bus_effect(bus_i, hpf_i)
-	#$VBoxContainer/Buttons/LPF.disabled = true
-	#$VBoxContainer/Buttons/LPF.button_pressed = true
-	
-	_on_cutoff_value_changed($VBoxContainer/Sliders/Cutoff.value)
-	_on_resonance_value_changed($VBoxContainer/Sliders/Resonance.value)
+
+	_on_cutoff_value_changed(cut_slider.value)
+	_on_resonance_value_changed(rev_slider.value)
 
 func _on_lpf_pressed():
-	AudioServer.set_bus_effect_enabled(bus_i, lpf_i, $VBoxContainer/Buttons/LPF.button_pressed)
+	AudioServer.set_bus_effect_enabled(bus_i, lpf_i, lpf_button.button_pressed)
 		
-	if $VBoxContainer/Buttons/HPF.button_pressed:
+	if hpf_button.button_pressed:
 		AudioServer.set_bus_effect_enabled(bus_i, hpf_i, false)
-		$VBoxContainer/Buttons/HPF.button_pressed = false
+		hpf_button.button_pressed = false
 
 
 
 func _on_hpf_pressed():
-	AudioServer.set_bus_effect_enabled(bus_i, hpf_i, $VBoxContainer/Buttons/HPF.button_pressed)
+	AudioServer.set_bus_effect_enabled(bus_i, hpf_i, hpf_button.button_pressed)
 	
-	if $VBoxContainer/Buttons/LPF.button_pressed:
+	if lpf_button.button_pressed:
 		AudioServer.set_bus_effect_enabled(bus_i, lpf_i, false)
-		$VBoxContainer/Buttons/LPF.button_pressed = false
+		lpf_button.button_pressed = false
 		
 
 
 func _on_cutoff_value_changed(value):
-	if value <= $VBoxContainer/Sliders/Cutoff.min_value * 1.02:
-		value = 0
-	if value >= $VBoxContainer/Sliders/Cutoff.max_value * 0.98:
-		value = 5000
 	lpf.cutoff_hz = value
 	hpf.cutoff_hz = value
 

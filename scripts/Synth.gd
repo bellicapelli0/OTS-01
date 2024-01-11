@@ -58,7 +58,6 @@ func _process(delta):
 			percentage-=delta*animation_speed
 			var m = clamp(int(prev_percentage*width), -INF, width-1)
 			for i in range(m, int(percentage*width), -1):
-				print(i)
 				if i < 0:
 					_undo = false
 					animating = false

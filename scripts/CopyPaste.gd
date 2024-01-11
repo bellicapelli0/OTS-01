@@ -7,7 +7,6 @@ func _on_copy_pressed():
 	var wave = synth.get_wave()
 	DisplayServer.clipboard_set(str(wave))
 	info.text = " > Copied Successfully"
-	
 
 
 func _on_paste_pressed():

@@ -2,6 +2,9 @@ extends HBoxContainer
 
 @onready var shader : ShaderMaterial = $"..".material
 @onready var sat_slider = $"../Saturation/Slider"
+@onready var anim_speed_slider : Slider = $"../AnimationSpeed/Slider"
+@onready var hue_slider : Slider = $HSlider
+
 var _animating = false
 var _anim_speed = 0.15
 var _sat_anim_speed = 0.08
@@ -14,12 +17,12 @@ func _ready():
 
 func _process(delta):
 	if _animating:
-		var anim_multiplier = delta * _anim_speed * $"../AnimationSpeed/Slider".value
-		$HSlider.value = clamp($HSlider.value + anim_multiplier, 0.0, 1.0)
-		if $HSlider.value == 0.0 or $HSlider.value == 1.0:
+		var anim_multiplier = delta * _anim_speed * anim_speed_slider.value
+		hue_slider.value = clamp(hue_slider.value + anim_multiplier, 0.0, 1.0)
+		if hue_slider.value == 0.0 or hue_slider.value == 1.0:
 			_anim_speed = -_anim_speed
 			
-		var sat_anim_multiplier = delta * _sat_anim_speed * $"../AnimationSpeed/Slider".value
+		var sat_anim_multiplier = delta * _sat_anim_speed * anim_speed_slider.value
 		sat_slider.value = clamp(sat_slider.value + sat_anim_multiplier, 0.0, 1.0)
 		
 		saturation_value = clamp(saturation_value + sat_anim_multiplier, -saturation_range, saturation_range)		

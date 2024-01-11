@@ -25,7 +25,7 @@ func _ready():
 	spectrum = AudioServer.get_bus_effect_instance(bus_i, spectrum_i)
 
 func _process(_delta):
-	volume = spectrum.get_magnitude_for_frequency_range(200, 4000).length()
+	volume = spectrum.get_magnitude_for_frequency_range(200, 3000).length()
 	slider_vol = $Volume.value / 100.0
 	$Front.scale = Vector2.ONE * remap(volume, noise_min, noise_max/slider_vol, min_front_scale, max_front_scale ) 
 	$Back.scale = Vector2.ONE * remap(volume, noise_min, noise_max/slider_vol, min_back_scale, max_back_scale) 
