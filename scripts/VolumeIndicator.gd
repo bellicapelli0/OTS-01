@@ -28,7 +28,7 @@ func _ready():
 	line.add_point(Vector2(size.x, 0))
 
 
-func _process(delta):
+func _process(_delta):
 	volume = spectrum.get_magnitude_for_frequency_range(min_freq, max_freq).length()
 	var vol_y = remap(volume, noise_min, noise_max, size.y-pad, pad)
 	

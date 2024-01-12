@@ -3284,7 +3284,7 @@ one_shot = true
 [connection signal="value_changed" from="Frame/Filters/VBoxContainer/Sliders/Cutoff" to="Frame/Filters" method="_on_cutoff_value_changed"]
 [connection signal="value_changed" from="Frame/Filters/VBoxContainer/Sliders/Resonance" to="Frame/Filters" method="_on_resonance_value_changed"]
 [connection signal="pressed" from="Frame/HFO/Button" to="Frame/HFO" method="_on_button_pressed"]
-[connection signal="value_changed" from="Frame/NoteLength/Slider" to="Frame/NoteLength" method="_on_slider_value_changed"]
+[connection signal="value_changed" from="Frame/NoteLength/Slider" to="Frame/NoteLength" method="_on_value_changed"]
 [connection signal="pressed" from="Frame/Octave/Minus" to="Frame/Octave" method="_on_minus_pressed"]
 [connection signal="pressed" from="Frame/Octave/Plus" to="Frame/Octave" method="_on_plus_pressed"]
 [connection signal="pressed" from="Frame/Presets/LineButton" to="Frame/Presets" method="preset_lin"]
