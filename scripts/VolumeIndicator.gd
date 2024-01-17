@@ -7,7 +7,7 @@ var pad = 5
 var x0 = size.x - pad
 
 var bus_i = 0
-var spectrum_i = 5
+var spectrum_i = 6
 var spectrum = AudioServer.get_bus_effect_instance(bus_i, spectrum_i)
 
 var volume

@@ -16,7 +16,7 @@ var loud_max = 0.3
 
 @onready var bus_i = AudioServer.get_bus_index("Master")
 var slider_vol
-var spectrum_i = 5
+var spectrum_i = 6
 var volume_db_min = -40
 var volume_db_max = 0
 

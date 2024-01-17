@@ -1,4 +1,4 @@
-[gd_scene load_steps=324 format=3 uid="uid://cq0eo3pk8nqoc"]
+[gd_scene load_steps=337 format=3 uid="uid://cq0eo3pk8nqoc"]
 
 [ext_resource type="Theme" uid="uid://bxnauddw6v7c3" path="res://assets/theme.tres" id="1_uylf7"]
 [ext_resource type="Script" path="res://scripts/Synth.gd" id="2_2s38u"]
@@ -46,26 +46,39 @@
 [ext_resource type="Texture2D" uid="uid://ctmv0nbc3do4h" path="res://textures/Buttons/octave-indicator.png" id="21_5gu60"]
 [ext_resource type="Texture2D" uid="uid://d3513vq6prmmd" path="res://textures/Buttons/global-pressed.png" id="21_m1u2q"]
 [ext_resource type="Texture2D" uid="uid://b1f16vxc188b6" path="res://textures/Buttons/Minus.png" id="22_lrmvv"]
-[ext_resource type="Script" path="res://scenes/Buttons.gd" id="22_qs4c0"]
-[ext_resource type="Texture2D" uid="uid://cqupenf56hh61" path="res://textures/button.png" id="23_7hilt"]
+[ext_resource type="Script" path="res://scripts/Buttons.gd" id="22_qs4c0"]
 [ext_resource type="Texture2D" uid="uid://bfe4xunx4o8xg" path="res://textures/Buttons/minus-pressed.png" id="23_iqnjy"]
-[ext_resource type="Texture2D" uid="uid://tfeyxso4plaw" path="res://textures/button-pressed.png" id="24_8x0a1"]
+[ext_resource type="Texture2D" uid="uid://b75t60stctves" path="res://textures/edge.png" id="23_v1igy"]
 [ext_resource type="Texture2D" uid="uid://d1dwjxfn1vqvi" path="res://textures/Buttons/plus.png" id="24_ofmss"]
+[ext_resource type="Texture2D" uid="uid://6xkywvjjq3c5" path="res://textures/edge-pressed.png" id="24_pqefk"]
+[ext_resource type="Script" path="res://scripts/PCBEffects.gd" id="25_8tdkt"]
 [ext_resource type="Texture2D" uid="uid://d2s1h44lwjjqf" path="res://textures/Buttons/plus-pressed.png" id="25_7631a"]
 [ext_resource type="Texture2D" uid="uid://ri00fcj2v84c" path="res://textures/weir.png" id="25_gy1di"]
 [ext_resource type="Script" path="res://scripts/NoteLength.gd" id="26_5543f"]
 [ext_resource type="Texture2D" uid="uid://boxn6ctlc43x8" path="res://textures/synth-back.png" id="26_l5jtl"]
 [ext_resource type="Texture2D" uid="uid://35rheq17dvj3" path="res://textures/weir-pressed.png" id="26_liykc"]
+[ext_resource type="Texture2D" uid="uid://d3bo0rt1qlfgk" path="res://textures/lofi.png" id="26_r4e1g"]
 [ext_resource type="Script" path="res://scripts/Amp.gd" id="27_2cy22"]
+[ext_resource type="Texture2D" uid="uid://b3w452m5c32r3" path="res://textures/lofi-pressed.png" id="27_osfad"]
+[ext_resource type="Texture2D" uid="uid://bo7nv0s1mj0a7" path="res://textures/rflip.png" id="27_xneij"]
+[ext_resource type="Texture2D" uid="uid://dgllyijoaxdnr" path="res://textures/noise.png" id="28_aanww"]
 [ext_resource type="Script" path="res://scripts/Speaker.gd" id="28_ga5l0"]
+[ext_resource type="Texture2D" uid="uid://bbyg0oxxis52o" path="res://textures/rflip-pressed.png" id="28_gj2h0"]
+[ext_resource type="Texture2D" uid="uid://bvnhse54s2few" path="res://textures/noise-pressed.png" id="29_lpalm"]
+[ext_resource type="Texture2D" uid="uid://c00hpxpfm2qar" path="res://textures/rflat.png" id="29_pttct"]
 [ext_resource type="Texture2D" uid="uid://c3c0bsfbiws86" path="res://textures/speaker1.png" id="29_wbf4v"]
 [ext_resource type="Texture2D" uid="uid://ctv0qsex531uw" path="res://textures/random.png" id="30_0gyfx"]
+[ext_resource type="Texture2D" uid="uid://cel6bpaco3b4j" path="res://textures/rflat-pressed.png" id="30_gr0to"]
 [ext_resource type="Texture2D" uid="uid://cje5g6qmk8k1g" path="res://textures/speaker2.png" id="30_s13xo"]
+[ext_resource type="Texture2D" uid="uid://cbfu3viaattkc" path="res://textures/L.png" id="31_e6hp4"]
 [ext_resource type="Texture2D" uid="uid://cf2r5vcdv7ac4" path="res://textures/random-pressed.png" id="31_t1vox"]
 [ext_resource type="Script" path="res://scripts/HFO.gd" id="31_wndd2"]
+[ext_resource type="Texture2D" uid="uid://dkrqq5qy1n5ui" path="res://textures/L-pressed.png" id="32_g5s8c"]
 [ext_resource type="Texture2D" uid="uid://3o5qf7v7r0y6" path="res://textures/symbols/sin.png" id="32_qmbc4"]
 [ext_resource type="Texture2D" uid="uid://8dn31qmudraq" path="res://textures/symbols/sqr.png" id="33_71sia"]
+[ext_resource type="Texture2D" uid="uid://byu1pi6d2dqll" path="res://textures/R.png" id="33_qmgyi"]
 [ext_resource type="Texture2D" uid="uid://dl30cgutfbb3" path="res://textures/symbols/tri.png" id="34_qgvpk"]
+[ext_resource type="Texture2D" uid="uid://bj0mefojy5ado" path="res://textures/R-pressed.png" id="34_v8pvn"]
 [ext_resource type="Texture2D" uid="uid://cahn7rv4kinoa" path="res://textures/symbols/saw.png" id="35_lav07"]
 [ext_resource type="Texture2D" uid="uid://m41s0n0ir53p" path="res://textures/Buttons/hfo.png" id="36_u201u"]
 [ext_resource type="Texture2D" uid="uid://hso635cpn6ci" path="res://textures/Buttons/hfo-pressed.png" id="37_71yow"]
@@ -83,7 +96,7 @@
 [ext_resource type="Script" path="res://scripts/Undo.gd" id="47_0o2xt"]
 [ext_resource type="Texture2D" uid="uid://b2qfb7vohlkgh" path="res://textures/Buttons/pwm-disabled.png" id="47_irxhb"]
 [ext_resource type="Texture2D" uid="uid://cf8ey23ljk6qa" path="res://textures/Buttons/line-texture.png" id="48_4py3e"]
-[ext_resource type="Script" path="res://scenes/RandomButton.gd" id="48_dtehp"]
+[ext_resource type="Script" path="res://scripts/RandomButton.gd" id="48_dtehp"]
 [ext_resource type="Script" path="res://scripts/AudioStreamPlayers.gd" id="49_ru7c7"]
 [ext_resource type="Texture2D" uid="uid://dk3g784odiufs" path="res://textures/Buttons/undo-pressed.png" id="52_2plo3"]
 [ext_resource type="Script" path="res://scripts/Filters.gd" id="54_dr268"]
@@ -1862,7 +1875,7 @@ offset_top = 22.0
 offset_right = 888.0
 offset_bottom = 56.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = " >"
+text = " > "
 vertical_alignment = 1
 clip_text = true
 
@@ -1881,9 +1894,9 @@ color = Color(0.121569, 0.14902, 0.113725, 1)
 use_parent_material = true
 layout_mode = 2
 offset_left = 650.0
-offset_top = 60.0
-offset_right = 887.0
-offset_bottom = 92.0
+offset_top = 62.0
+offset_right = 874.0
+offset_bottom = 94.0
 script = ExtResource("6_81hqd")
 
 [node name="Copy" type="TextureButton" parent="PCB/ShaderController/CopyPaste"]
@@ -1935,10 +1948,10 @@ default_color = Color(0.811765, 0, 0, 1)
 [node name="AnimationSpeed" type="VBoxContainer" parent="PCB/ShaderController"]
 use_parent_material = true
 layout_mode = 0
-offset_left = 647.0
-offset_top = 108.0
-offset_right = 683.0
-offset_bottom = 294.0
+offset_left = 797.0
+offset_top = 106.0
+offset_right = 833.0
+offset_bottom = 297.0
 script = ExtResource("5_6244k")
 metadata/_edit_group_ = true
 
@@ -2108,23 +2121,112 @@ tooltip_text = "Pitch"
 mouse_filter = 1
 text = "Ptc"
 
-[node name="Buttons" type="Control" parent="PCB/ShaderController"]
-visible = false
-anchors_preset = 0
-offset_left = 727.0
-offset_top = 142.0
-offset_right = 767.0
-offset_bottom = 182.0
+[node name="Buttons" type="VBoxContainer" parent="PCB/ShaderController"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 718.0
+offset_top = 105.0
+offset_right = 780.0
+offset_bottom = 298.0
 script = ExtResource("22_qs4c0")
 
+[node name="NoiseButton" type="TextureButton" parent="PCB/ShaderController/Buttons"]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+tooltip_text = "Add Noise"
+texture_normal = ExtResource("28_aanww")
+texture_pressed = ExtResource("29_lpalm")
+
+[node name="RFlipButton" type="TextureButton" parent="PCB/ShaderController/Buttons"]
+use_parent_material = true
+layout_mode = 2
+size_flags_vertical = 3
+tooltip_text = "Randomly
+Flip Wave"
+texture_normal = ExtResource("27_xneij")
+texture_pressed = ExtResource("28_gj2h0")
+
+[node name="RFlatButton" type="TextureButton" parent="PCB/ShaderController/Buttons"]
+use_parent_material = true
+layout_mode = 2
+size_flags_vertical = 3
+tooltip_text = "Randomly
+Flatten Wave"
+texture_normal = ExtResource("29_pttct")
+texture_pressed = ExtResource("30_gr0to")
+
 [node name="EdgeDetection" type="TextureButton" parent="PCB/ShaderController/Buttons"]
+use_parent_material = true
+layout_mode = 2
+size_flags_vertical = 3
+tooltip_text = "Edge Detection"
+texture_normal = ExtResource("23_v1igy")
+texture_pressed = ExtResource("24_pqefk")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PCB/ShaderController/Buttons"]
+use_parent_material = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="L" type="TextureButton" parent="PCB/ShaderController/Buttons/HBoxContainer"]
+use_parent_material = true
+layout_mode = 2
+tooltip_text = "Keep Left
+Side Only"
+texture_normal = ExtResource("31_e6hp4")
+texture_pressed = ExtResource("32_g5s8c")
+
+[node name="R" type="TextureButton" parent="PCB/ShaderController/Buttons/HBoxContainer"]
+use_parent_material = true
+layout_mode = 2
+tooltip_text = "Keep Right
+Side Only"
+texture_normal = ExtResource("33_qmgyi")
+texture_pressed = ExtResource("34_v8pvn")
+
+[node name="PCBEffects" type="Control" parent="PCB/ShaderController"]
+use_parent_material = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = 649.0
+offset_top = 103.0
+offset_right = 689.0
+offset_bottom = 143.0
+script = ExtResource("25_8tdkt")
+metadata/_edit_group_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PCB/ShaderController/PCBEffects"]
+use_parent_material = true
 layout_mode = 0
-offset_left = -3.0
-offset_top = 21.0
-offset_right = 61.0
-offset_bottom = 61.0
-texture_normal = ExtResource("23_7hilt")
-texture_pressed = ExtResource("24_8x0a1")
+offset_top = 4.0
+offset_right = 50.0
+offset_bottom = 189.0
+
+[node name="Lofi" type="VBoxContainer" parent="PCB/ShaderController/PCBEffects/HBoxContainer"]
+use_parent_material = true
+layout_mode = 2
+tooltip_text = "LoFi Distorsion"
+
+[node name="LofiButton" type="TextureButton" parent="PCB/ShaderController/PCBEffects/HBoxContainer/Lofi"]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 0
+tooltip_text = "LoFi Distorsion"
+toggle_mode = true
+texture_normal = ExtResource("26_r4e1g")
+texture_pressed = ExtResource("27_osfad")
+
+[node name="LofiSlider" type="VSlider" parent="PCB/ShaderController/PCBEffects/HBoxContainer/Lofi"]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 3
+min_value = 0.5
+max_value = 1.0
+step = 0.05
+value = 0.5
 
 [node name="Wave" type="Control" parent="."]
 anchors_preset = 0
@@ -2155,7 +2257,6 @@ gradient = SubResource("Gradient_n2oxx")
 joint_mode = 2
 
 [node name="AnimationProgress" type="Line2D" parent="Wave"]
-visible = false
 material = ExtResource("12_1j4f8")
 points = PackedVector2Array(0, 0, 0, 152)
 width = 8.0
@@ -2211,6 +2312,7 @@ wait_time = 3.0
 autostart = true
 
 [node name="Frame" type="Control" parent="."]
+visible = false
 material = ExtResource("12_1j4f8")
 anchors_preset = 0
 offset_left = -79.0
@@ -3266,7 +3368,14 @@ one_shot = true
 [connection signal="value_changed" from="PCB/ShaderController/Saturation/Slider" to="PCB/ShaderController/Saturation" method="_on_slider_value_changed"]
 [connection signal="value_changed" from="PCB/ShaderController/Hue/HSlider" to="PCB/ShaderController/Hue" method="_on_h_slider_value_changed"]
 [connection signal="toggled" from="PCB/ShaderController/Hue/Gay" to="PCB/ShaderController/Hue" method="_on_gay_toggled"]
+[connection signal="pressed" from="PCB/ShaderController/Buttons/NoiseButton" to="PCB/ShaderController/Buttons" method="_on_noise_button_pressed"]
+[connection signal="pressed" from="PCB/ShaderController/Buttons/RFlipButton" to="PCB/ShaderController/Buttons" method="_on_r_flip_button_pressed"]
+[connection signal="pressed" from="PCB/ShaderController/Buttons/RFlatButton" to="PCB/ShaderController/Buttons" method="_on_r_flat_button_pressed"]
 [connection signal="pressed" from="PCB/ShaderController/Buttons/EdgeDetection" to="PCB/ShaderController/Buttons" method="_on_edge_detection_pressed"]
+[connection signal="pressed" from="PCB/ShaderController/Buttons/HBoxContainer/L" to="PCB/ShaderController/Buttons" method="_on_l_pressed"]
+[connection signal="pressed" from="PCB/ShaderController/Buttons/HBoxContainer/R" to="PCB/ShaderController/Buttons" method="_on_r_pressed"]
+[connection signal="pressed" from="PCB/ShaderController/PCBEffects/HBoxContainer/Lofi/LofiButton" to="PCB/ShaderController/PCBEffects" method="_on_lofi_button_pressed"]
+[connection signal="value_changed" from="PCB/ShaderController/PCBEffects/HBoxContainer/Lofi/LofiSlider" to="PCB/ShaderController/PCBEffects" method="_on_lofi_slider_value_changed"]
 [connection signal="value_changed" from="Speaker/Volume" to="Speaker" method="_on_volume_value_changed"]
 [connection signal="timeout" from="Speaker/Timer" to="Speaker" method="_on_timer_timeout"]
 [connection signal="drag_ended" from="Frame/Amp" to="Frame/Amp" method="_on_drag_ended"]

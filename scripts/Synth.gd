@@ -38,8 +38,8 @@ func _ready():
 		
 	$Wave/BG.size = Vector2(width+padding*2, height+padding*2)
 	$Wave/BG.position = Vector2(-padding, -padding)
-	$Wave/AnimationProgress.points[0] = Vector2(0, -padding)
-	$Wave/AnimationProgress.points[1] = Vector2(0, height+padding)
+	$Wave/AnimationProgress.points[0] = Vector2(0, -padding/2)
+	$Wave/AnimationProgress.points[1] = Vector2(0, height+padding/2)
 	$Wave/AnimationProgress.position  = Vector2(0, 0)
 	$"Wave/0Line".points[0] = Vector2(0, height/2.0)
 	$"Wave/0Line".points[1] = Vector2(width, height/2.0)
